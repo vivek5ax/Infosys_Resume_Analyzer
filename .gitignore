@@ -60,3 +60,12 @@ backend/data/sessions/
 *.log
 *.tmp
 *.temp
+
+# Personal keys and local secrets
+1_Mykey.txt
+
+# Test and verification scripts (exclude from commits)
+test_*.py
+verify_*.py
+**/test_*.py
+**/verify_*.py

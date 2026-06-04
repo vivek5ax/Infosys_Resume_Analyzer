@@ -5508,44 +5508,127 @@ textarea.modern-input::placeholder {
     border: 1px solid rgba(255, 255, 255, 0.6);
     background: linear-gradient(155deg, #f9fbff 0%, #eef3ff 42%, #f4f8ff 100%);
     box-shadow: 0 28px 60px -32px rgba(26, 44, 88, 0.45);
-    padding: 1.55rem 1.55rem 1.3rem;
+    padding: 1rem 1rem 0.9rem;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
+.landing-hero-header {
+    display: grid;
+    grid-template-columns: minmax(260px, 1.1fr) minmax(320px, 1.3fr);
+    gap: 1.75rem;
+    align-items: start;
+}
+
+.landing-hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+}
+
 .landing-kicker {
     margin: 0;
-    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1rem;
+    font-size: 1.05rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.26em;
     font-weight: 900;
-    color: #3b4ac6;
-    text-align: center;
-    width: 100%;
+    color: #1f2a55;
+    background: linear-gradient(135deg, rgba(75, 87, 226, 0.16), rgba(95, 105, 229, 0.24));
+    border-radius: 999px;
+    box-shadow: 0 18px 50px -36px rgba(75, 87, 226, 0.55);
+    width: fit-content;
 }
 
 .landing-title {
-    margin: 0.35rem 0 0;
-    font-size: clamp(1.45rem, 2.8vw, 2.2rem);
-    line-height: 1.15;
-    color: #17213a;
+    margin: 0;
+    font-size: clamp(2.2rem, 4vw, 3.3rem);
+    line-height: 1.02;
+    color: #09102b;
+    letter-spacing: -0.04em;
+    font-weight: 900;
+    max-width: 12ch;
 }
 
-.landing-subtitle {
-    margin: 0.55rem 0 0;
-    max-width: 920px;
-    color: #4c5772;
+.landing-tagline {
+    margin: 0;
+    max-width: 600px;
+    color: #4f5f82;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.landing-step-panel {
+    width: 100%;
+    padding-right: 0.75rem;
+}
+
+.landing-step-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+}
+
+.landing-step-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 0.85rem 0.9rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(75, 87, 226, 0.1);
+    box-shadow: 0 18px 38px -32px rgba(31, 54, 121, 0.16);
+    transition: transform 0.22s ease, border-color 0.22s ease;
+}
+
+.landing-step-card:hover {
+    transform: translateY(-1px);
+    border-color: rgba(75, 87, 226, 0.18);
+}
+
+.landing-step-marker {
+    width: 2.6rem;
+    height: 2.6rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4b57e2, #5f6bef);
+    color: #fff;
+    font-weight: 900;
+    box-shadow: 0 12px 30px -18px rgba(75, 87, 226, 0.55);
+}
+
+.landing-step-title {
+    margin: 0;
     font-size: 0.96rem;
-    line-height: 1.45;
+    font-weight: 700;
+    color: #161f3c;
+}
+
+.landing-step-description {
+    margin: 0;
+    color: #5c6887;
+    font-size: 0.92rem;
+    line-height: 1.55;
 }
 
 .landing-actions {
-    margin-top: 0.95rem;
-    margin-bottom: 0.85rem;
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
     display: flex;
     justify-content: center;
+}
+
+.landing-actions-inline {
+    justify-content: flex-start;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    margin-left: 1rem;
 }
 
 .landing-start-btn {
@@ -5568,13 +5651,15 @@ textarea.modern-input::placeholder {
 
 .landing-slider-shell {
     width: 100%;
-    border-radius: 18px;
-    border: 1px solid #d7e1f5;
-    background: linear-gradient(180deg, #f8fbff 0%, #f2f6ff 100%);
-    padding: 0.7rem;
+    border-radius: 20px;
+    border: 1px solid rgba(75, 87, 226, 0.16);
+    background: linear-gradient(180deg, #f4f7ff 0%, #eef4ff 100%);
+    padding: 0.9rem;
     overflow: hidden;
-    min-height: 0;
+    min-height: 280px;
     flex: 0;
+    margin-top: 1.4rem;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65), 0 16px 40px -24px rgba(31, 54, 121, 0.16);
 }
 
 .landing-slider-empty {
@@ -5595,7 +5680,7 @@ textarea.modern-input::placeholder {
     display: flex;
     align-items: stretch;
     width: max-content;
-    gap: 0.85rem;
+    gap: 1rem;
     animation-name: landingSlideLeft;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -5604,12 +5689,12 @@ textarea.modern-input::placeholder {
 
 .landing-slide {
     margin: 0;
-    width: min(540px, 74vw);
-    border-radius: 14px;
+    width: min(340px, 60vw);
+    border-radius: 18px;
     overflow: hidden;
-    border: 1px solid #d3dbef;
-    background: #eaf0ff;
-    box-shadow: 0 12px 26px -20px rgba(22, 34, 73, 0.7);
+    border: 1px solid rgba(91, 104, 173, 0.18);
+    background: linear-gradient(180deg, #ffffff 0%, #eff4ff 100%);
+    box-shadow: 0 16px 36px -22px rgba(20, 36, 80, 0.16);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -5618,10 +5703,10 @@ textarea.modern-input::placeholder {
 .landing-slide img {
     display: block;
     width: 100%;
-    height: 340px;
-    object-fit: contain;
+    height: 220px;
+    object-fit: cover;
     object-position: center;
-    background: #f4f7ff;
+    background: #f7f9ff;
 }
 
 @keyframes landingSlideLeft {
@@ -5649,16 +5734,16 @@ textarea.modern-input::placeholder {
     }
 
     .landing-slider-shell {
-        min-height: 280px;
+        min-height: 180px;
         padding: 0.55rem;
     }
 
     .landing-slide {
-        width: min(350px, 83vw);
+        width: min(240px, 80vw);
         border-radius: 10px;
     }
 
     .landing-slide img {
-        height: 230px;
+        height: 140px;
     }
 }

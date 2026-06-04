@@ -1,220 +1,274 @@
 {
     "_meta": {
         "domain": "electrical",
-        "version": "3.1-production-enhanced",
-        "last_updated": "2026-02-28"
+        "version": "4.0-enterprise",
+        "last_updated": "2026-06-04"
     },
     "categories": {
-        "Circuit Design & Hardware": {
-            "weight": 1.4,
+        "Power Systems & Distribution": {
+            "weight": 1.5,
             "skills": [
                 {
-                    "name": "Circuit Analysis",
+                    "name": "Power Distribution",
                     "aliases": [
-                        "Analog Circuit Analysis",
-                        "Electrical Circuit Analysis"
+                        "Distribution Systems",
+                        "Low Voltage Systems",
+                        "LV Systems",
+                        "Medium Voltage",
+                        "MV Systems",
+                        "High Voltage",
+                        "HV Systems"
                     ]
                 },
                 {
-                    "name": "PCB Design",
+                    "name": "Power System Analysis",
                     "aliases": [
-                        "Printed Circuit Board Design",
-                        "PCB Layout"
+                        "Load Flow Analysis",
+                        "Power Flow Analysis",
+                        "Short Circuit Analysis",
+                        "Fault Analysis",
+                        "Contingency Analysis"
                     ]
                 },
                 {
-                    "name": "Schematic Capture",
+                    "name": "Power Generation",
                     "aliases": [
-                        "Schematic Design",
-                        "Electrical Schematics"
+                        "Thermal Power Plant",
+                        "Hydroelectric Power",
+                        "Gas Turbine",
+                        "Steam Turbine",
+                        "Power Plant Operations"
                     ]
                 },
                 {
-                    "name": "Hardware Debugging",
+                    "name": "Transmission Systems",
                     "aliases": [
-                        "Board Debugging",
-                        "Hardware Troubleshooting"
+                        "Transmission Lines",
+                        "Grid Systems",
+                        "HV Transmission",
+                        "EHV Transmission"
                     ]
                 },
                 {
-                    "name": "Altium Designer",
+                    "name": "Substation Engineering",
                     "aliases": [
-                        "Altium"
+                        "Substation Design",
+                        "AIS",
+                        "GIS Substation",
+                        "Switchyard Design"
                     ]
                 },
                 {
-                    "name": "KiCad",
-                    "aliases": []
-                },
-                {
-                    "name": "OrCAD",
-                    "aliases": []
-                },
-                {
-                    "name": "AutoCAD Electrical",
+                    "name": "Transformers",
                     "aliases": [
-                        "AutoCAD",
-                        "Electrical CAD"
+                        "Power Transformer",
+                        "Distribution Transformer",
+                        "Transformer Testing",
+                        "Transformer Protection"
                     ]
                 },
                 {
-                    "name": "Microcontrollers",
+                    "name": "Switchgear",
                     "aliases": [
-                        "MCU",
-                        "Microprocessor"
+                        "Motor Control Centers",
+                        "MCC",
+                        "LT Panels",
+                        "HT Panels",
+                        "Switchboards"
                     ]
                 },
                 {
-                    "name": "FPGA",
+                    "name": "Power Quality",
                     "aliases": [
-                        "Field Programmable Gate Array"
+                        "Voltage Stability",
+                        "Harmonic Analysis",
+                        "Reactive Power Compensation"
                     ]
                 },
                 {
-                    "name": "VHDL",
-                    "aliases": []
-                },
-                {
-                    "name": "Verilog",
+                    "name": "Renewable Energy Integration",
                     "aliases": [
-                        "SystemVerilog"
+                        "Solar Integration",
+                        "Wind Integration",
+                        "Grid Integration"
                     ]
                 },
                 {
-                    "name": "Power Electronics",
+                    "name": "Smart Grid",
                     "aliases": [
-                        "Inverters",
-                        "Converters"
+                        "Smart Grid Technology",
+                        "Advanced Metering Infrastructure",
+                        "AMI"
                     ]
                 },
                 {
-                    "name": "Embedded Systems",
+                    "name": "Load Management",
                     "aliases": [
-                        "Embedded Software"
+                        "Load Shedding",
+                        "Load Curtailment",
+                        "Demand Response"
+                    ]
+                },
+                {
+                    "name": "Power Factor Correction",
+                    "aliases": [
+                        "PFC",
+                        "Power Factor Improvement",
+                        "Capacitor Banks"
+                    ]
+                },
+                {
+                    "name": "Voltage Regulation",
+                    "aliases": [
+                        "Tap Changers",
+                        "Voltage Control",
+                        "AVR"
+                    ]
+                },
+                {
+                    "name": "Grid Stability",
+                    "aliases": [
+                        "Grid Security",
+                        "Power System Stability",
+                        "Frequency Control"
+                    ]
+                },
+                {
+                    "name": "Cable Systems",
+                    "aliases": [
+                        "Underground Cables",
+                        "Overhead Lines",
+                        "HT Cables",
+                        "LT Cables"
+                    ]
+                },
+                {
+                    "name": "Busbar Systems",
+                    "aliases": [
+                        "Busbars",
+                        "Busduct",
+                        "Isolated Phase Busbar"
                     ]
                 }
             ]
         },
-        "Power & Energy": {
-            "weight": 1.5,
+        "Protection & Relay Systems": {
+            "weight": 1.45,
             "skills": [
                 {
-                    "name": "Power Systems",
+                    "name": "Protective Relays",
                     "aliases": [
-                        "Power Distribution",
-                        "Electrical Distribution Systems"
+                        "Relay Protection",
+                        "Numerical Relays",
+                        "Distance Protection",
+                        "Overcurrent Protection"
                     ]
                 },
                 {
-                    "name": "Load Flow Analysis",
+                    "name": "Relay Coordination",
                     "aliases": [
-                        "Power Flow Analysis"
-                    ]
-                },
-                {
-                    "name": "Short Circuit Analysis",
-                    "aliases": [
-                        "Fault Current Analysis"
+                        "Protection Coordination",
+                        "Coordination Study"
                     ]
                 },
                 {
                     "name": "Fault Analysis",
                     "aliases": [
-                        "Electrical Fault Analysis"
+                        "Short Circuit Studies",
+                        "Fault Calculations"
                     ]
                 },
                 {
-                    "name": "Protection Relay Coordination",
+                    "name": "Circuit Breakers",
                     "aliases": [
-                        "Relay Coordination"
+                        "VCB",
+                        "ACB",
+                        "MCCB",
+                        "SF6 Breakers"
                     ]
                 },
                 {
-                    "name": "Transformer Design",
+                    "name": "Protection Schemes",
                     "aliases": [
-                        "Transformer Engineering"
+                        "Differential Protection",
+                        "Busbar Protection",
+                        "Feeder Protection"
                     ]
                 },
                 {
-                    "name": "Transformers",
-                    "aliases": []
-                },
-                {
-                    "name": "High Voltage",
+                    "name": "Current Transformers",
                     "aliases": [
-                        "HV",
-                        "High-Voltage Systems"
+                        "CT",
+                        "Current Transformer",
+                        "Instrument Transformer"
                     ]
                 },
                 {
-                    "name": "Substation Design",
+                    "name": "Voltage Transformers",
                     "aliases": [
-                        "Electrical Substation"
+                        "VT",
+                        "Voltage Transformer",
+                        "Potential Transformer",
+                        "PT"
                     ]
                 },
                 {
-                    "name": "Switchgear",
-                    "aliases": []
-                },
-                {
-                    "name": "Electrical Wiring",
+                    "name": "Earthing Systems",
                     "aliases": [
-                        "Wiring",
-                        "Cable Routing"
+                        "Grounding",
+                        "Earth Electrodes",
+                        "Earth Grid"
                     ]
                 },
                 {
-                    "name": "Grounding Systems",
+                    "name": "Surge Protection",
                     "aliases": [
-                        "Earthing"
+                        "SPD",
+                        "Lightning Protection",
+                        "Surge Arresters"
                     ]
                 },
                 {
-                    "name": "Electrical Safety Standards",
+                    "name": "Auto Reclosers",
                     "aliases": [
-                        "IEC Standards",
-                        "IEEE Standards",
-                        "NFPA 70"
+                        "Recloser",
+                        "Auto Reclosing"
                     ]
                 },
                 {
-                    "name": "Renewable Energy",
+                    "name": "Sectionalizers",
                     "aliases": [
-                        "Solar",
-                        "Wind Power",
-                        "Photovoltaic Systems"
+                        "Sectionaliser"
                     ]
                 },
                 {
-                    "name": "Smart Grids",
+                    "name": "Fuses",
                     "aliases": [
-                        "Grid Automation"
+                        "HRC Fuses",
+                        "Fuse Coordinations"
                     ]
                 },
                 {
-                    "name": "ETAP",
-                    "aliases": []
-                },
-                {
-                    "name": "DIgSILENT PowerFactory",
+                    "name": "Isolators",
                     "aliases": [
-                        "PowerFactory"
+                        "Disconnectors",
+                        "Isolating Switches"
                     ]
-                },
-                {
-                    "name": "PSCAD",
-                    "aliases": []
                 }
             ]
         },
         "Control Systems & Automation": {
-            "weight": 1.3,
+            "weight": 1.45,
             "skills": [
                 {
-                    "name": "PLC Programming",
+                    "name": "Programmable Logic Controllers",
                     "aliases": [
-                        "Programmable Logic Controller",
-                        "PLC"
+                        "PLC",
+                        "Allen Bradley",
+                        "Rockwell Automation",
+                        "Siemens PLC",
+                        "Siemens S7",
+                        "Mitsubishi PLC"
                     ]
                 },
                 {
@@ -224,40 +278,419 @@
                     ]
                 },
                 {
-                    "name": "Control Theory",
-                    "aliases": []
+                    "name": "Distributed Control Systems",
+                    "aliases": [
+                        "DCS",
+                        "Honeywell DCS",
+                        "Yokogawa DCS"
+                    ]
                 },
                 {
-                    "name": "Control Systems",
+                    "name": "Human Machine Interface",
                     "aliases": [
-                        "Industrial Control Systems"
+                        "HMI",
+                        "Operator Interface"
+                    ]
+                },
+                {
+                    "name": "PID Control",
+                    "aliases": [
+                        "Process Control",
+                        "Control Loops"
+                    ]
+                },
+                {
+                    "name": "Industrial Automation",
+                    "aliases": [
+                        "Factory Automation",
+                        "Automation Engineering"
+                    ]
+                },
+                {
+                    "name": "Robotics",
+                    "aliases": [
+                        "Industrial Robots",
+                        "Robot Programming"
+                    ]
+                },
+                {
+                    "name": "Variable Frequency Drives",
+                    "aliases": [
+                        "VFD",
+                        "Variable Speed Drives",
+                        "AC Drives",
+                        "Motor Drives"
+                    ]
+                },
+                {
+                    "name": "Sensors",
+                    "aliases": [
+                        "Temperature Sensors",
+                        "Pressure Sensors",
+                        "Flow Sensors",
+                        "Level Sensors"
+                    ]
+                },
+                {
+                    "name": "Actuators",
+                    "aliases": [
+                        "Control Valves",
+                        "Solenoid Valves",
+                        "Pneumatic Actuators"
+                    ]
+                },
+                {
+                    "name": "Instrumentation",
+                    "aliases": [
+                        "Industrial Instruments",
+                        "Process Instruments"
+                    ]
+                },
+                {
+                    "name": "Fieldbus",
+                    "aliases": [
+                        "Profibus",
+                        "Modbus",
+                        "Ethernet IP",
+                        "DeviceNet"
+                    ]
+                },
+                {
+                    "name": "Process Control Systems",
+                    "aliases": [
+                        "PACS",
+                        "Control Systems"
+                    ]
+                },
+                {
+                    "name": "Servo Systems",
+                    "aliases": [
+                        "Servo Motors",
+                        "Servo Drives",
+                        "Motion Control"
+                    ]
+                },
+                {
+                    "name": "Industrial Communication",
+                    "aliases": [
+                        "Industrial Ethernet",
+                        "OPC UA",
+                        "MQTT"
+                    ]
+                }
+            ]
+        },
+        "Electronics & Embedded Systems": {
+            "weight": 1.35,
+            "skills": [
+                {
+                    "name": "Analog Circuit Design",
+                    "aliases": [
+                        "Analog Electronics",
+                        "Analog Systems"
+                    ]
+                },
+                {
+                    "name": "Digital Circuit Design",
+                    "aliases": [
+                        "Digital Electronics",
+                        "Logic Design",
+                        "Digital Systems"
+                    ]
+                },
+                {
+                    "name": "Printed Circuit Board Design",
+                    "aliases": [
+                        "PCB Design",
+                        "PCB Layout",
+                        "PCB Development"
+                    ]
+                },
+                {
+                    "name": "Microcontrollers",
+                    "aliases": [
+                        "Arduino",
+                        "PIC",
+                        "ARM Cortex",
+                        "STM32",
+                        "8051"
+                    ]
+                },
+                {
+                    "name": "Embedded Systems",
+                    "aliases": [
+                        "Embedded Programming",
+                        "Firmware Development"
+                    ]
+                },
+                {
+                    "name": "FPGA",
+                    "aliases": [
+                        "Field Programmable Gate Array",
+                        "VHDL",
+                        "Verilog"
                     ]
                 },
                 {
                     "name": "Signal Processing",
                     "aliases": [
-                        "Digital Signal Processing",
-                        "DSP"
+                        "DSP",
+                        "Digital Signal Processing"
                     ]
                 },
                 {
-                    "name": "MATLAB",
-                    "aliases": []
-                },
-                {
-                    "name": "Simulink",
-                    "aliases": []
-                },
-                {
-                    "name": "Automation",
+                    "name": "Power Electronics",
                     "aliases": [
-                        "Industrial Automation"
+                        "Converters",
+                        "Inverters",
+                        "Rectifiers",
+                        "DC-DC Converters"
                     ]
                 },
                 {
-                    "name": "Robotics",
+                    "name": "VLSI Design",
+                    "aliases": [
+                        "Very Large Scale Integration",
+                        "IC Design",
+                        "Semiconductor Design"
+                    ]
+                },
+                {
+                    "name": "Electronics Testing",
+                    "aliases": [
+                        "Circuit Testing",
+                        "PCB Testing",
+                        "Electronics Troubleshooting"
+                    ]
+                },
+                {
+                    "name": "Soldering",
+                    "aliases": [
+                        "PCB Assembly",
+                        "Surface Mount",
+                        "Through Hole"
+                    ]
+                },
+                {
+                    "name": "Electronic Components",
+                    "aliases": [
+                        "Resistors",
+                        "Capacitors",
+                        "Inductors",
+                        "Diodes"
+                    ]
+                },
+                {
+                    "name": "Integrated Circuits",
+                    "aliases": [
+                        "IC",
+                        "Chips",
+                        "Microchips"
+                    ]
+                },
+                {
+                    "name": "Electronic Design Automation",
+                    "aliases": [
+                        "EDA",
+                        "CAD Tools",
+                        "Simulation Software"
+                    ]
+                },
+                {
+                    "name": "Microprocessors",
+                    "aliases": [
+                        "CPU",
+                        "Processor Design",
+                        "ARM Architecture"
+                    ]
+                },
+                {
+                    "name": "Communication Protocols",
+                    "aliases": [
+                        "I2C",
+                        "SPI",
+                        "UART",
+                        "CAN Bus"
+                    ]
+                },
+                {
+                    "name": "Embedded Linux",
+                    "aliases": [
+                        "Linux Kernel",
+                        "Device Drivers",
+                        "RTOS"
+                    ]
+                }
+            ]
+        },
+        "Electrical Machines & Drives": {
+            "weight": 1.4,
+            "skills": [
+                {
+                    "name": "Electrical Machines",
+                    "aliases": [
+                        "AC Machines",
+                        "DC Machines",
+                        "Machine Design"
+                    ]
+                },
+                {
+                    "name": "Induction Motors",
+                    "aliases": [
+                        "Three Phase Motors",
+                        "Asynchronous Motors"
+                    ]
+                },
+                {
+                    "name": "Synchronous Machines",
+                    "aliases": [
+                        "Alternators",
+                        "Synchronous Motors"
+                    ]
+                },
+                {
+                    "name": "Motor Drives",
+                    "aliases": [
+                        "Electrical Drives",
+                        "Drive Systems"
+                    ]
+                },
+                {
+                    "name": "Variable Frequency Drives",
+                    "aliases": [
+                        "VFD",
+                        "Variable Speed Drives",
+                        "VSD"
+                    ]
+                },
+                {
+                    "name": "DC Motors",
+                    "aliases": [
+                        "Brushed Motors",
+                        "Brushless DC Motors"
+                    ]
+                },
+                {
+                    "name": "Generators",
+                    "aliases": [
+                        "Electric Generators",
+                        "Alternators"
+                    ]
+                },
+                {
+                    "name": "Transformers",
+                    "aliases": [
+                        "Power Transformers",
+                        "Distribution Transformers"
+                    ]
+                },
+                {
+                    "name": "Motor Control",
+                    "aliases": [
+                        "Motor Starters",
+                        "Soft Starters"
+                    ]
+                },
+                {
+                    "name": "Servo Motors",
                     "aliases": []
                 },
+                {
+                    "name": "Stepper Motors",
+                    "aliases": []
+                },
+                {
+                    "name": "Motor Protection",
+                    "aliases": [
+                        "Overload Protection",
+                        "Thermal Protection"
+                    ]
+                }
+            ]
+        },
+        "Power Electronics": {
+            "weight": 1.4,
+            "skills": [
+                {
+                    "name": "Power Electronics",
+                    "aliases": [
+                        "Power Converters",
+                        "Electronic Power Systems"
+                    ]
+                },
+                {
+                    "name": "Rectifiers",
+                    "aliases": [
+                        "AC DC Converters"
+                    ]
+                },
+                {
+                    "name": "Inverters",
+                    "aliases": [
+                        "DC AC Converters"
+                    ]
+                },
+                {
+                    "name": "DC DC Converters",
+                    "aliases": [
+                        "Buck Converter",
+                        "Boost Converter"
+                    ]
+                },
+                {
+                    "name": "IGBT",
+                    "aliases": [
+                        "Power Semiconductor Devices"
+                    ]
+                }
+            ]
+        },
+        "Renewable Energy & Smart Grid": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Solar Energy",
+                    "aliases": [
+                        "Solar PV",
+                        "Photovoltaic Systems",
+                        "Solar Power Plants"
+                    ]
+                },
+                {
+                    "name": "Wind Energy",
+                    "aliases": [
+                        "Wind Power",
+                        "Wind Turbines"
+                    ]
+                },
+                {
+                    "name": "Energy Storage Systems",
+                    "aliases": [
+                        "Battery Systems",
+                        "BESS"
+                    ]
+                },
+                {
+                    "name": "Smart Grid",
+                    "aliases": [
+                        "Grid Automation",
+                        "Advanced Metering Infrastructure",
+                        "AMI"
+                    ]
+                },
+                {
+                    "name": "Electric Vehicles",
+                    "aliases": [
+                        "EV",
+                        "EV Charging",
+                        "Charging Infrastructure"
+                    ]
+                }
+            ]
+        },
+        "Instrumentation & Process Control": {
+            "weight": 1.35,
+            "skills": [
                 {
                     "name": "Instrumentation",
                     "aliases": [
@@ -265,109 +698,188 @@
                     ]
                 },
                 {
-                    "name": "HMI Design",
+                    "name": "Sensors",
                     "aliases": [
-                        "Human Machine Interface"
+                        "Transducers",
+                        "Measurement Systems"
                     ]
                 },
                 {
-                    "name": "DCS",
+                    "name": "Calibration",
                     "aliases": [
-                        "Distributed Control System"
+                        "Instrument Calibration"
+                    ]
+                },
+                {
+                    "name": "Process Control",
+                    "aliases": [
+                        "Industrial Process Control"
                     ]
                 }
             ]
         },
-        "Testing & Maintenance": {
-            "weight": 1.2,
+        "Electrical Design & Drafting": {
+            "weight": 1.3,
             "skills": [
                 {
-                    "name": "Preventive Maintenance",
-                    "aliases": []
-                },
-                {
-                    "name": "Predictive Maintenance",
-                    "aliases": []
-                },
-                {
-                    "name": "Troubleshooting",
+                    "name": "Electrical Design",
                     "aliases": [
-                        "Electrical Troubleshooting"
+                        "Electrical Engineering Design"
+                    ]
+                },
+                {
+                    "name": "Single Line Diagrams",
+                    "aliases": [
+                        "SLD"
+                    ]
+                },
+                {
+                    "name": "Wiring Diagrams",
+                    "aliases": [
+                        "Control Wiring"
+                    ]
+                },
+                {
+                    "name": "Cable Sizing",
+                    "aliases": [
+                        "Cable Calculations"
+                    ]
+                },
+                {
+                    "name": "Earthing Design",
+                    "aliases": [
+                        "Grounding Design"
+                    ]
+                }
+            ]
+        },
+        "Electrical Software & Simulation Tools": {
+            "weight": 1.3,
+            "skills": [
+                {
+                    "name": "ETAP",
+                    "aliases": [
+                        "Electrical Transient Analyzer Program"
+                    ]
+                },
+                {
+                    "name": "MATLAB",
+                    "aliases": [
+                        "Simulink"
+                    ]
+                },
+                {
+                    "name": "AutoCAD Electrical",
+                    "aliases": [
+                        "AutoCAD"
+                    ]
+                },
+                {
+                    "name": "Altium Designer",
+                    "aliases": [
+                        "Altium"
+                    ]
+                },
+                {
+                    "name": "PSpice",
+                    "aliases": [
+                        "Spice Simulation"
+                    ]
+                },
+                {
+                    "name": "Proteus",
+                    "aliases": [
+                        "Proteus Design Suite",
+                        "Proteus ISIS"
+                    ]
+                },
+                {
+                    "name": "LabVIEW",
+                    "aliases": [
+                        "Laboratory Virtual Instrument Engineering Workbench"
+                    ]
+                },
+                {
+                    "name": "Revit MEP",
+                    "aliases": [
+                        "BIM"
+                    ]
+                }
+            ]
+        },
+        "Testing, Commissioning & Maintenance": {
+            "weight": 1.35,
+            "skills": [
+                {
+                    "name": "Electrical Testing",
+                    "aliases": [
+                        "Equipment Testing"
                     ]
                 },
                 {
                     "name": "Commissioning",
                     "aliases": [
-                        "System Commissioning"
+                        "Plant Commissioning"
                     ]
                 },
                 {
-                    "name": "System Testing",
+                    "name": "Preventive Maintenance",
                     "aliases": [
-                        "Electrical Testing"
+                        "PM Activities"
                     ]
                 },
                 {
-                    "name": "Root Cause Analysis",
+                    "name": "Predictive Maintenance",
                     "aliases": [
-                        "RCA"
+                        "Condition Based Maintenance",
+                        "CBM"
+                    ]
+                },
+                {
+                    "name": "Troubleshooting",
+                    "aliases": [
+                        "Fault Diagnosis"
                     ]
                 }
             ]
         },
-        "Software & Simulation Tools": {
-            "weight": 1.1,
+        "Safety & Compliance": {
+            "weight": 1.35,
             "skills": [
                 {
-                    "name": "Python",
-                    "aliases": []
-                },
-                {
-                    "name": "C Programming",
+                    "name": "National Electrical Code",
                     "aliases": [
-                        "Embedded C"
+                        "NEC"
                     ]
                 },
                 {
-                    "name": "LabVIEW",
-                    "aliases": []
-                },
-                {
-                    "name": "ANSYS",
-                    "aliases": []
-                },
-                {
-                    "name": "COMSOL",
-                    "aliases": []
-                }
-            ]
-        },
-        "Professional & Soft Skills": {
-            "weight": 0.5,
-            "skills": [
-                {
-                    "name": "Problem Solving",
-                    "aliases": []
-                },
-                {
-                    "name": "Technical Documentation",
+                    "name": "IEC Standards",
                     "aliases": [
-                        "Documentation"
+                        "International Electrotechnical Commission"
                     ]
                 },
                 {
-                    "name": "Project Management",
+                    "name": "IEEE Standards",
                     "aliases": []
                 },
                 {
-                    "name": "Team Collaboration",
+                    "name": "Arc Flash Analysis",
                     "aliases": [
-                        "Cross-functional Collaboration"
+                        "Arc Flash Safety"
                     ]
                 },
                 {
-                    "name": "Communication Skills",
-                    "aliases": []
+                    "name": "OSHA Regulations",
+                    "aliases": [
+                        "LOTO",
+                        "Lockout Tagout"
+                    ]
+                },
+                {
+                    "name": "Electrical Safety",
+                    "aliases": [
+                        "Safety Compliance"
+                    ]
                 }
             ]
         }

@@ -1,510 +1,1412 @@
 {
     "_meta": {
         "domain": "medical",
-        "version": "2.1-alias-enhanced",
-        "last_updated": "2026-03-11"
+        "version": "4.0-enterprise",
+        "last_updated": "2026-06-04"
     },
     "categories": {
-        "Clinical Core Competencies": {
+        "Patient Care & Nursing": {
             "weight": 1.5,
             "skills": [
+                {
+                    "name": "Patient Assessment",
+                    "aliases": [
+                        "Physical Assessment",
+                        "Vitals Monitoring",
+                        "Triage",
+                        "Clinical Assessment",
+                        "Patient Evaluation"
+                    ]
+                },
                 {
                     "name": "Patient Care",
                     "aliases": [
                         "Direct Patient Care",
                         "Bedside Care",
-                        "Patient Assistance"
+                        "Patient Support"
                     ]
                 },
                 {
-                    "name": "Clinical Assessment",
+                    "name": "Basic Life Support",
                     "aliases": [
-                        "Patient Assessment",
-                        "Clinical Evaluation",
-                        "Health Assessment"
+                        "BLS",
+                        "CPR",
+                        "Cardiopulmonary Resuscitation"
                     ]
                 },
                 {
-                    "name": "Diagnosis",
+                    "name": "Advanced Cardiovascular Life Support",
                     "aliases": [
-                        "Medical Diagnosis"
+                        "ACLS",
+                        "Advanced Cardiac Life Support"
                     ]
                 },
                 {
-                    "name": "Treatment Planning",
+                    "name": "Pediatric Advanced Life Support",
                     "aliases": [
-                        "Care Plans",
-                        "Treatment Strategy"
+                        "PALS"
                     ]
-                },
-                {
-                    "name": "Care Coordination",
-                    "aliases": [
-                        "Patient Coordination"
-                    ]
-                },
-                {
-                    "name": "Case Management",
-                    "aliases": []
-                },
-                {
-                    "name": "Disease Management",
-                    "aliases": [
-                        "Chronic Disease Management"
-                    ]
-                },
-                {
-                    "name": "Clinical Decision Making",
-                    "aliases": []
-                },
-                {
-                    "name": "Emergency Response",
-                    "aliases": [
-                        "Emergency Care",
-                        "Trauma Response",
-                        "First Aid"
-                    ]
-                },
-                {
-                    "name": "Medical Documentation",
-                    "aliases": [
-                        "Clinical Documentation",
-                        "EMR Documentation",
-                        "Patient Documentation",
-                        "Charting",
-                        "Medical Records Updates"
-                    ]
-                }
-            ]
-        },
-        "Diagnostics & Procedures": {
-            "weight": 1.4,
-            "skills": [
-                {
-                    "name": "Phlebotomy",
-                    "aliases": [
-                        "Blood Draw",
-                        "Venipuncture"
-                    ]
-                },
-                {
-                    "name": "Specimen Collection",
-                    "aliases": [
-                        "Sample Collection",
-                        "Swabbing"
-                    ]
-                },
-                {
-                    "name": "Laboratory Testing",
-                    "aliases": [
-                        "Lab Tests",
-                        "Clinical Laboratory diagnostics"
-                    ]
-                },
-                {
-                    "name": "Vital Signs Monitoring",
-                    "aliases": [
-                        "Taking Vitals",
-                        "Patient Monitoring",
-                        "Blood Pressure Monitoring"
-                    ]
-                },
-                {
-                    "name": "Medical Imaging",
-                    "aliases": [
-                        "Imaging diagnostics"
-                    ]
-                },
-                {
-                    "name": "Radiology",
-                    "aliases": [
-                        "X-Ray",
-                        "CT Scan",
-                        "MRI"
-                    ]
-                },
-                {
-                    "name": "Electrocardiography",
-                    "aliases": [
-                        "ECG",
-                        "EKG"
-                    ]
-                },
-                {
-                    "name": "Ultrasound",
-                    "aliases": [
-                        "Sonography"
-                    ]
-                },
-                {
-                    "name": "Diagnostic Interpretation",
-                    "aliases": [
-                        "Test Result Analysis",
-                        "Interpreting Labs"
-                    ]
-                },
-                {
-                    "name": "Pathology",
-                    "aliases": []
-                }
-            ]
-        },
-        "Medical Specializations": {
-            "weight": 1.3,
-            "skills": [
-                {
-                    "name": "Cardiology",
-                    "aliases": [
-                        "Cardiac Care"
-                    ]
-                },
-                {
-                    "name": "Neurology",
-                    "aliases": [
-                        "Neurological Care"
-                    ]
-                },
-                {
-                    "name": "Pediatrics",
-                    "aliases": [
-                        "Pediatric Care",
-                        "Child Healthcare"
-                    ]
-                },
-                {
-                    "name": "Orthopedics",
-                    "aliases": [
-                        "Orthopaedic Care"
-                    ]
-                },
-                {
-                    "name": "Oncology",
-                    "aliases": [
-                        "Cancer Care"
-                    ]
-                },
-                {
-                    "name": "Dermatology",
-                    "aliases": []
-                },
-                {
-                    "name": "Gynecology",
-                    "aliases": [
-                        "OB/GYN",
-                        "Obstetrics"
-                    ]
-                },
-                {
-                    "name": "Internal Medicine",
-                    "aliases": []
-                },
-                {
-                    "name": "Surgical Assistance",
-                    "aliases": [
-                        "Scrubbing In",
-                        "Operating Room Assistance",
-                        "Perioperative Care"
-                    ]
-                },
-                {
-                    "name": "Anesthesiology",
-                    "aliases": [
-                        "Anesthesia Administration"
-                    ]
-                }
-            ]
-        },
-        "Pharmaceutical & Therapeutics": {
-            "weight": 1.3,
-            "skills": [
-                {
-                    "name": "Pharmacology",
-                    "aliases": []
                 },
                 {
                     "name": "Medication Administration",
                     "aliases": [
-                        "Administering Medications",
-                        "Drug Administration"
-                    ]
-                },
-                {
-                    "name": "Drug Interaction Monitoring",
-                    "aliases": [
-                        "Adverse Reaction Monitoring"
-                    ]
-                },
-                {
-                    "name": "Prescription Management",
-                    "aliases": [
-                        "Refill Authorization"
+                        "Drug Administration",
+                        "Medication Management",
+                        "Medication Delivery"
                     ]
                 },
                 {
                     "name": "IV Therapy",
                     "aliases": [
                         "Intravenous Therapy",
-                        "IV Administration"
+                        "IV Administration",
+                        "IV Infusion"
                     ]
                 },
                 {
-                    "name": "Therapeutic Procedures",
+                    "name": "Phlebotomy",
                     "aliases": [
-                        "Physical Therapy",
-                        "Occupational Therapy"
-                    ]
-                }
-            ]
-        },
-        "Healthcare Technology & Informatics": {
-            "weight": 1.4,
-            "skills": [
-                {
-                    "name": "EHR",
-                    "aliases": [
-                        "EMR",
-                        "Electronic Health Records",
-                        "Electronic Medical Records",
-                        "Epic",
-                        "Cerner"
+                        "Blood Collection",
+                        "Venipuncture",
+                        "Specimen Collection"
                     ]
                 },
                 {
-                    "name": "Hospital Information Systems",
+                    "name": "Wound Care",
                     "aliases": [
-                        "HIS",
-                        "Clinical Information Systems"
-                    ]
-                },
-                {
-                    "name": "Health Informatics",
-                    "aliases": [
-                        "Medical Informatics"
-                    ]
-                },
-                {
-                    "name": "Clinical Data Management",
-                    "aliases": [
-                        "Data Entry in Healthcare"
-                    ]
-                },
-                {
-                    "name": "Telemedicine",
-                    "aliases": [
-                        "Telehealth",
-                        "Virtual Care",
-                        "Remote Consultation"
-                    ]
-                },
-                {
-                    "name": "Digital Health",
-                    "aliases": []
-                },
-                {
-                    "name": "Medical Coding",
-                    "aliases": [
-                        "Clinical Coding"
-                    ]
-                },
-                {
-                    "name": "ICD Coding",
-                    "aliases": [
-                        "ICD-10",
-                        "ICD-11"
-                    ]
-                },
-                {
-                    "name": "CPT Coding",
-                    "aliases": [
-                        "Current Procedural Terminology"
-                    ]
-                }
-            ]
-        },
-        "Regulatory & Compliance": {
-            "weight": 1.5,
-            "skills": [
-                {
-                    "name": "HIPAA Compliance",
-                    "aliases": [
-                        "HIPAA",
-                        "HIPAA Regulations",
-                        "Patient Privacy Compliance",
-                        "Health Insurance Portability and Accountability Act"
-                    ]
-                },
-                {
-                    "name": "Healthcare Regulations",
-                    "aliases": [
-                        "Medical Compliance"
-                    ]
-                },
-                {
-                    "name": "Patient Confidentiality",
-                    "aliases": [
-                        "Data Privacy Protection"
-                    ]
-                },
-                {
-                    "name": "Safety Protocols",
-                    "aliases": [
-                        "Workplace Safety in Healthcare"
+                        "Dressing Changes",
+                        "Pressure Ulcer Management",
+                        "Wound Management"
                     ]
                 },
                 {
                     "name": "Infection Control",
                     "aliases": [
                         "Infection Prevention",
-                        "Sterilization Procedures",
-                        "Aseptic Techniques",
-                        "Sanitization"
+                        "Hospital Infection Control",
+                        "Sterile Techniques"
                     ]
                 },
                 {
-                    "name": "Quality Assurance",
+                    "name": "Patient Education",
                     "aliases": [
-                        "QA",
-                        "Care Quality"
+                        "Health Education",
+                        "Patient Teaching",
+                        "Discharge Education"
                     ]
                 },
                 {
-                    "name": "Clinical Audits",
+                    "name": "Vital Signs Monitoring",
                     "aliases": [
-                        "Medical Auditing"
+                        "Vitals",
+                        "Vital Signs",
+                        "Patient Monitoring"
                     ]
                 },
                 {
-                    "name": "Risk Management",
+                    "name": "Disease Management",
                     "aliases": [
-                        "Patient Safety Incident Reporting"
+                        "Chronic Disease Management",
+                        "Disease Monitoring",
+                        "Condition Management"
+                    ]
+                },
+                {
+                    "name": "Emergency Response",
+                    "aliases": [
+                        "Emergency Care",
+                        "Emergency Nursing",
+                        "Crisis Response"
+                    ]
+                },
+                {
+                    "name": "Care Coordination",
+                    "aliases": [
+                        "Patient Coordination",
+                        "Care Management",
+                        "Continuity of Care"
+                    ]
+                },
+                {
+                    "name": "Registered Nurse",
+                    "aliases": [
+                        "RN",
+                        "Registered Nursing",
+                        "Licensed Nurse"
+                    ]
+                },
+                {
+                    "name": "Clinical Research Nurse",
+                    "aliases": [
+                        "Research Nurse",
+                        "Clinical Research Coordinator",
+                        "Research Coordinator"
+                    ]
+                },
+                {
+                    "name": "Medical-Surgical Nursing",
+                    "aliases": [
+                        "Med-Surg Nursing",
+                        "Medical Surgical Unit",
+                        "Med-Surg"
                     ]
                 }
             ]
         },
-        "Research & Evidence-Based Practice": {
-            "weight": 1.3,
+        "Clinical & Diagnostic Procedures": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Diagnostic Imaging",
+                    "aliases": [
+                        "Medical Imaging",
+                        "Radiology",
+                        "X-Ray",
+                        "MRI",
+                        "CT Scan",
+                        "CAT Scan",
+                        "Ultrasound"
+                    ]
+                },
+                {
+                    "name": "Laboratory Testing",
+                    "aliases": [
+                        "Clinical Laboratory Testing",
+                        "Lab Testing",
+                        "Urinalysis",
+                        "Blood Testing",
+                        "Blood Typing",
+                        "Pathology"
+                    ]
+                },
+                {
+                    "name": "Specimen Collection",
+                    "aliases": [
+                        "Sample Collection",
+                        "Biopsy Collection",
+                        "Specimen Handling"
+                    ]
+                },
+                {
+                    "name": "Electrocardiogram",
+                    "aliases": [
+                        "ECG",
+                        "EKG",
+                        "Cardiac Monitoring",
+                        "Heart Monitoring"
+                    ]
+                },
+                {
+                    "name": "Surgical Assistance",
+                    "aliases": [
+                        "Perioperative Care",
+                        "Operating Room Support",
+                        "OR Nursing",
+                        "Surgical Nursing"
+                    ]
+                },
+                {
+                    "name": "Diagnosis",
+                    "aliases": [
+                        "Diagnostic Assessment",
+                        "Clinical Diagnosis",
+                        "Differential Diagnosis"
+                    ]
+                },
+                {
+                    "name": "Treatment Planning",
+                    "aliases": [
+                        "Care Planning",
+                        "Treatment Planning",
+                        "Patient Care Planning"
+                    ]
+                }
+            ]
+        },
+        "Clinical Research & Trials": {
+            "weight": 1.5,
             "skills": [
                 {
                     "name": "Clinical Research",
                     "aliases": [
-                        "Medical Research"
+                        "Clinical Studies",
+                        "Medical Research",
+                        "Research Nursing"
                     ]
                 },
                 {
                     "name": "Clinical Trials",
                     "aliases": [
-                        "Trial Coordination",
-                        "Research Trials",
-                        "Study Coordination",
-                        "Investigational Studies"
-                    ]
-                },
-                {
-                    "name": "Evidence-Based Practice",
-                    "aliases": [
-                        "EBP"
+                        "Clinical Study",
+                        "Drug Trials",
+                        "Medical Trials",
+                        "Research Studies"
                     ]
                 },
                 {
                     "name": "Data Collection",
                     "aliases": [
-                        "Clinical Trial Data Entry",
-                        "Research Data Gathering"
+                        "Research Data Collection",
+                        "Clinical Data Collection",
+                        "Patient Data Collection"
                     ]
                 },
                 {
-                    "name": "Biostatistics",
-                    "aliases": []
-                },
-                {
-                    "name": "Research Methodology",
-                    "aliases": []
-                },
-                {
-                    "name": "Protocol Development",
+                    "name": "Evidence-Based Practice",
                     "aliases": [
-                        "Clinical Trial Protocols"
+                        "EBP",
+                        "Evidence Based Nursing",
+                        "Best Practices"
+                    ]
+                },
+                {
+                    "name": "Research Coordination",
+                    "aliases": [
+                        "Clinical Research Coordination",
+                        "Study Coordination",
+                        "Trial Coordination"
+                    ]
+                },
+                {
+                    "name": "Good Clinical Practice",
+                    "aliases": [
+                        "GCP",
+                        "Clinical Research Standards"
+                    ]
+                },
+                {
+                    "name": "Informed Consent",
+                    "aliases": [
+                        "Patient Consent",
+                        "Research Consent"
+                    ]
+                },
+                {
+                    "name": "Protocol Adherence",
+                    "aliases": [
+                        "Study Protocol",
+                        "Research Protocol"
                     ]
                 }
             ]
         },
-        "Patient Support & Communication": {
-            "weight": 1.2,
+        "Medical Administration & Compliance": {
+            "weight": 1.45,
             "skills": [
                 {
-                    "name": "Patient Advocacy",
+                    "name": "HIPAA Compliance",
                     "aliases": [
-                        "Patient Rights"
+                        "HIPAA",
+                        "Patient Privacy",
+                        "Health Information Privacy",
+                        "Data Privacy"
                     ]
                 },
                 {
-                    "name": "Health Education",
+                    "name": "Medical Coding",
                     "aliases": [
-                        "Patient Education",
-                        "Instructional Care"
+                        "ICD-10",
+                        "ICD-11",
+                        "CPT",
+                        "HCPCS",
+                        "Medical Billing Codes"
                     ]
                 },
                 {
-                    "name": "Counseling",
+                    "name": "Medical Billing",
                     "aliases": [
-                        "Psychological Support",
-                        "Mental Health First Aid"
+                        "Claims Processing",
+                        "Revenue Cycle Management",
+                        "Insurance Billing"
+                    ]
+                },
+                {
+                    "name": "Electronic Health Records",
+                    "aliases": [
+                        "EHR",
+                        "EMR",
+                        "Electronic Medical Records",
+                        "Health Records"
+                    ]
+                },
+                {
+                    "name": "Medical Documentation",
+                    "aliases": [
+                        "Patient Documentation",
+                        "Clinical Documentation",
+                        "Charting",
+                        "Nursing Documentation"
+                    ]
+                },
+                {
+                    "name": "Safety Protocols",
+                    "aliases": [
+                        "Patient Safety",
+                        "Clinical Safety",
+                        "Safety Standards",
+                        "Quality Safety"
                     ]
                 },
                 {
                     "name": "Discharge Planning",
                     "aliases": [
-                        "Patient Discharge Process",
-                        "Post-Hospital Care Coordination"
+                        "Patient Discharge",
+                        "Discharge Planning",
+                        "Transition of Care"
+                    ]
+                },
+                {
+                    "name": "Treatment Adherence",
+                    "aliases": [
+                        "Medication Adherence",
+                        "Patient Compliance",
+                        "Treatment Compliance"
+                    ]
+                },
+                {
+                    "name": "Quality Improvement",
+                    "aliases": [
+                        "Quality Assurance",
+                        "Performance Improvement",
+                        "Clinical Quality"
+                    ]
+                }
+            ]
+        },
+        "Patient Communication & Education": {
+            "weight": 1.4,
+            "skills": [
+                {
+                    "name": "Clinical Communication",
+                    "aliases": [
+                        "Patient Communication",
+                        "Healthcare Communication",
+                        "Interdisciplinary Communication"
+                    ]
+                },
+                {
+                    "name": "Health Education",
+                    "aliases": [
+                        "Patient Teaching",
+                        "Health Promotion",
+                        "Patient Counseling"
+                    ]
+                },
+                {
+                    "name": "Patient Counseling",
+                    "aliases": [
+                        "Health Counseling",
+                        "Patient Guidance",
+                        "Clinical Counseling"
                     ]
                 },
                 {
                     "name": "Interdisciplinary Collaboration",
                     "aliases": [
-                        "Working with Physicians",
-                        "Cross-functional Medical Teams"
-                    ]
-                },
-                {
-                    "name": "Clinical Communication",
-                    "aliases": [
-                        "Communicating Medical Information"
+                        "Team Collaboration",
+                        "Multidisciplinary Team",
+                        "Healthcare Team"
                     ]
                 }
             ]
         },
-        "Foundational Medical Knowledge": {
-            "weight": 1.1,
+        "Medical Knowledge & Sciences": {
+            "weight": 1.35,
             "skills": [
                 {
                     "name": "Anatomy",
                     "aliases": [
-                        "Human Anatomy"
+                        "Human Anatomy",
+                        "Anatomical Knowledge",
+                        "Body Systems"
                     ]
                 },
                 {
                     "name": "Physiology",
                     "aliases": [
-                        "Human Physiology"
+                        "Human Physiology",
+                        "Physiological Knowledge",
+                        "Body Functions"
+                    ]
+                },
+                {
+                    "name": "Pathophysiology",
+                    "aliases": [
+                        "Disease Processes",
+                        "Pathology",
+                        "Disease Mechanisms"
+                    ]
+                },
+                {
+                    "name": "Pharmacology",
+                    "aliases": [
+                        "Medication Knowledge",
+                        "Drug Knowledge",
+                        "Pharmacokinetics"
                     ]
                 },
                 {
                     "name": "Medical Terminology",
                     "aliases": [
-                        "Clinical Vocabulary"
+                        "Clinical Terminology",
+                        "Healthcare Terminology"
+                    ]
+                }
+            ]
+        },
+        "Medical Tools & Software": {
+            "weight": 1.3,
+            "skills": [
+                {
+                    "name": "Epic Systems",
+                    "aliases": [
+                        "Epic",
+                        "Epic EMR",
+                        "Epic EHR"
                     ]
                 },
                 {
-                    "name": "Pathophysiology",
-                    "aliases": []
+                    "name": "Cerner",
+                    "aliases": [
+                        "Cerner EHR",
+                        "Cerner EMR"
+                    ]
                 },
                 {
-                    "name": "Microbiology",
-                    "aliases": []
+                    "name": "Meditech",
+                    "aliases": [
+                        "Meditech EHR",
+                        "Meditech EMR"
+                    ]
                 },
                 {
-                    "name": "Biochemistry",
-                    "aliases": []
+                    "name": "Athenahealth",
+                    "aliases": [
+                        "Athena",
+                        "Athena EHR"
+                    ]
+                },
+                {
+                    "name": "Allscripts",
+                    "aliases": [
+                        "Allscripts EHR"
+                    ]
+                },
+                {
+                    "name": "McKesson",
+                    "aliases": [
+                        "McKesson EHR"
+                    ]
+                }
+            ]
+        },
+        "Medical Certifications": {
+            "weight": 1.25,
+            "skills": [
+                {
+                    "name": "Registered Nurse License",
+                    "aliases": [
+                        "RN License",
+                        "Nursing License"
+                    ]
+                },
+                {
+                    "name": "Basic Life Support Certification",
+                    "aliases": [
+                        "BLS Certification",
+                        "CPR Certification"
+                    ]
+                },
+                {
+                    "name": "Advanced Cardiovascular Life Support Certification",
+                    "aliases": [
+                        "ACLS Certification"
+                    ]
+                },
+                {
+                    "name": "Pediatric Advanced Life Support Certification",
+                    "aliases": [
+                        "PALS Certification"
+                    ]
+                },
+                {
+                    "name": "Critical Care Nursing Certification",
+                    "aliases": [
+                        "CCRN",
+                        "Critical Care RN"
+                    ]
+                },
+                {
+                    "name": "Oncology Nursing Certification",
+                    "aliases": [
+                        "OCN",
+                        "Oncology Certified Nurse"
+                    ]
+                }
+            ]
+        },
+        "Medical Specialties": {
+            "weight": 1.4,
+            "skills": [
+                {
+                    "name": "Cardiology",
+                    "aliases": [
+                        "Cardiac Care",
+                        "Heart Disease",
+                        "Cardiovascular Medicine"
+                    ]
+                },
+                {
+                    "name": "Neurology",
+                    "aliases": [
+                        "Neurological Care",
+                        "Nervous System",
+                        "Neuroscience"
+                    ]
+                },
+                {
+                    "name": "Oncology",
+                    "aliases": [
+                        "Cancer Care",
+                        "Tumor Treatment",
+                        "Cancer Treatment"
+                    ]
+                },
+                {
+                    "name": "Orthopedics",
+                    "aliases": [
+                        "Orthopedic Surgery",
+                        "Bone Care",
+                        "Musculoskeletal"
+                    ]
+                },
+                {
+                    "name": "Pediatrics",
+                    "aliases": [
+                        "Pediatric Care",
+                        "Child Health",
+                        "Children's Medicine"
+                    ]
+                },
+                {
+                    "name": "Geriatrics",
+                    "aliases": [
+                        "Elderly Care",
+                        "Geriatric Medicine",
+                        "Senior Care"
+                    ]
+                },
+                {
+                    "name": "Obstetrics and Gynecology",
+                    "aliases": [
+                        "OBGYN",
+                        "Women's Health",
+                        "Maternal Health"
+                    ]
+                },
+                {
+                    "name": "Pulmonology",
+                    "aliases": [
+                        "Respiratory Care",
+                        "Lung Disease",
+                        "Pulmonary Medicine"
+                    ]
+                },
+                {
+                    "name": "Gastroenterology",
+                    "aliases": [
+                        "Digestive Health",
+                        "GI Care",
+                        "Gastrointestinal"
+                    ]
+                },
+                {
+                    "name": "Nephrology",
+                    "aliases": [
+                        "Kidney Care",
+                        "Renal Medicine",
+                        "Kidney Disease"
+                    ]
+                },
+                {
+                    "name": "Endocrinology",
+                    "aliases": [
+                        "Hormone Disorders",
+                        "Endocrine System",
+                        "Diabetes Care"
+                    ]
+                },
+                {
+                    "name": "Hematology",
+                    "aliases": [
+                        "Blood Disorders",
+                        "Blood Diseases",
+                        "Hematologic"
+                    ]
+                },
+                {
+                    "name": "Infectious Disease",
+                    "aliases": [
+                        "Infectious Diseases",
+                        "Infection Medicine",
+                        "Viral Diseases"
+                    ]
+                },
+                {
+                    "name": "Rheumatology",
+                    "aliases": [
+                        "Autoimmune Diseases",
+                        "Joint Disorders",
+                        "Rheumatic Diseases"
+                    ]
+                },
+                {
+                    "name": "Dermatology",
+                    "aliases": [
+                        "Skin Care",
+                        "Skin Diseases",
+                        "Dermatologic"
+                    ]
+                },
+                {
+                    "name": "Psychiatry",
+                    "aliases": [
+                        "Mental Health",
+                        "Psychiatric Care",
+                        "Behavioral Health"
+                    ]
+                },
+                {
+                    "name": "Emergency Medicine",
+                    "aliases": [
+                        "ER",
+                        "Emergency Department",
+                        "Trauma Care"
+                    ]
+                },
+                {
+                    "name": "Critical Care Medicine",
+                    "aliases": [
+                        "ICU",
+                        "Intensive Care",
+                        "Critical Care"
+                    ]
+                },
+                {
+                    "name": "Anesthesiology",
+                    "aliases": [
+                        "Anesthesia",
+                        "Pain Management",
+                        "Sedation"
+                    ]
+                },
+                {
+                    "name": "Radiology",
+                    "aliases": [
+                        "Medical Imaging",
+                        "Diagnostic Radiology",
+                        "Interventional Radiology"
+                    ]
+                },
+                {
+                    "name": "Pathology",
+                    "aliases": [
+                        "Laboratory Medicine",
+                        "Disease Diagnosis",
+                        "Clinical Pathology"
+                    ]
+                },
+                {
+                    "name": "Surgery",
+                    "aliases": [
+                        "Surgical Procedures",
+                        "Operating Room",
+                        "Surgical Care"
+                    ]
+                },
+                {
+                    "name": "Internal Medicine",
+                    "aliases": [
+                        "General Medicine",
+                        "Adult Medicine",
+                        "Primary Care"
+                    ]
+                },
+                {
+                    "name": "Family Medicine",
+                    "aliases": [
+                        "Family Practice",
+                        "General Practice",
+                        "Primary Care Physician"
+                    ]
+                }
+            ]
+        },
+        "Clinical Procedures & Treatments": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Catheterization",
+                    "aliases": [
+                        "Foley Catheter",
+                        "Urinary Catheter",
+                        "Catheter Care"
+                    ]
+                },
+                {
+                    "name": "Tracheostomy Care",
+                    "aliases": [
+                        "Trach Care",
+                        "Tracheostomy Management",
+                        "Airway Management"
+                    ]
+                },
+                {
+                    "name": "Tube Feeding",
+                    "aliases": [
+                        "Enteral Feeding",
+                        "NG Tube",
+                        "Feeding Tube"
+                    ]
+                },
+                {
+                    "name": "Ostomy Care",
+                    "aliases": [
+                        "Colostomy Care",
+                        "Ileostomy Care",
+                        "Stoma Care"
+                    ]
+                },
+                {
+                    "name": "Dialysis",
+                    "aliases": [
+                        "Hemodialysis",
+                        "Peritoneal Dialysis",
+                        "Renal Replacement Therapy"
+                    ]
+                },
+                {
+                    "name": "Chemotherapy Administration",
+                    "aliases": [
+                        "Chemo",
+                        "Cancer Treatment",
+                        "Chemotherapy Infusion"
+                    ]
+                },
+                {
+                    "name": "Blood Transfusion",
+                    "aliases": [
+                        "Transfusion",
+                        "Blood Product Administration",
+                        "Component Therapy"
+                    ]
+                },
+                {
+                    "name": "Oxygen Therapy",
+                    "aliases": [
+                        "Oxygen Administration",
+                        "Respiratory Support",
+                        "O2 Therapy"
+                    ]
+                },
+                {
+                    "name": "Suctioning",
+                    "aliases": [
+                        "Oral Suctioning",
+                        "Tracheal Suctioning",
+                        "Airway Suctioning"
+                    ]
+                },
+                {
+                    "name": "Nasogastric Tube",
+                    "aliases": [
+                        "NG Tube",
+                        "Gastric Tube",
+                        "Stomach Tube"
+                    ]
+                },
+                {
+                    "name": "Central Line Care",
+                    "aliases": [
+                        "Central Venous Catheter",
+                        "CVC Care",
+                        "Central Line Maintenance"
+                    ]
+                },
+                {
+                    "name": "PICC Line Care",
+                    "aliases": [
+                        "Peripherally Inserted Central Catheter",
+                        "PICC Line",
+                        "PICC Maintenance"
+                    ]
+                },
+                {
+                    "name": "Wound Debridement",
+                    "aliases": [
+                        "Debridement",
+                        "Wound Cleaning",
+                        "Tissue Removal"
+                    ]
+                },
+                {
+                    "name": "Suture Removal",
+                    "aliases": [
+                        "Stitch Removal",
+                        "Suture Care",
+                        "Wound Closure"
+                    ]
+                },
+                {
+                    "name": "Cast Care",
+                    "aliases": [
+                        "Orthopedic Casting",
+                        "Splinting",
+                        "Cast Maintenance"
+                    ]
+                },
+                {
+                    "name": "Incision Care",
+                    "aliases": [
+                        "Surgical Site Care",
+                        "Wound Care",
+                        "Post-Op Care"
+                    ]
+                },
+                {
+                    "name": "Pain Management",
+                    "aliases": [
+                        "Pain Control",
+                        "Analgesia",
+                        "Comfort Measures"
+                    ]
+                },
+                {
+                    "name": "Fluid Management",
+                    "aliases": [
+                        "IV Fluids",
+                        "Fluid Balance",
+                        "Hydration Management"
+                    ]
+                },
+                {
+                    "name": "Nutritional Support",
+                    "aliases": [
+                        "Nutrition Therapy",
+                        "Dietary Management",
+                        "TPN"
+                    ]
+                },
+                {
+                    "name": "Isolation Precautions",
+                    "aliases": [
+                        "Contact Precautions",
+                        "Droplet Precautions",
+                        "Airborne Precautions"
+                    ]
+                },
+                {
+                    "name": "Fall Prevention",
+                    "aliases": [
+                        "Fall Risk Assessment",
+                        "Patient Safety",
+                        "Fall Protection"
+                    ]
+                },
+                {
+                    "name": "Pressure Ulcer Prevention",
+                    "aliases": [
+                        "Bed Sore Prevention",
+                        "Skin Breakdown Prevention",
+                        "Decubitus Ulcer Prevention"
+                    ]
+                },
+                {
+                    "name": "Restraint Management",
+                    "aliases": [
+                        "Patient Restraints",
+                        "Safety Restraints",
+                        "Restraint Use"
+                    ]
+                },
+                {
+                    "name": "Palliative Care",
+                    "aliases": [
+                        "Hospice Care",
+                        "End of Life Care",
+                        "Comfort Care"
+                    ]
+                },
+                {
+                    "name": "Rehabilitation",
+                    "aliases": [
+                        "Physical Therapy",
+                        "Occupational Therapy",
+                        "Rehab"
+                    ]
+                }
+            ]
+        },
+        "Medical Assessment & Monitoring": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Physical Examination",
+                    "aliases": [
+                        "Physical Exam",
+                        "Health Assessment",
+                        "Clinical Exam"
+                    ]
+                },
+                {
+                    "name": "Neurological Assessment",
+                    "aliases": [
+                        "Neuro Check",
+                        "Neurological Exam",
+                        "Neuro Status"
+                    ]
+                },
+                {
+                    "name": "Cardiac Assessment",
+                    "aliases": [
+                        "Cardiac Exam",
+                        "Heart Assessment",
+                        "Cardiovascular Assessment"
+                    ]
+                },
+                {
+                    "name": "Respiratory Assessment",
+                    "aliases": [
+                        "Lung Assessment",
+                        "Breathing Assessment",
+                        "Respiratory Exam"
+                    ]
+                },
+                {
+                    "name": "Abdominal Assessment",
+                    "aliases": [
+                        "Abdominal Exam",
+                        "GI Assessment",
+                        "Stomach Assessment"
+                    ]
+                },
+                {
+                    "name": "Skin Assessment",
+                    "aliases": [
+                        "Dermatological Assessment",
+                        "Skin Exam",
+                        "Integumentary Assessment"
+                    ]
+                },
+                {
+                    "name": "Mental Status Examination",
+                    "aliases": [
+                        "Mental Status",
+                        "Psych Assessment",
+                        "Cognitive Assessment"
+                    ]
+                },
+                {
+                    "name": "Pain Assessment",
+                    "aliases": [
+                        "Pain Score",
+                        "Pain Evaluation",
+                        "Pain Scale"
+                    ]
+                },
+                {
+                    "name": "Fall Risk Assessment",
+                    "aliases": [
+                        "Fall Evaluation",
+                        "Fall Risk Screening",
+                        "Mobility Assessment"
+                    ]
+                },
+                {
+                    "name": "Nutritional Assessment",
+                    "aliases": [
+                        "Nutritional Screening",
+                        "Dietary Assessment",
+                        "Nutritional Status"
+                    ]
+                },
+                {
+                    "name": "Functional Assessment",
+                    "aliases": [
+                        "ADL Assessment",
+                        "Activities of Daily Living",
+                        "Functional Status"
+                    ]
+                },
+                {
+                    "name": "Blood Pressure Monitoring",
+                    "aliases": [
+                        "BP Monitoring",
+                        "Hemodynamic Monitoring",
+                        "Blood Pressure"
+                    ]
+                },
+                {
+                    "name": "Cardiac Monitoring",
+                    "aliases": [
+                        "Telemetry",
+                        "Heart Monitoring",
+                        "EKG Monitoring"
+                    ]
+                },
+                {
+                    "name": "Pulse Oximetry",
+                    "aliases": [
+                        "O2 Saturation",
+                        "Oxygen Saturation",
+                        "SpO2"
+                    ]
+                },
+                {
+                    "name": "Glucose Monitoring",
+                    "aliases": [
+                        "Blood Sugar",
+                        "Blood Glucose",
+                        "Diabetes Monitoring"
+                    ]
+                },
+                {
+                    "name": "Intake and Output",
+                    "aliases": [
+                        "I and O",
+                        "Fluid Balance",
+                        "Intake Output"
+                    ]
+                },
+                {
+                    "name": "Daily Weights",
+                    "aliases": [
+                        "Weight Monitoring",
+                        "Daily Weight",
+                        "Fluid Status"
+                    ]
+                },
+                {
+                    "name": "Neurovascular Checks",
+                    "aliases": [
+                        "Circulation Checks",
+                        "Neurovascular Assessment",
+                        "Extremity Assessment"
+                    ]
+                },
+                {
+                    "name": "Capillary Refill",
+                    "aliases": [
+                        "Perfusion Check",
+                        "Circulation Check",
+                        "Capillary Fill"
+                    ]
+                },
+                {
+                    "name": "Bowel Sounds",
+                    "aliases": [
+                        "Abdominal Sounds",
+                        "GI Motility",
+                        "Bowel Function"
+                    ]
+                }
+            ]
+        },
+        "Medication Management": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Medication Reconciliation",
+                    "aliases": [
+                        "Med Rec",
+                        "Medication Review",
+                        "Drug Reconciliation"
+                    ]
+                },
+                {
+                    "name": "Drug Calculations",
+                    "aliases": [
+                        "Dosage Calculations",
+                        "Medication Math",
+                        "IV Calculations"
+                    ]
+                },
+                {
+                    "name": "Medication Safety",
+                    "aliases": [
+                        "Drug Safety",
+                        "Medication Error Prevention",
+                        "Safe Medication Practices"
+                    ]
+                },
+                {
+                    "name": "Adverse Drug Reaction Monitoring",
+                    "aliases": [
+                        "ADR Monitoring",
+                        "Drug Reactions",
+                        "Side Effect Monitoring"
+                    ]
+                },
+                {
+                    "name": "Antibiotic Administration",
+                    "aliases": [
+                        "Antibiotic Therapy",
+                        "Antimicrobial Therapy",
+                        "Infection Treatment"
+                    ]
+                },
+                {
+                    "name": "Insulin Administration",
+                    "aliases": [
+                        "Insulin Therapy",
+                        "Diabetes Management",
+                        "Subcutaneous Injections"
+                    ]
+                },
+                {
+                    "name": "Anticoagulant Management",
+                    "aliases": [
+                        "Blood Thinners",
+                        "Warfarin Management",
+                        "Anticoagulation Therapy"
+                    ]
+                },
+                {
+                    "name": "Pain Medication Administration",
+                    "aliases": [
+                        "Analgesics",
+                        "Narcotics",
+                        "Opioid Management"
+                    ]
+                },
+                {
+                    "name": "Chemotherapy Administration",
+                    "aliases": [
+                        "Chemo",
+                        "Antineoplastic",
+                        "Cancer Drugs"
+                    ]
+                },
+                {
+                    "name": "IV Push Medications",
+                    "aliases": [
+                        "IV Bolus",
+                        "Push Medications",
+                        "Direct IV Administration"
+                    ]
+                },
+                {
+                    "name": "Continuous IV Infusions",
+                    "aliases": [
+                        "IV Drip",
+                        "Continuous Infusion",
+                        "IV Pump"
+                    ]
+                },
+                {
+                    "name": "Subcutaneous Injections",
+                    "aliases": [
+                        "SQ Injections",
+                        "SubQ",
+                        "Subcutaneous"
+                    ]
+                },
+                {
+                    "name": "Intramuscular Injections",
+                    "aliases": [
+                        "IM Injections",
+                        "Intramuscular",
+                        "IM"
+                    ]
+                },
+                {
+                    "name": "Inhalation Therapy",
+                    "aliases": [
+                        "Nebulizer",
+                        "Inhalers",
+                        "Respiratory Medications"
+                    ]
+                },
+                {
+                    "name": "Topical Medications",
+                    "aliases": [
+                        "Creams",
+                        "Ointments",
+                        "Transdermal"
+                    ]
+                },
+                {
+                    "name": "Eye Medications",
+                    "aliases": [
+                        "Ophthalmic Drops",
+                        "Eye Drops",
+                        "Ophthalmic Ointments"
+                    ]
+                },
+                {
+                    "name": "Ear Medications",
+                    "aliases": [
+                        "Otic Drops",
+                        "Ear Drops",
+                        "Otic Medications"
+                    ]
+                },
+                {
+                    "name": "Nasal Medications",
+                    "aliases": [
+                        "Nasal Sprays",
+                        "Nasal Drops",
+                        "Nasal Administration"
+                    ]
+                },
+                {
+                    "name": "Rectal Medications",
+                    "aliases": [
+                        "Suppositories",
+                        "Rectal Administration",
+                        "PR Medications"
+                    ]
+                },
+                {
+                    "name": "Patient Controlled Analgesia",
+                    "aliases": [
+                        "PCA",
+                        "PCA Pump",
+                        "Patient Controlled Analgesia Pump"
+                    ]
+                }
+            ]
+        },
+        "Emergency & Critical Care": {
+            "weight": 1.5,
+            "skills": [
+                {
+                    "name": "Code Blue",
+                    "aliases": [
+                        "Cardiac Arrest",
+                        "Resuscitation",
+                        "Emergency Response"
+                    ]
+                },
+                {
+                    "name": "Trauma Care",
+                    "aliases": [
+                        "Trauma Assessment",
+                        "Injury Management",
+                        "Trauma Nursing"
+                    ]
+                },
+                {
+                    "name": "Shock Management",
+                    "aliases": [
+                        "Hypovolemic Shock",
+                        "Septic Shock",
+                        "Cardiogenic Shock"
+                    ]
+                },
+                {
+                    "name": "Sepsis Management",
+                    "aliases": [
+                        "Sepsis Protocol",
+                        "Septicemia",
+                        "Sepsis Treatment"
+                    ]
+                },
+                {
+                    "name": "Stroke Assessment",
+                    "aliases": [
+                        "FAST",
+                        "CVA",
+                        "Cerebrovascular Accident"
+                    ]
+                },
+                {
+                    "name": "Myocardial Infarction Care",
+                    "aliases": [
+                        "Heart Attack",
+                        "MI",
+                        "Acute Coronary Syndrome"
+                    ]
+                },
+                {
+                    "name": "Respiratory Failure",
+                    "aliases": [
+                        "Respiratory Distress",
+                        "Acute Respiratory Failure",
+                        "ARDS"
+                    ]
+                },
+                {
+                    "name": "Cardiac Arrhythmias",
+                    "aliases": [
+                        "Arrhythmia",
+                        "Dysrhythmia",
+                        "Heart Rhythm Disorders"
+                    ]
+                },
+                {
+                    "name": "Anaphylaxis",
+                    "aliases": [
+                        "Allergic Reaction",
+                        "Severe Allergy",
+                        "Anaphylactic Shock"
+                    ]
+                },
+                {
+                    "name": "Hemorrhage Control",
+                    "aliases": [
+                        "Bleeding Control",
+                        "Hemostasis",
+                        "Blood Loss Management"
+                    ]
+                },
+                {
+                    "name": "Airway Management",
+                    "aliases": [
+                        "Intubation",
+                        "Airway Protection",
+                        "Breathing Support"
+                    ]
+                },
+                {
+                    "name": "Mechanical Ventilation",
+                    "aliases": [
+                        "Ventilator",
+                        "Respirator",
+                        "Life Support"
+                    ]
+                },
+                {
+                    "name": "Defibrillation",
+                    "aliases": [
+                        "AED",
+                        "Cardioversion",
+                        "Shock"
+                    ]
+                },
+                {
+                    "name": "Chest Tube Management",
+                    "aliases": [
+                        "Thoracostomy",
+                        "Chest Drain",
+                        "Pneumothorax Treatment"
+                    ]
+                },
+                {
+                    "name": "CPR",
+                    "aliases": [
+                        "Cardiopulmonary Resuscitation",
+                        "Basic Life Support",
+                        "Resuscitation"
+                    ]
+                },
+                {
+                    "name": "Triage",
+                    "aliases": [
+                        "Emergency Triage",
+                        "Patient Sorting",
+                        "Priority Assessment"
+                    ]
                 }
             ]
         }

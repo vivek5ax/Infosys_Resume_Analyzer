@@ -4,7 +4,7 @@ from pathlib import Path
 from statistics import mean
 
 from services.analyzer import extract_skills
-from services.bert_analyzer import analyze_semantic_matching
+from services.taxonomy_analyzer import analyze_semantic_matching
 from services.preprocessor import generate_versions
 
 

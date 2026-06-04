@@ -384,21 +384,20 @@ def chart_radar(jd_clusters, res_clusters):
 # ─────────────────────────────────────────────────────────────────────────────
 # 6.  CONFIDENCE SCORE DISTRIBUTION  (4 buckets — exact replica)
 # ─────────────────────────────────────────────────────────────────────────────
-def chart_confidence(partition):
-    exact_items = [{"score": 1.0} for _ in partition.get("exact_match", [])]
-    all_items   = (exact_items
-                   + [s for s in partition.get("strong_semantic",   []) if isinstance(s, dict)]
-                   + [s for s in partition.get("moderate_semantic", []) if isinstance(s, dict)])
-    scores = [_skill_score(s) for s in all_items]
+def chart_confidence(partition, missing_list):
+    exact_count = len(partition.get("exact_match", []))
+    strong_count = len(partition.get("strong_semantic", []))
+    moderate_count = len(partition.get("moderate_semantic", []))
+    missing_count = len(missing_list)
 
     buckets = [
-        ("90-100%",  [s for s in scores if s >= 0.9],           C["success"]),
-        ("80-89%",   [s for s in scores if 0.8 <= s < 0.9],     C["info"]),
-        ("70-79%",   [s for s in scores if 0.7 <= s < 0.8],     C["warning"]),
-        ("Below 70%",[s for s in scores if s < 0.7],            C["danger"]),
+        ("Exact\nMatches",    exact_count,    C["success"]),
+        ("Strong\nSemantic",  strong_count,   C["info"]),
+        ("Moderate\nSemantic",moderate_count, C["warning"]),
+        ("Missing\nSkills",   missing_count,  C["danger"]),
     ]
     lbls  = [b[0] for b in buckets]
-    vals  = [len(b[1]) for b in buckets]
+    vals  = [b[1] for b in buckets]
     clrs  = [b[2] for b in buckets]
     total = sum(vals) or 1
 
@@ -777,10 +776,9 @@ def generate_formal_pdf(data):
 
     # ── Confidence distribution ───────────────────────────────────────────────
     story.append(Paragraph("Confidence Score Distribution", H2))
-    story.append(KeepTogether([chart_confidence(partition)]))
+    story.append(KeepTogether([chart_confidence(partition, missing_list)]))
     story.append(Paragraph(
-        "Number of skills in each confidence tier. "
-        "Exact matches always score 100%; BERT semantic similarity scores the rest.", CAP))
+        "Number of skills in each match confidence tier, including identified gaps.", CAP))
 
     # ═══════════════════════════════════════════════════════════════════════════
     # PAGE 4 — Risk Heatmap + AI Skills Deep-Dive
@@ -1099,25 +1097,46 @@ def generate_formal_pdf(data):
             Paragraph("<b>100%</b>", CTBL),
             Paragraph("–", CAP),
         ])
+    strong_grouped = {}
     for s in partition.get("strong_semantic", []):
-        nm  = _skill_name(s)
-        sc  = f"{_skill_score(s, 0.87)*100:.0f}%"
-        mto = str(s.get("similar_to", "–")) if isinstance(s, dict) else "–"
+        mto = str(s.get("similar_to", _skill_name(s))) if isinstance(s, dict) else _skill_name(s)
+        nm = _skill_name(s)
+        sc = _skill_score(s, 0.87)
+        if mto not in strong_grouped:
+            strong_grouped[mto] = {"matches": [], "max_score": sc}
+        strong_grouped[mto]["matches"].append(nm)
+        if sc > strong_grouped[mto]["max_score"]:
+            strong_grouped[mto]["max_score"] = sc
+
+    for mto, data in strong_grouped.items():
+        nms = ", ".join(data["matches"])
+        sc_str = f"{data['max_score']*100:.0f}%"
         ledger.append([
-            Paragraph(f"<font color='#3b82f6'><b>{nm}</b></font>", BODY),
+            Paragraph(f"<font color='#3b82f6'><b>{mto}</b></font><br/><font size='7' color='#94a3b8'>Matched: {nms}</font>", BODY),
             Paragraph(f"<font color='#3b82f6'>Strong Semantic</font>", BODY),
-            Paragraph(f"<font color='#3b82f6'>{sc}</font>", CTBL),
-            Paragraph(mto, CAP),
+            Paragraph(f"<font color='#3b82f6'>{sc_str}</font>", CTBL),
+            Paragraph("–", CAP),
         ])
+
+    moderate_grouped = {}
     for s in partition.get("moderate_semantic", []):
-        nm  = _skill_name(s)
-        sc  = f"{_skill_score(s, 0.73)*100:.0f}%"
-        mto = str(s.get("similar_to", "–")) if isinstance(s, dict) else "–"
+        mto = str(s.get("similar_to", _skill_name(s))) if isinstance(s, dict) else _skill_name(s)
+        nm = _skill_name(s)
+        sc = _skill_score(s, 0.73)
+        if mto not in moderate_grouped:
+            moderate_grouped[mto] = {"matches": [], "max_score": sc}
+        moderate_grouped[mto]["matches"].append(nm)
+        if sc > moderate_grouped[mto]["max_score"]:
+            moderate_grouped[mto]["max_score"] = sc
+
+    for mto, data in moderate_grouped.items():
+        nms = ", ".join(data["matches"])
+        sc_str = f"{data['max_score']*100:.0f}%"
         ledger.append([
-            Paragraph(f"<font color='#f59e0b'>{nm}</font>", BODY),
+            Paragraph(f"<font color='#f59e0b'><b>{mto}</b></font><br/><font size='7' color='#94a3b8'>Matched: {nms}</font>", BODY),
             Paragraph(f"<font color='#f59e0b'>Moderate</font>", BODY),
-            Paragraph(f"<font color='#f59e0b'>{sc}</font>", CTBL),
-            Paragraph(mto, CAP),
+            Paragraph(f"<font color='#f59e0b'>{sc_str}</font>", CTBL),
+            Paragraph("–", CAP),
         ])
     # Missing skills — ONE single merged row listing all skill names
     all_missing_names = []

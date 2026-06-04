@@ -30,7 +30,7 @@ def get_domain_nlp(domain: str):
     if domain in DOMAIN_NLP and DOMAIN_MTIME.get(domain) == current_mtime:
         return DOMAIN_NLP[domain], DOMAIN_MATCHERS[domain]
         
-    print(f"⚙️ Building new NLP pipeline and PhraseMatcher for domain: {domain}")
+    print(f"[NLP] Building new NLP pipeline and PhraseMatcher for domain: {domain}")
     
     # Disable unnecessary components for severe speed boost
     nlp = spacy.load("en_core_web_sm", disable=["ner", "parser"])

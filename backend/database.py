@@ -13,38 +13,21 @@ db = None
 
 
 async def connect_to_mongo():
-    """Connect to MongoDB Atlas"""
+    """Connect to MongoDB (Bypassed by design)"""
     global client, db
-    if not MONGODB_URI:
-        print("⚠️ MONGODB_URI is not set. Continuing without database connection.")
-        client = None
-        db = None
-        return
-
-    client = AsyncIOMotorClient(
-        MONGODB_URI,
-        serverSelectionTimeoutMS=MONGODB_CONNECT_TIMEOUT_MS,
-    )
-    # Verify connection
-    try:
-        await client.admin.command('ping')
-        print("✓ Successfully connected to MongoDB")
-        db = client[DATABASE_NAME]
-    except Exception as e:
-        print(f"⚠️ Failed to connect to MongoDB during startup: {e}")
-        print("⚠️ API will start, but database-backed routes may fail until MongoDB is reachable.")
-        client = None
-        db = None
+    print("✓ MongoDB connection bypassed (database disconnected by design)")
+    client = None
+    db = None
 
 
 async def close_mongo_connection():
-    """Close MongoDB connection"""
+    """Close MongoDB connection (Bypassed by design)"""
     global client, db
-    if client:
-        client.close()
-        print("✓ Disconnected from MongoDB")
+    client = None
+    db = None
+    print("✓ MongoDB disconnection complete (no-op)")
 
 
 def get_database():
-    """Get database instance"""
-    return db
+    """Get database instance (Always None)"""
+    return None

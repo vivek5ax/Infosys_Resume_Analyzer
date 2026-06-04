@@ -31,22 +31,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# MongoDB connection events
-@app.on_event("startup")
-async def startup_event():
-    """Connect to MongoDB on startup"""
-    await connect_to_mongo()
-
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    """Close MongoDB connection on shutdown"""
-    await close_mongo_connection()
-
 # Include Routes
 app.include_router(extract.router)
 app.include_router(chat.router)
-app.include_router(auth.router)
 
 @app.get("/")
 def read_root():
@@ -57,3 +44,6 @@ def read_root():
 #.\venv\Scripts\python.exe -c "import uvicorn; uvicorn.run('main:app', host='127.0.0.1', port=8000, reload=True)"
 
 #  .\venv\Scripts\python.exe -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
+
+#.\venv\Scripts\activate
+#uvicorn main:app --reload

@@ -1,168 +1,1067 @@
 {
     "_meta": {
         "domain": "human_resources",
-        "version": "3.1-alias-enhanced",
-        "last_updated": "2026-03-11"
+        "version": "4.0-enterprise",
+        "last_updated": "2026-06-04"
     },
     "categories": {
-        "Talent Acquisition & Recruiting": {
-            "weight": 1.4,
+        "Talent Acquisition & Recruitment": {
+            "weight": 1.5,
             "skills": [
                 {
-                    "name": "Full-Cycle Recruiting",
+                    "name": "Recruitment",
                     "aliases": [
                         "Talent Acquisition",
-                        "Sourcing",
-                        "Candidate Screening",
-                        "Interviewing",
-                        "Executive Search"
+                        "Hiring",
+                        "Candidate Sourcing",
+                        "Recruiting"
                     ]
                 },
                 {
-                    "name": "Applicant Tracking Systems",
+                    "name": "Full Cycle Recruitment",
                     "aliases": [
-                        "ATS",
-                        "Greenhouse",
-                        "Lever",
-                        "Workday Recruiting",
-                        "Taleo"
+                        "End to End Recruitment",
+                        "360 Recruitment"
+                    ]
+                },
+                {
+                    "name": "Candidate Screening",
+                    "aliases": [
+                        "Resume Screening",
+                        "Profile Screening"
+                    ]
+                },
+                {
+                    "name": "Interviewing",
+                    "aliases": [
+                        "Behavioral Interviewing",
+                        "Competency Based Interviewing"
+                    ]
+                },
+                {
+                    "name": "Technical Recruitment",
+                    "aliases": [
+                        "IT Recruitment",
+                        "Technology Hiring"
+                    ]
+                },
+                {
+                    "name": "Campus Recruitment",
+                    "aliases": [
+                        "University Recruiting",
+                        "Graduate Hiring"
+                    ]
+                },
+                {
+                    "name": "Executive Search",
+                    "aliases": [
+                        "Leadership Hiring",
+                        "CXO Hiring"
                     ]
                 },
                 {
                     "name": "Employer Branding",
                     "aliases": [
-                        "Recruitment Marketing",
-                        "Candidate Experience",
-                        "Talent Pipelining"
-                    ]
-                }
-            ]
-        },
-        "Employee Relations & Engagement": {
-            "weight": 1.35,
-            "skills": [
-                {
-                    "name": "Employee Relations",
-                    "aliases": [
-                        "Conflict Resolution",
-                        "Grievance Handling",
-                        "Disciplinary Action",
-                        "Labor Relations",
-                        "Union Negotiations"
+                        "Employer Value Proposition",
+                        "EVP"
                     ]
                 },
                 {
-                    "name": "Employee Engagement",
+                    "name": "Recruitment Marketing",
                     "aliases": [
-                        "Culture Building",
-                        "Employee Retention",
-                        "Surveys",
-                        "eNPS",
-                        "Employee Wellbeing"
+                        "Recruitment Campaigns",
+                        "Talent Attraction"
                     ]
                 },
                 {
-                    "name": "Diversity, Equity, and Inclusion",
+                    "name": "Onboarding",
+                    "aliases": [
+                        "New Hire Orientation",
+                        "Employee Onboarding"
+                    ]
+                },
+                {
+                    "name": "ATS",
+                    "aliases": [
+                        "Applicant Tracking System",
+                        "Recruitment Software",
+                        "Talent Management System"
+                    ]
+                },
+                {
+                    "name": "LinkedIn Recruiting",
+                    "aliases": [
+                        "LinkedIn Talent",
+                        "Social Recruiting",
+                        "LinkedIn Sourcing"
+                    ]
+                },
+                {
+                    "name": "Sourcing Strategies",
+                    "aliases": [
+                        "Boolean Search",
+                        "X-Ray Search",
+                        "Recruitment Sourcing"
+                    ]
+                },
+                {
+                    "name": "Recruitment Analytics",
+                    "aliases": [
+                        "Hiring Metrics",
+                        "Recruitment Metrics",
+                        "Time to Fill"
+                    ]
+                },
+                {
+                    "name": "Diversity Hiring",
                     "aliases": [
                         "DEI",
-                        "Diversity & Inclusion",
-                        "D&I",
-                        "Belonging"
+                        "Diversity and Inclusion",
+                        "Inclusive Hiring"
+                    ]
+                },
+                {
+                    "name": "Campus Recruiting",
+                    "aliases": [
+                        "College Recruitment",
+                        "University Partnerships"
+                    ]
+                },
+                {
+                    "name": "Recruitment Automation",
+                    "aliases": [
+                        "Automated Sourcing",
+                        "AI Recruiting",
+                        "Chatbot Recruiting"
                     ]
                 }
             ]
         },
-        "Compensation & Benefits": {
-            "weight": 1.3,
+        "HR Operations & Administration": {
+            "weight": 1.45,
             "skills": [
                 {
-                    "name": "Compensation Strategy",
+                    "name": "HR Operations",
                     "aliases": [
-                        "Total Rewards",
-                        "Salary Benchmarking",
-                        "Variable Pay",
-                        "Equity Compensation",
-                        "Merit Cycles"
+                        "HR Administration",
+                        "People Operations"
+                    ]
+                },
+                {
+                    "name": "Employee Lifecycle Management",
+                    "aliases": [
+                        "Employee Records Management",
+                        "Onboarding Offboarding"
+                    ]
+                },
+                {
+                    "name": "HR Documentation",
+                    "aliases": [
+                        "Personnel Records",
+                        "Employee Files",
+                        "HR Documentation"
+                    ]
+                },
+                {
+                    "name": "HR Policies",
+                    "aliases": [
+                        "Employee Handbook",
+                        "Policy Management",
+                        "Employee Policy"
+                    ]
+                },
+                {
+                    "name": "Employee Verification",
+                    "aliases": [
+                        "Background Verification",
+                        "BGV",
+                        "Background Checks"
+                    ]
+                },
+                {
+                    "name": "Exit Management",
+                    "aliases": [
+                        "Offboarding",
+                        "Exit Interviews",
+                        "Separation Process"
+                    ]
+                },
+                {
+                    "name": "HRIS",
+                    "aliases": [
+                        "HR Information System",
+                        "HRMS",
+                        "People Management System"
+                    ]
+                },
+                {
+                    "name": "HR Compliance",
+                    "aliases": [
+                        "Labor Law Compliance",
+                        "Employment Law",
+                        "Workplace Compliance"
+                    ]
+                },
+                {
+                    "name": "Payroll Administration",
+                    "aliases": [
+                        "Payroll Processing",
+                        "Salary Administration"
+                    ]
+                },
+                {
+                    "name": "Immigration Compliance",
+                    "aliases": [
+                        "Work Visa Processing",
+                        "Work Authorization",
+                        "Employment Visas"
                     ]
                 },
                 {
                     "name": "Benefits Administration",
                     "aliases": [
-                        "Health Insurance",
-                        "Retirement Plans",
-                        "401(k) Administration",
-                        "Leaves of Absence",
-                        "FMLA"
+                        "Employee Benefits",
+                        "Benefits Management",
+                        "Insurance Benefits"
+                    ]
+                },
+                {
+                    "name": "Contract Management",
+                    "aliases": [
+                        "Employment Contracts",
+                        "Contract Administration"
+                    ]
+                },
+                {
+                    "name": "Attendance Management",
+                    "aliases": [
+                        "Time and Attendance",
+                        "Leave Management",
+                        "Attendance Tracking"
+                    ]
+                },
+                {
+                    "name": "HR Reporting",
+                    "aliases": [
+                        "HR Metrics",
+                        "People Analytics",
+                        "HR Dashboards"
+                    ]
+                }
+            ]
+        },
+        "Employee Relations & Engagement": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Employee Relations",
+                    "aliases": [
+                        "Workplace Relations",
+                        "Employee Grievance Handling"
+                    ]
+                },
+                {
+                    "name": "Conflict Resolution",
+                    "aliases": [
+                        "Dispute Resolution",
+                        "Mediation",
+                        "Conflict Management"
+                    ]
+                },
+                {
+                    "name": "Employee Engagement",
+                    "aliases": [
+                        "Engagement Programs",
+                        "Employee Experience",
+                        "Employee Engagement Surveys"
+                    ]
+                },
+                {
+                    "name": "Retention Strategies",
+                    "aliases": [
+                        "Employee Retention",
+                        "Talent Retention"
+                    ]
+                },
+                {
+                    "name": "Employee Wellness",
+                    "aliases": [
+                        "Wellbeing Programs",
+                        "Employee Wellness Programs"
+                    ]
+                },
+                {
+                    "name": "Labor Relations",
+                    "aliases": [
+                        "Industrial Relations",
+                        "Union Relations",
+                        "Collective Bargaining"
+                    ]
+                },
+                {
+                    "name": "Employee Communication",
+                    "aliases": [
+                        "Internal Communications",
+                        "Employee Communications"
+                    ]
+                },
+                {
+                    "name": "Employee Feedback",
+                    "aliases": [
+                        "Performance Feedback",
+                        "360 Feedback",
+                        "Employee Surveys"
+                    ]
+                },
+                {
+                    "name": "Work-Life Balance",
+                    "aliases": [
+                        "Flexible Work Arrangements",
+                        "Work Life Integration"
+                    ]
+                },
+                {
+                    "name": "Employee Advocacy",
+                    "aliases": [
+                        "Employee Advocacy Programs",
+                        "Employee Voice"
+                    ]
+                },
+                {
+                    "name": "Employee Assistance Programs",
+                    "aliases": [
+                        "EAP",
+                        "Employee Support Programs",
+                        "Counseling Services"
+                    ]
+                }
+            ]
+        },
+        "Performance Management & Talent Development": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Performance Management",
+                    "aliases": [
+                        "Performance Appraisal",
+                        "Performance Reviews",
+                        "Performance Evaluation"
+                    ]
+                },
+                {
+                    "name": "Goal Setting",
+                    "aliases": [
+                        "OKRs",
+                        "KPIs",
+                        "Objectives and Key Results"
+                    ]
+                },
+                {
+                    "name": "Talent Management",
+                    "aliases": [
+                        "Succession Planning",
+                        "Talent Acquisition",
+                        "Workforce Planning"
+                    ]
+                },
+                {
+                    "name": "Career Development",
+                    "aliases": [
+                        "Employee Development",
+                        "Career Planning",
+                        "Career Pathing"
+                    ]
+                },
+                {
+                    "name": "Leadership Development",
+                    "aliases": [
+                        "Leadership Training",
+                        "Management Development",
+                        "Executive Coaching"
+                    ]
+                },
+                {
+                    "name": "Competency Mapping",
+                    "aliases": [
+                        "Skill Mapping",
+                        "Competency Frameworks",
+                        "Skills Matrix"
+                    ]
+                },
+                {
+                    "name": "Performance Reviews",
+                    "aliases": [
+                        "Annual Reviews",
+                        "360 Reviews",
+                        "Self Assessments"
+                    ]
+                },
+                {
+                    "name": "Skills Gap Analysis",
+                    "aliases": [
+                        "Training Needs Analysis",
+                        "Gap Analysis",
+                        "Competency Gaps"
+                    ]
+                },
+                {
+                    "name": "Succession Planning",
+                    "aliases": [
+                        "Leadership Pipeline",
+                        "Talent Pipeline",
+                        "Key Person Risk"
+                    ]
+                },
+                {
+                    "name": "Talent Review Process",
+                    "aliases": [
+                        "Calibration Sessions",
+                        "Talent Assessment",
+                        "Nine Box Grid"
+                    ]
+                },
+                {
+                    "name": "Career Pathing",
+                    "aliases": [
+                        "Career Progression",
+                        "Career Growth",
+                        "Promotion Planning"
+                    ]
+                },
+                {
+                    "name": "Mentoring Programs",
+                    "aliases": [
+                        "Employee Mentoring",
+                        "Mentorship Programs"
+                    ]
+                },
+                {
+                    "name": "Coaching",
+                    "aliases": [
+                        "Executive Coaching",
+                        "Performance Coaching",
+                        "Career Coaching"
+                    ]
+                },
+                {
+                    "name": "Training Needs Analysis",
+                    "aliases": [
+                        "TNA",
+                        "Learning Needs Assessment",
+                        "Skills Analysis"
+                    ]
+                },
+                {
+                    "name": "OKR Frameworks",
+                    "aliases": [
+                        "Objectives Key Results",
+                        "OKR Implementation",
+                        "OKR Tracking"
+                    ]
+                }
+            ]
+        },
+        "Learning & Development": {
+            "weight": 1.4,
+            "skills": [
+                {
+                    "name": "Learning and Development",
+                    "aliases": [
+                        "L&D",
+                        "Training and Development",
+                        "Organizational Development"
+                    ]
+                },
+                {
+                    "name": "Training Needs Analysis",
+                    "aliases": [
+                        "TNA",
+                        "Training Assessment",
+                        "Skill Gap Analysis"
+                    ]
+                },
+                {
+                    "name": "Training Delivery",
+                    "aliases": [
+                        "Facilitation",
+                        "Training Delivery Methods"
+                    ]
+                },
+                {
+                    "name": "Instructional Design",
+                    "aliases": [
+                        "ID",
+                        "Instructional Design",
+                        "Course Design"
+                    ]
+                },
+                {
+                    "name": "eLearning",
+                    "aliases": [
+                        "Digital Learning",
+                        "Online Learning",
+                        "Virtual Training"
+                    ]
+                },
+                {
+                    "name": "Learning Management Systems",
+                    "aliases": [
+                        "LMS",
+                        "Learning Platforms",
+                        "Training Platforms"
+                    ]
+                },
+                {
+                    "name": "Curriculum Development",
+                    "aliases": [
+                        "Course Design",
+                        "Learning Paths",
+                        "Training Programs"
+                    ]
+                },
+                {
+                    "name": "Leadership Training",
+                    "aliases": [
+                        "Management Training",
+                        "Executive Education",
+                        "Leadership Programs"
+                    ]
+                },
+                {
+                    "name": "Soft Skills Training",
+                    "aliases": [
+                        "Communication Skills",
+                        "Interpersonal Skills",
+                        "Behavioral Training"
+                    ]
+                },
+                {
+                    "name": "Technical Training",
+                    "aliases": [
+                        "Skills Training",
+                        "Technical Skills Development"
+                    ]
+                },
+                {
+                    "name": "On-the-Job Training",
+                    "aliases": [
+                        "OJT",
+                        "On the Job Training",
+                        "Workplace Learning"
+                    ]
+                },
+                {
+                    "name": "Mentorship Programs",
+                    "aliases": [
+                        "Employee Mentoring",
+                        "Mentor Training",
+                        "Coaching Programs"
+                    ]
+                },
+                {
+                    "name": "Training Evaluation",
+                    "aliases": [
+                        "Kirkpatrick Model",
+                        "Training Metrics",
+                        "ROI Analysis"
+                    ]
+                },
+                {
+                    "name": "Blended Learning",
+                    "aliases": [
+                        "Hybrid Learning",
+                        "Mixed Mode Learning"
+                    ]
+                },
+                {
+                    "name": "Microlearning",
+                    "aliases": [
+                        "Bite-sized Learning",
+                        "Nano Learning",
+                        "Short Courses"
+                    ]
+                },
+                {
+                    "name": "Mobile Learning",
+                    "aliases": [
+                        "mLearning",
+                        "Mobile Training",
+                        "Apps for Learning"
+                    ]
+                },
+                {
+                    "name": "Gamification",
+                    "aliases": [
+                        "Serious Games",
+                        "Game-Based Learning",
+                        "Learning Games"
+                    ]
+                },
+                {
+                    "name": "Virtual Reality Training",
+                    "aliases": [
+                        "VR Training",
+                        "Immersive Learning",
+                        "Simulations"
+                    ]
+                },
+                {
+                    "name": "Corporate Universities",
+                    "aliases": [
+                        "Corporate College",
+                        "Internal Academies"
+                    ]
+                },
+                {
+                    "name": "External Training Providers",
+                    "aliases": [
+                        "Training Vendors",
+                        "External Courses"
+                    ]
+                }
+            ]
+        },
+        "Compensation, Benefits & Payroll": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Compensation Management",
+                    "aliases": [
+                        "Compensation Strategy",
+                        "Salary Planning",
+                        "Compensation Design"
+                    ]
+                },
+                {
+                    "name": "Benefits Administration",
+                    "aliases": [
+                        "Employee Benefits",
+                        "Benefits Management",
+                        "Health Benefits"
+                    ]
+                },
+                {
+                    "name": "Total Rewards",
+                    "aliases": [
+                        "Rewards Strategy",
+                        "Compensation Benefits",
+                        "Total Rewards Strategy"
+                    ]
+                },
+                {
+                    "name": "Salary Benchmarking",
+                    "aliases": [
+                        "Salary Surveys",
+                        "Market Pricing",
+                        "Compensation Benchmarking"
                     ]
                 },
                 {
                     "name": "Payroll Processing",
                     "aliases": [
                         "Payroll Management",
-                        "ADP",
-                        "Paylocity",
-                        "Payroll Compliance"
+                        "Payroll Administration"
+                    ]
+                },
+                {
+                    "name": "Payroll Compliance",
+                    "aliases": [
+                        "Tax Compliance",
+                        "Payroll Tax",
+                        "Withholding"
+                    ]
+                },
+                {
+                    "name": "Variable Pay",
+                    "aliases": [
+                        "Bonuses",
+                        "Incentives",
+                        "Commission Structures"
+                    ]
+                },
+                {
+                    "name": "Stock Options",
+                    "aliases": [
+                        "Equity Compensation",
+                        "Employee Stock Options",
+                        "ESOP"
+                    ]
+                },
+                {
+                    "name": "Health Insurance",
+                    "aliases": [
+                        "Medical Benefits",
+                        "Group Health Insurance",
+                        "Healthcare Benefits"
+                    ]
+                },
+                {
+                    "name": "Retirement Benefits",
+                    "aliases": [
+                        "401k",
+                        "Pension Plans",
+                        "Retirement Planning"
+                    ]
+                },
+                {
+                    "name": "Leave Management",
+                    "aliases": [
+                        "PTO",
+                        "Time Off Management",
+                        "Vacation Policy"
+                    ]
+                },
+                {
+                    "name": "Payroll Software",
+                    "aliases": [
+                        "HRIS",
+                        "Payroll Systems",
+                        "ADP"
+                    ]
+                },
+                {
+                    "name": "Compensation Analysis",
+                    "aliases": [
+                        "Salary Analysis",
+                        "Pay Analysis",
+                        "Compensation Analytics"
+                    ]
+                },
+                {
+                    "name": "Incentive Programs",
+                    "aliases": [
+                        "Performance Bonuses",
+                        "Profit Sharing",
+                        "Employee Incentives"
+                    ]
+                },
+                {
+                    "name": "Perks and Allowances",
+                    "aliases": [
+                        "Allowances",
+                        "Expense Reimbursement",
+                        "Company Perks"
+                    ]
+                },
+                {
+                    "name": "Employee Stock Purchase Plans",
+                    "aliases": [
+                        "ESPP",
+                        "Stock Purchase Plans"
+                    ]
+                },
+                {
+                    "name": "Executive Compensation",
+                    "aliases": [
+                        "Executive Pay",
+                        "C-Level Compensation",
+                        "Executive Benefits"
                     ]
                 }
             ]
         },
-        "HR Operations & Strategy": {
+        "HR Compliance & Employment Law": {
+            "weight": 1.5,
+            "skills": [
+                {
+                    "name": "Employment Law",
+                    "aliases": [
+                        "Labor Law",
+                        "Workplace Law"
+                    ]
+                },
+                {
+                    "name": "Regulatory Compliance",
+                    "aliases": [
+                        "HR Compliance"
+                    ]
+                },
+                {
+                    "name": "Equal Employment Opportunity",
+                    "aliases": [
+                        "EEO"
+                    ]
+                },
+                {
+                    "name": "Fair Labor Standards Act",
+                    "aliases": [
+                        "FLSA"
+                    ]
+                },
+                {
+                    "name": "Family and Medical Leave Act",
+                    "aliases": [
+                        "FMLA"
+                    ]
+                },
+                {
+                    "name": "Americans with Disabilities Act",
+                    "aliases": [
+                        "ADA"
+                    ]
+                },
+                {
+                    "name": "Workplace Safety",
+                    "aliases": [
+                        "OSHA Compliance"
+                    ]
+                },
+                {
+                    "name": "Data Privacy",
+                    "aliases": [
+                        "Employee Data Protection",
+                        "GDPR"
+                    ]
+                }
+            ]
+        },
+        "Diversity, Equity & Inclusion": {
             "weight": 1.35,
             "skills": [
                 {
-                    "name": "Performance Management",
+                    "name": "Diversity Equity and Inclusion",
                     "aliases": [
-                        "Performance Reviews",
-                        "Goal Setting",
-                        "OKRs",
-                        "KPIs",
-                        "Appraisals"
+                        "DEI",
+                        "Diversity Programs"
                     ]
                 },
                 {
-                    "name": "Learning and Development",
+                    "name": "Inclusive Hiring",
                     "aliases": [
-                        "L&D",
-                        "Training Programs",
-                        "Onboarding",
-                        "Leadership Development",
-                        "Instructional Design"
+                        "Inclusive Recruitment",
+                        "Diverse Hiring"
                     ]
                 },
                 {
-                    "name": "HR Information Systems",
+                    "name": "Employee Resource Groups",
                     "aliases": [
-                        "HRIS",
-                        "HRMS",
-                        "Workday HCM",
-                        "BambooHR",
-                        "SAP SuccessFactors"
+                        "ERG"
                     ]
                 },
                 {
-                    "name": "Employment Law Compliance",
+                    "name": "Culture Building",
                     "aliases": [
-                        "EEO",
-                        "OSHA",
-                        "FLSA",
-                        "ADA",
-                        "Labor Compliance",
-                        "HR Policies"
+                        "Organizational Culture"
                     ]
-                },
-                {
-                    "name": "People Analytics",
-                    "aliases": [
-                        "HR Analytics",
-                        "Workforce Analytics",
-                        "People Data"
-                    ]
-                },
+                }
+            ]
+        },
+        "Workforce Planning & Organizational Development": {
+            "weight": 1.45,
+            "skills": [
                 {
                     "name": "Workforce Planning",
                     "aliases": [
-                        "Headcount Planning",
-                        "Succession Planning"
+                        "Headcount Planning"
+                    ]
+                },
+                {
+                    "name": "Organizational Development",
+                    "aliases": [
+                        "OD"
+                    ]
+                },
+                {
+                    "name": "Change Management",
+                    "aliases": [
+                        "Organizational Change",
+                        "Change Leadership",
+                        "Transformation Management"
+                    ]
+                },
+                {
+                    "name": "Organization Design",
+                    "aliases": [
+                        "Org Design"
+                    ]
+                },
+                {
+                    "name": "Strategic HR",
+                    "aliases": [
+                        "HR Strategy"
+                    ]
+                }
+            ]
+        },
+        "HR Analytics & Reporting": {
+            "weight": 1.4,
+            "skills": [
+                {
+                    "name": "HR Analytics",
+                    "aliases": [
+                        "People Analytics",
+                        "Workforce Analytics"
+                    ]
+                },
+                {
+                    "name": "HR Metrics",
+                    "aliases": [
+                        "HR KPIs"
+                    ]
+                },
+                {
+                    "name": "Attrition Analysis",
+                    "aliases": [
+                        "Turnover Analysis"
+                    ]
+                },
+                {
+                    "name": "Workforce Reporting",
+                    "aliases": [
+                        "HR Reporting",
+                        "People Reporting"
+                    ]
+                },
+                {
+                    "name": "Data Driven HR",
+                    "aliases": [
+                        "HR Data Analytics",
+                        "Analytics Driven HR",
+                        "Evidence Based HR"
+                    ]
+                }
+            ]
+        },
+        "HR Technology & Systems": {
+            "weight": 1.35,
+            "skills": [
+                {
+                    "name": "Human Resources Information System",
+                    "aliases": [
+                        "HRIS",
+                        "HRMS",
+                        "Human Capital Management",
+                        "HCM"
+                    ]
+                },
+                {
+                    "name": "Workday",
+                    "aliases": [
+                        "Workday HCM",
+                        "Workday HR"
+                    ]
+                },
+                {
+                    "name": "SAP SuccessFactors",
+                    "aliases": [
+                        "SuccessFactors",
+                        "SAP HCM"
+                    ]
+                },
+                {
+                    "name": "Oracle HCM",
+                    "aliases": [
+                        "Oracle Human Capital Management"
+                    ]
+                },
+                {
+                    "name": "ADP",
+                    "aliases": [
+                        "ADP Workforce Now"
+                    ]
+                },
+                {
+                    "name": "BambooHR",
+                    "aliases": [
+                        "Bamboo"
+                    ]
+                },
+                {
+                    "name": "Greenhouse",
+                    "aliases": [
+                        "Greenhouse ATS",
+                        "Greenhouse Recruiting"
+                    ]
+                },
+                {
+                    "name": "Lever",
+                    "aliases": [
+                        "Lever ATS"
+                    ]
+                },
+                {
+                    "name": "LinkedIn Recruiter",
+                    "aliases": [
+                        "LinkedIn Talent Solutions"
+                    ]
+                },
+                {
+                    "name": "Applicant Tracking Systems",
+                    "aliases": [
+                        "ATS"
+                    ]
+                }
+            ]
+        },
+        "HR Business Partnering": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "HR Business Partner",
+                    "aliases": [
+                        "HRBP"
+                    ]
+                },
+                {
+                    "name": "Stakeholder Management",
+                    "aliases": [
+                        "Stakeholder Engagement",
+                        "Relationship Management"
+                    ]
+                },
+                {
+                    "name": "Business Partnering",
+                    "aliases": [
+                        "Strategic Partnering"
+                    ]
+                },
+                {
+                    "name": "Talent Strategy",
+                    "aliases": [
+                        "Talent Planning",
+                        "Workforce Planning"
+                    ]
+                },
+                {
+                    "name": "Workforce Strategy",
+                    "aliases": [
+                        "Human Capital Strategy",
+                        "People Strategy"
+                    ]
+                }
+            ]
+        },
+        "HR Certifications": {
+            "weight": 1.2,
+            "skills": [
+                {
+                    "name": "SHRM Certified Professional",
+                    "aliases": [
+                        "SHRM-CP"
+                    ]
+                },
+                {
+                    "name": "SHRM Senior Certified Professional",
+                    "aliases": [
+                        "SHRM-SCP"
+                    ]
+                },
+                {
+                    "name": "Professional in Human Resources",
+                    "aliases": [
+                        "PHR"
+                    ]
+                },
+                {
+                    "name": "Senior Professional in Human Resources",
+                    "aliases": [
+                        "SPHR"
+                    ]
+                },
+                {
+                    "name": "Global Professional in Human Resources",
+                    "aliases": [
+                        "GPHR"
                     ]
                 }
             ]

@@ -10,7 +10,7 @@ from services.validator import validate_file
 from services.parser import parse_text
 from services.preprocessor import generate_versions, save_data, update_session_metadata
 from services.analyzer import extract_skills
-from services.bert_analyzer import analyze_semantic_matching
+from services.taxonomy_analyzer import analyze_semantic_matching
 from services.ai_enrichment import enrich_with_groq
 from services.evidence_layer_builder import build_evidence_layer_payload
 from services.hr_decision_layer import build_hr_decision_layer
@@ -81,7 +81,7 @@ async def extract_content(
     jd_flat_skills = jd_skills.get("technical_skills", []) + jd_skills.get("soft_skills", [])
     resume_flat_skills = resume_skills.get("technical_skills", []) + resume_skills.get("soft_skills", [])
 
-    bert_results = analyze_semantic_matching(
+    bert_results = await analyze_semantic_matching(
         jd_flat_skills, 
         resume_flat_skills,
         resume_versions["raw_text"], 
@@ -190,44 +190,7 @@ async def extract_content(
         "candidate_decision_layer": candidate_decision,
     }
     
-    # Save analysis result to analysis_history if user is authenticated
-    if user_id:
-        try:
-            db = get_database()
-            
-            # Get user email from MongoDB
-            users_collection = db["users"]
-            user = await users_collection.find_one({"_id": ObjectId(user_id)})
-            user_email = user.get("email", "unknown_user") if user else "unknown_user"
-            
-            # Determine JD source type
-            jd_source_type = "file" if job_description_file else "text"
-            
-            # Create analysis history document
-            analysis_doc = AnalysisHistory.to_dict(
-                user_id=user_id,
-                user_email=user_email,
-                domain=domain,
-                resume_file_name=resume_name,
-                jd_source_type=jd_source_type,
-                result_json=response,
-                summary={
-                    "total_resume_skills": len(resume_skills),
-                    "total_jd_skills": len(jd_skills),
-                    "matched_skills": bert_results.get("matched_skills", []),
-                    "missing_skills": bert_results.get("missing_skills", []),
-                    "overall_match_percentage": bert_results.get("overall_match_percentage", 0),
-                }
-            )
-            
-            # Save to analysis_history collection
-            analysis_history_collection = db["analysis_history"]
-            await analysis_history_collection.insert_one(analysis_doc)
-            
-        except Exception as e:
-            # Log error but don't fail the analysis - just warn
-            print(f"Warning: Failed to save to analysis_history: {str(e)}")
-    
+    # Database logging disabled by design (auth & database disconnected)
     return response
 
 @router.post("/export-pdf")
@@ -282,7 +245,7 @@ async def extract_multi_resume_content(
         resume_skills = extract_skills(resume_versions["light_clean_text"], domain=domain)
         resume_flat_skills = resume_skills.get("technical_skills", []) + resume_skills.get("soft_skills", [])
 
-        bert_results = analyze_semantic_matching(
+        bert_results = await analyze_semantic_matching(
             jd_flat_skills,
             resume_flat_skills,
             resume_versions["raw_text"],

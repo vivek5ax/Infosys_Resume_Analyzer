@@ -1,157 +1,540 @@
 {
     "_meta": {
         "domain": "soft_skills",
-        "version": "3.0-production-ready",
-        "last_updated": "2026-02-28",
-        "design_notes": [
-            "Overlapping skills consolidated",
-            "Hard-skill aliases removed",
-            "Soft skills grouped into competency clusters",
-            "Category weight reduced to prevent inflation in overall alignment"
-        ]
+        "version": "4.0-enterprise",
+        "last_updated": "2026-06-04"
     },
     "categories": {
-        "Communication & Influence": {
-            "weight": 0.6,
+        "Communication & Interpersonal Skills": {
+            "weight": 1.5,
             "skills": [
                 {
                     "name": "Communication",
                     "aliases": [
                         "Verbal Communication",
                         "Written Communication",
-                        "Clear Communication",
-                        "Professional Communication"
+                        "Effective Communication"
                     ]
                 },
                 {
-                    "name": "Presentation Skills",
+                    "name": "Active Listening",
                     "aliases": [
-                        "Public Speaking",
-                        "Presentations",
-                        "Delivered Presentations"
+                        "Listening Skills",
+                        "Attentive Listening"
+                    ]
+                },
+                {
+                    "name": "Public Speaking",
+                    "aliases": [
+                        "Presentation Skills",
+                        "Presentation"
                     ]
                 },
                 {
                     "name": "Negotiation",
                     "aliases": [
-                        "Negotiation Skills",
-                        "Stakeholder Negotiation"
-                    ]
-                }
-            ]
-        },
-        "Leadership & Ownership": {
-            "weight": 0.7,
-            "skills": [
-                {
-                    "name": "Leadership",
-                    "aliases": [
-                        "Team Leadership",
-                        "Led Team",
-                        "Led Cross-Functional Team",
-                        "Technical Leadership"
+                        "Negotiating",
+                        "Negotiation Skills"
                     ]
                 },
                 {
-                    "name": "Decision Making",
+                    "name": "Persuasion",
                     "aliases": [
-                        "Strategic Decisions",
-                        "Sound Judgment",
-                        "Executive Decision Making"
-                    ]
-                },
-                {
-                    "name": "Mentorship",
-                    "aliases": [
-                        "Coaching",
-                        "Guided Team Members",
-                        "Team Mentoring"
-                    ]
-                }
-            ]
-        },
-        "Collaboration & Interpersonal": {
-            "weight": 0.6,
-            "skills": [
-                {
-                    "name": "Teamwork",
-                    "aliases": [
-                        "Collaboration",
-                        "Collaborated With",
-                        "Cross-Functional Collaboration",
-                        "Team Player"
+                        "Persuasive Communication",
+                        "Influencing"
                     ]
                 },
                 {
                     "name": "Conflict Resolution",
                     "aliases": [
-                        "Resolved Conflicts",
-                        "Mediation",
-                        "Handled Disputes"
+                        "Conflict Management",
+                        "Dispute Resolution"
+                    ]
+                },
+                {
+                    "name": "Interpersonal Skills",
+                    "aliases": [
+                        "People Skills",
+                        "Social Skills"
+                    ]
+                },
+                {
+                    "name": "Empathy",
+                    "aliases": [
+                        "Empathetic",
+                        "Understanding"
                     ]
                 },
                 {
                     "name": "Emotional Intelligence",
                     "aliases": [
-                        "Empathy",
-                        "Interpersonal Awareness",
-                        "Relationship Management"
+                        "EQ",
+                        "Emotional Quotient"
+                    ]
+                }
+            ]
+        },
+        "Leadership & Management": {
+            "weight": 1.5,
+            "skills": [
+                {
+                    "name": "Leadership",
+                    "aliases": [
+                        "Leadership Skills",
+                        "Leading"
+                    ]
+                },
+                {
+                    "name": "Team Leadership",
+                    "aliases": [
+                        "Team Management",
+                        "Leading Teams"
+                    ]
+                },
+                {
+                    "name": "Management",
+                    "aliases": [
+                        "Managing",
+                        "Management Skills"
+                    ]
+                },
+                {
+                    "name": "Strategic Thinking",
+                    "aliases": [
+                        "Strategic Planning",
+                        "Strategy"
+                    ]
+                },
+                {
+                    "name": "Decision Making",
+                    "aliases": [
+                        "Decision Making Skills",
+                        "Problem Solving"
+                    ]
+                },
+                {
+                    "name": "Delegation",
+                    "aliases": [
+                        "Delegating",
+                        "Assigning Tasks"
+                    ]
+                },
+                {
+                    "name": "Mentoring",
+                    "aliases": [
+                        "Coaching",
+                        "Mentorship"
+                    ]
+                },
+                {
+                    "name": "Team Building",
+                    "aliases": [
+                        "Building Teams",
+                        "Team Development"
+                    ]
+                },
+                {
+                    "name": "Change Management",
+                    "aliases": [
+                        "Managing Change",
+                        "Organizational Change"
                     ]
                 }
             ]
         },
         "Problem Solving & Critical Thinking": {
-            "weight": 0.7,
+            "weight": 1.5,
             "skills": [
                 {
                     "name": "Problem Solving",
                     "aliases": [
-                        "Problem-Solving",
-                        "Troubleshooting",
-                        "Resolved Issues",
-                        "Root Cause Analysis"
+                        "Solving Problems",
+                        "Analytical Thinking"
                     ]
                 },
                 {
                     "name": "Critical Thinking",
                     "aliases": [
-                        "Analytical Thinking",
-                        "Logical Thinking",
-                        "Strategic Thinking"
+                        "Critical Analysis",
+                        "Logical Thinking"
+                    ]
+                },
+                {
+                    "name": "Analytical Skills",
+                    "aliases": [
+                        "Analysis",
+                        "Analytical Thinking"
+                    ]
+                },
+                {
+                    "name": "Creativity",
+                    "aliases": [
+                        "Creative Thinking",
+                        "Innovation"
+                    ]
+                },
+                {
+                    "name": "Innovation",
+                    "aliases": [
+                        "Innovative Thinking",
+                        "Creative Problem Solving"
+                    ]
+                },
+                {
+                    "name": "Research",
+                    "aliases": [
+                        "Research Skills",
+                        "Investigation"
+                    ]
+                },
+                {
+                    "name": "Data Analysis",
+                    "aliases": [
+                        "Analyzing Data",
+                        "Data Interpretation"
                     ]
                 }
             ]
         },
-        "Execution & Adaptability": {
-            "weight": 0.6,
+        "Time Management & Organization": {
+            "weight": 1.4,
             "skills": [
                 {
                     "name": "Time Management",
                     "aliases": [
-                        "Prioritization",
-                        "Managed Deadlines",
-                        "Organizational Skills"
+                        "Managing Time",
+                        "Time Planning"
                     ]
                 },
                 {
-                    "name": "Adaptability",
+                    "name": "Organization",
                     "aliases": [
-                        "Flexibility",
-                        "Adapted to Change",
-                        "Agility"
+                        "Organizational Skills",
+                        "Being Organized"
+                    ]
+                },
+                {
+                    "name": "Prioritization",
+                    "aliases": [
+                        "Prioritizing",
+                        "Setting Priorities"
+                    ]
+                },
+                {
+                    "name": "Planning",
+                    "aliases": [
+                        "Planning Skills",
+                        "Strategic Planning"
+                    ]
+                },
+                {
+                    "name": "Multitasking",
+                    "aliases": [
+                        "Multi-tasking",
+                        "Handling Multiple Tasks"
+                    ]
+                },
+                {
+                    "name": "Project Management",
+                    "aliases": [
+                        "Managing Projects",
+                        "Project Planning"
+                    ]
+                },
+                {
+                    "name": "Deadline Management",
+                    "aliases": [
+                        "Meeting Deadlines",
+                        "Time Constraints"
                     ]
                 }
             ]
         },
-        "Creativity & Innovation": {
-            "weight": 0.6,
+        "Adaptability & Resilience": {
+            "weight": 1.4,
             "skills": [
                 {
-                    "name": "Creativity",
+                    "name": "Adaptability",
                     "aliases": [
-                        "Innovation",
-                        "Creative Thinking",
-                        "Innovative Solutions"
+                        "Adaptable",
+                        "Flexible"
+                    ]
+                },
+                {
+                    "name": "Flexibility",
+                    "aliases": [
+                        "Being Flexible",
+                        "Adapting to Change"
+                    ]
+                },
+                {
+                    "name": "Resilience",
+                    "aliases": [
+                        "Resilient",
+                        "Mental Toughness"
+                    ]
+                },
+                {
+                    "name": "Stress Management",
+                    "aliases": [
+                        "Managing Stress",
+                        "Coping with Stress"
+                    ]
+                },
+                {
+                    "name": "Work Under Pressure",
+                    "aliases": [
+                        "Pressure Handling",
+                        "Working Under Deadlines"
+                    ]
+                },
+                {
+                    "name": "Quick Learner",
+                    "aliases": [
+                        "Fast Learner",
+                        "Rapid Learning"
+                    ]
+                },
+                {
+                    "name": "Continuous Learning",
+                    "aliases": [
+                        "Lifelong Learning",
+                        "Self Development"
+                    ]
+                }
+            ]
+        },
+        "Teamwork & Collaboration": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Teamwork",
+                    "aliases": [
+                        "Team Player",
+                        "Collaboration"
+                    ]
+                },
+                {
+                    "name": "Collaboration",
+                    "aliases": [
+                        "Collaborative",
+                        "Working Together"
+                    ]
+                },
+                {
+                    "name": "Cooperation",
+                    "aliases": [
+                        "Cooperative",
+                        "Team Cooperation"
+                    ]
+                },
+                {
+                    "name": "Cross-functional Collaboration",
+                    "aliases": [
+                        "Cross-team Collaboration",
+                        "Interdepartmental"
+                    ]
+                },
+                {
+                    "name": "Building Relationships",
+                    "aliases": [
+                        "Relationship Building",
+                        "Networking"
+                    ]
+                },
+                {
+                    "name": "Conflict Management",
+                    "aliases": [
+                        "Managing Conflicts",
+                        "Resolving Conflicts"
+                    ]
+                }
+            ]
+        },
+        "Work Ethic & Professionalism": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Work Ethic",
+                    "aliases": [
+                        "Strong Work Ethic",
+                        "Dedication"
+                    ]
+                },
+                {
+                    "name": "Professionalism",
+                    "aliases": [
+                        "Professional",
+                        "Professional Conduct"
+                    ]
+                },
+                {
+                    "name": "Reliability",
+                    "aliases": [
+                        "Reliable",
+                        "Dependable"
+                    ]
+                },
+                {
+                    "name": "Punctuality",
+                    "aliases": [
+                        "On Time",
+                        "Timely"
+                    ]
+                },
+                {
+                    "name": "Accountability",
+                    "aliases": [
+                        "Taking Responsibility",
+                        "Ownership"
+                    ]
+                },
+                {
+                    "name": "Integrity",
+                    "aliases": [
+                        "Honesty",
+                        "Ethical"
+                    ]
+                },
+                {
+                    "name": "Attention to Detail",
+                    "aliases": [
+                        "Detail Oriented",
+                        "Meticulous"
+                    ]
+                },
+                {
+                    "name": "Quality Focus",
+                    "aliases": [
+                        "Quality Oriented",
+                        "Excellence"
+                    ]
+                }
+            ]
+        },
+        "Customer Service & Client Relations": {
+            "weight": 1.4,
+            "skills": [
+                {
+                    "name": "Customer Service",
+                    "aliases": [
+                        "Client Service",
+                        "Customer Support"
+                    ]
+                },
+                {
+                    "name": "Client Relations",
+                    "aliases": [
+                        "Client Management",
+                        "Customer Relations"
+                    ]
+                },
+                {
+                    "name": "Customer Focus",
+                    "aliases": [
+                        "Customer Centric",
+                        "Client Focused"
+                    ]
+                },
+                {
+                    "name": "Service Orientation",
+                    "aliases": [
+                        "Service Minded",
+                        "Helpful"
+                    ]
+                },
+                {
+                    "name": "Complaint Handling",
+                    "aliases": [
+                        "Handling Complaints",
+                        "Issue Resolution"
+                    ]
+                }
+            ]
+        },
+        "Self-Management & Personal Development": {
+            "weight": 1.35,
+            "skills": [
+                {
+                    "name": "Self Motivation",
+                    "aliases": [
+                        "Motivated",
+                        "Self Driven"
+                    ]
+                },
+                {
+                    "name": "Self Discipline",
+                    "aliases": [
+                        "Disciplined",
+                        "Self Control"
+                    ]
+                },
+                {
+                    "name": "Goal Setting",
+                    "aliases": [
+                        "Setting Goals",
+                        "Goal Achievement"
+                    ]
+                },
+                {
+                    "name": "Self Confidence",
+                    "aliases": [
+                        "Confident",
+                        "Confidence"
+                    ]
+                },
+                {
+                    "name": "Self Awareness",
+                    "aliases": [
+                        "Self Reflection",
+                        "Understanding Self"
+                    ]
+                },
+                {
+                    "name": "Personal Development",
+                    "aliases": [
+                        "Self Improvement",
+                        "Growth Mindset"
+                    ]
+                }
+            ]
+        },
+        "Technical & Digital Literacy": {
+            "weight": 1.3,
+            "skills": [
+                {
+                    "name": "Computer Literacy",
+                    "aliases": [
+                        "Computer Skills",
+                        "IT Skills"
+                    ]
+                },
+                {
+                    "name": "Digital Literacy",
+                    "aliases": [
+                        "Digital Skills",
+                        "Technology Skills"
+                    ]
+                },
+                {
+                    "name": "Technical Aptitude",
+                    "aliases": [
+                        "Technical Skills",
+                        "Tech Savvy"
+                    ]
+                },
+                {
+                    "name": "Software Proficiency",
+                    "aliases": [
+                        "Software Skills",
+                        "Application Skills"
+                    ]
+                },
+                {
+                    "name": "Learning New Technologies",
+                    "aliases": [
+                        "Tech Learning",
+                        "Adopting Technology"
                     ]
                 }
             ]

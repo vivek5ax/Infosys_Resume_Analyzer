@@ -13,18 +13,41 @@ function LandingPage({ onStart }) {
     const sliderImages = orderedImages.length > 1 ? [...orderedImages, ...orderedImages] : orderedImages;
     const durationSeconds = Math.max(16, orderedImages.length * 4);
 
+    const landingSteps = [
+        { number: '1', title: 'Choose a domain', description: 'Pick the target role domain that best fits the hiring need.' },
+        { number: '2', title: 'Upload JD details', description: 'Upload a job description file or paste the text directly.' },
+        { number: '3', title: 'Add resume', description: 'Attach a candidate resume in PDF, DOCX, or TXT format.' },
+        { number: '4', title: 'Run the analysis', description: 'Start the AI match to reveal skills alignment and gaps.' },
+        { number: '5', title: 'Review results', description: 'See scorecards, missing capabilities, and evidence snapshots.' },
+        { number: '6', title: 'Export report', description: 'Download a polished PDF recruiter report from the sidebar.' },
+    ];
+
     return (
         <div className="landing-page fade-in">
             <section className="landing-hero-card">
-                <p className="landing-kicker">Resume Analyzer</p>
-                <h1 className="landing-title">From resume upload to actionable hiring insights</h1>
-                <p className="landing-subtitle">
-                    This platform extracts resume and JD intelligence, scores alignment, highlights missing capabilities,
-                    and presents clear visual evidence for faster and better screening decisions.
-                </p>
+                <div className="landing-hero-header">
+                    <div className="landing-hero-copy">
+                        <p className="landing-kicker">Resume Analyzer</p>
+                        <h1 className="landing-title">A smarter way to screen resumes and JDs</h1>
+                        <p className="landing-tagline">
+                            Analyze candidate resumes against job requirements with AI-powered alignment, skills highlights, and recruiter-ready insights.
+                        </p>
+                        <div className="landing-actions landing-actions-inline">
+                            <button className="landing-start-btn" onClick={onStart}>Start Analysis</button>
+                        </div>
+                    </div>
 
-                <div className="landing-actions">
-                    <button className="landing-start-btn" onClick={onStart}>Start Analysis</button>
+                    <div className="landing-step-panel">
+                        <div className="landing-step-grid">
+                            {landingSteps.map(step => (
+                                <article key={step.number} className="landing-step-card">
+                                    <div className="landing-step-marker">{step.number}</div>
+                                    <h3 className="landing-step-title">{step.title}</h3>
+                                    <p className="landing-step-description">{step.description}</p>
+                                </article>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
                 <div className="landing-slider-shell" aria-label="Project flow image slider">

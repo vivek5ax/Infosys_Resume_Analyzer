@@ -1,43 +1,803 @@
 {
     "_meta": {
         "domain": "finance",
-        "version": "3.1-alias-enhanced",
-        "last_updated": "2026-03-11"
+        "version": "4.0-enterprise",
+        "last_updated": "2026-06-04"
     },
     "categories": {
-        "Financial Analysis & Modeling": {
+        "Accounting & Auditing": {
+            "weight": 1.4,
+            "skills": [
+                {
+                    "name": "Generally Accepted Accounting Principles",
+                    "aliases": [
+                        "GAAP",
+                        "US GAAP"
+                    ]
+                },
+                {
+                    "name": "International Financial Reporting Standards",
+                    "aliases": [
+                        "IFRS"
+                    ]
+                },
+                {
+                    "name": "Accounts Payable",
+                    "aliases": [
+                        "AP",
+                        "Vendor Payments"
+                    ]
+                },
+                {
+                    "name": "Accounts Receivable",
+                    "aliases": [
+                        "AR",
+                        "Receivables Management"
+                    ]
+                },
+                {
+                    "name": "General Ledger",
+                    "aliases": [
+                        "GL",
+                        "Ledger Accounting"
+                    ]
+                },
+                {
+                    "name": "Journal Entries",
+                    "aliases": [
+                        "Accounting Entries"
+                    ]
+                },
+                {
+                    "name": "Bank Reconciliation",
+                    "aliases": [
+                        "Reconciliation"
+                    ]
+                },
+                {
+                    "name": "Financial Auditing",
+                    "aliases": [
+                        "Audit",
+                        "External Audit",
+                        "Internal Audit"
+                    ]
+                },
+                {
+                    "name": "Tax Preparation",
+                    "aliases": [
+                        "Taxation",
+                        "Tax Compliance"
+                    ]
+                },
+                {
+                    "name": "Financial Statements",
+                    "aliases": [
+                        "Balance Sheet",
+                        "Income Statement",
+                        "Profit and Loss Statement",
+                        "Cash Flow Statement"
+                    ]
+                },
+                {
+                    "name": "Cost Accounting",
+                    "aliases": [
+                        "Cost Analysis",
+                        "Product Costing"
+                    ]
+                },
+                {
+                    "name": "Managerial Accounting",
+                    "aliases": [
+                        "Management Accounting"
+                    ]
+                },
+                {
+                    "name": "Bookkeeping",
+                    "aliases": [
+                        "Double Entry Bookkeeping"
+                    ]
+                },
+                {
+                    "name": "Payroll Accounting",
+                    "aliases": [
+                        "Payroll Processing",
+                        "Payroll Tax"
+                    ]
+                },
+                {
+                    "name": "Internal Controls",
+                    "aliases": [
+                        "SOX Compliance",
+                        "Sarbanes-Oxley"
+                    ]
+                },
+                {
+                    "name": "Financial Reporting",
+                    "aliases": [
+                        "SEC Reporting",
+                        "Quarterly Reports",
+                        "Annual Reports"
+                    ]
+                },
+                {
+                    "name": "Forensic Accounting",
+                    "aliases": [
+                        "Financial Investigation",
+                        "Fraud Examination"
+                    ]
+                },
+                {
+                    "name": "Tax Planning",
+                    "aliases": [
+                        "Tax Strategy",
+                        "Tax Optimization"
+                    ]
+                },
+                {
+                    "name": "Compliance",
+                    "aliases": [
+                        "Regulatory Compliance",
+                        "Financial Regulations"
+                    ]
+                }
+            ]
+        },
+        "Corporate Finance & FP&A": {
             "weight": 1.5,
             "skills": [
                 {
+                    "name": "Financial Planning and Analysis",
+                    "aliases": [
+                        "FP&A",
+                        "Financial Planning"
+                    ]
+                },
+                {
                     "name": "Financial Modeling",
                     "aliases": [
-                        "DCF Modeling",
-                        "LBO Modeling",
-                        "M&A Modeling",
-                        "3-Statement Modeling",
-                        "Valuation Modeling"
+                        "DCF",
+                        "Discounted Cash Flow",
+                        "Three Statement Model",
+                        "LBO Model"
                     ]
                 },
                 {
-                    "name": "Financial Analysis",
+                    "name": "Budgeting",
                     "aliases": [
-                        "Variance Analysis",
-                        "FP&A",
-                        "Financial Planning & Analysis",
-                        "Ratio Analysis",
-                        "Trend Analysis",
-                        "P&L Analysis",
-                        "Profit and Loss Analysis",
-                        "Cash Flow Forecasting"
+                        "Annual Budgeting",
+                        "Operating Budget"
                     ]
                 },
                 {
-                    "name": "Corporate Finance",
+                    "name": "Forecasting",
                     "aliases": [
-                        "Capital Budgeting",
-                        "Capital Restructuring",
-                        "Cost of Capital",
-                        "WACC"
+                        "Financial Forecasting",
+                        "Revenue Forecasting"
+                    ]
+                },
+                {
+                    "name": "Variance Analysis",
+                    "aliases": [
+                        "Budget Variance Analysis",
+                        "Performance Analysis"
+                    ]
+                },
+                {
+                    "name": "Capital Budgeting",
+                    "aliases": [
+                        "NPV",
+                        "Net Present Value",
+                        "IRR",
+                        "Internal Rate of Return"
+                    ]
+                },
+                {
+                    "name": "Cash Flow Analysis",
+                    "aliases": [
+                        "Cash Flow Management",
+                        "Liquidity Management"
+                    ]
+                },
+                {
+                    "name": "Working Capital Management",
+                    "aliases": [
+                        "Working Capital",
+                        "Capital Management"
+                    ]
+                },
+                {
+                    "name": "Business Valuation",
+                    "aliases": [
+                        "Company Valuation",
+                        "Enterprise Valuation"
+                    ]
+                },
+                {
+                    "name": "Financial Strategy",
+                    "aliases": [
+                        "Corporate Strategy",
+                        "Financial Planning Strategy"
+                    ]
+                },
+                {
+                    "name": "Mergers and Acquisitions",
+                    "aliases": [
+                        "M&A",
+                        "Due Diligence",
+                        "Deal Structuring"
+                    ]
+                },
+                {
+                    "name": "Capital Structure",
+                    "aliases": [
+                        "Debt Equity Ratio",
+                        "Capital Optimization"
+                    ]
+                },
+                {
+                    "name": "Treasury Management",
+                    "aliases": [
+                        "Cash Management",
+                        "Liquidity Management"
+                    ]
+                },
+                {
+                    "name": "Risk Management",
+                    "aliases": [
+                        "Financial Risk",
+                        "Market Risk",
+                        "Credit Risk"
+                    ]
+                },
+                {
+                    "name": "Scenario Analysis",
+                    "aliases": [
+                        "Sensitivity Analysis",
+                        "Stress Testing"
+                    ]
+                },
+                {
+                    "name": "KPI Development",
+                    "aliases": [
+                        "Key Performance Indicators",
+                        "Financial Metrics"
+                    ]
+                },
+                {
+                    "name": "Board Reporting",
+                    "aliases": [
+                        "Executive Reporting",
+                        "Management Reporting"
+                    ]
+                }
+            ]
+        },
+        "Investment Banking & Capital Markets": {
+            "weight": 1.5,
+            "skills": [
+                {
+                    "name": "Investment Banking",
+                    "aliases": [
+                        "IB",
+                        "Corporate Finance Advisory"
+                    ]
+                },
+                {
+                    "name": "Mergers and Acquisitions",
+                    "aliases": [
+                        "M&A",
+                        "Mergers Acquisitions",
+                        "Deal Advisory"
+                    ]
+                },
+                {
+                    "name": "Equity Capital Markets",
+                    "aliases": [
+                        "ECM",
+                        "Equity Financing",
+                        "Stock Market"
+                    ]
+                },
+                {
+                    "name": "Debt Capital Markets",
+                    "aliases": [
+                        "DCM",
+                        "Debt Financing",
+                        "Bond Markets"
+                    ]
+                },
+                {
+                    "name": "Initial Public Offering",
+                    "aliases": [
+                        "IPO",
+                        "Public Offering",
+                        "Going Public"
+                    ]
+                },
+                {
+                    "name": "Private Equity",
+                    "aliases": [
+                        "PE",
+                        "Private Equity Investment"
+                    ]
+                },
+                {
+                    "name": "Venture Capital",
+                    "aliases": [
+                        "VC",
+                        "Venture Capital Investment",
+                        "Startup Funding"
+                    ]
+                },
+                {
+                    "name": "Leveraged Buyouts",
+                    "aliases": [
+                        "LBO",
+                        "Leveraged Finance"
+                    ]
+                },
+                {
+                    "name": "Corporate Finance Transactions",
+                    "aliases": [
+                        "Transaction Advisory",
+                        "Deal Structuring"
+                    ]
+                },
+                {
+                    "name": "Due Diligence",
+                    "aliases": [
+                        "Financial Due Diligence",
+                        "Due Diligence Review"
+                    ]
+                },
+                {
+                    "name": "Valuation Services",
+                    "aliases": [
+                        "Business Valuation",
+                        "Asset Valuation"
+                    ]
+                },
+                {
+                    "name": "Restructuring",
+                    "aliases": [
+                        "Corporate Restructuring",
+                        "Distressed M&A"
+                    ]
+                },
+                {
+                    "name": "Divestitures",
+                    "aliases": [
+                        "Asset Sales",
+                        "Carve Outs"
+                    ]
+                },
+                {
+                    "name": "IPO Advisory",
+                    "aliases": [
+                        "Public Offering Advisory",
+                        "Listing Services"
+                    ]
+                },
+                {
+                    "name": "Roadshow Management",
+                    "aliases": [
+                        "Investor Presentations",
+                        "Marketing"
+                    ]
+                },
+                {
+                    "name": "Syndication",
+                    "aliases": [
+                        "Loan Syndication",
+                        "Bond Syndication"
+                    ]
+                },
+                {
+                    "name": "Underwriting",
+                    "aliases": [
+                        "Securities Underwriting",
+                        "IPO Underwriting"
+                    ]
+                },
+                {
+                    "name": "Capital Raising",
+                    "aliases": [
+                        "Fundraising",
+                        "Capital Structure Advisory"
+                    ]
+                }
+            ]
+        },
+        "Investment Analysis & Asset Management": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Portfolio Management",
+                    "aliases": [
+                        "Asset Allocation",
+                        "Investment Portfolio",
+                        "Portfolio Construction"
+                    ]
+                },
+                {
+                    "name": "Investment Analysis",
+                    "aliases": [
+                        "Investment Research",
+                        "Security Analysis"
+                    ]
+                },
+                {
+                    "name": "Equity Research",
+                    "aliases": [
+                        "Stock Analysis",
+                        "Equity Valuation",
+                        "Fundamental Analysis"
+                    ]
+                },
+                {
+                    "name": "Fixed Income Analysis",
+                    "aliases": [
+                        "Bond Analysis",
+                        "Credit Analysis",
+                        "Yield Analysis"
+                    ]
+                },
+                {
+                    "name": "Fund Management",
+                    "aliases": [
+                        "Asset Management",
+                        "Mutual Funds",
+                        "ETF Management"
+                    ]
+                },
+                {
+                    "name": "Securities Analysis",
+                    "aliases": [
+                        "Technical Analysis",
+                        "Quantitative Analysis"
+                    ]
+                },
+                {
+                    "name": "Wealth Management",
+                    "aliases": [
+                        "Private Wealth Management",
+                        "Portfolio Advisory"
+                    ]
+                },
+                {
+                    "name": "Alternative Investments",
+                    "aliases": [
+                        "Hedge Funds",
+                        "Private Markets",
+                        "Real Estate Investment"
+                    ]
+                },
+                {
+                    "name": "Risk Management",
+                    "aliases": [
+                        "Investment Risk",
+                        "Portfolio Risk",
+                        "VaR"
+                    ]
+                },
+                {
+                    "name": "Performance Attribution",
+                    "aliases": [
+                        "Performance Analysis",
+                        "Return Attribution"
+                    ]
+                },
+                {
+                    "name": "Asset Allocation",
+                    "aliases": [
+                        "Strategic Asset Allocation",
+                        "Tactical Asset Allocation"
+                    ]
+                },
+                {
+                    "name": "Derivatives",
+                    "aliases": [
+                        "Options",
+                        "Futures",
+                        "Swaps",
+                        "Forwards"
+                    ]
+                },
+                {
+                    "name": "Commodities",
+                    "aliases": [
+                        "Commodity Trading",
+                        "Precious Metals",
+                        "Energy Commodities"
+                    ]
+                },
+                {
+                    "name": "ESG Investing",
+                    "aliases": [
+                        "Sustainable Investing",
+                        "Impact Investing",
+                        "Socially Responsible Investing"
+                    ]
+                },
+                {
+                    "name": "Quantitative Finance",
+                    "aliases": [
+                        "Quant",
+                        "Algorithmic Trading",
+                        "Quant Models"
+                    ]
+                },
+                {
+                    "name": "Private Debt",
+                    "aliases": [
+                        "Private Credit",
+                        "Direct Lending"
+                    ]
+                }
+            ]
+        },
+        "Risk Management & Compliance": {
+            "weight": 1.5,
+            "skills": [
+                {
+                    "name": "Risk Management",
+                    "aliases": [
+                        "Enterprise Risk Management",
+                        "ERM",
+                        "Risk Assessment"
+                    ]
+                },
+                {
+                    "name": "Compliance Management",
+                    "aliases": [
+                        "Regulatory Compliance",
+                        "Compliance Officer",
+                        "Compliance Programs"
+                    ]
+                },
+                {
+                    "name": "Anti-Money Laundering",
+                    "aliases": [
+                        "AML",
+                        "Money Laundering Prevention",
+                        "Financial Crime"
+                    ]
+                },
+                {
+                    "name": "Know Your Customer",
+                    "aliases": [
+                        "KYC",
+                        "Customer Due Diligence",
+                        "CDD"
+                    ]
+                },
+                {
+                    "name": "Internal Audit",
+                    "aliases": [
+                        "Internal Controls",
+                        "Audit Management",
+                        "SOX Compliance"
+                    ]
+                },
+                {
+                    "name": "Operational Risk",
+                    "aliases": [
+                        "Ops Risk",
+                        "Operational Risk Management"
+                    ]
+                },
+                {
+                    "name": "Market Risk",
+                    "aliases": [
+                        "Market Risk Management",
+                        "Trading Risk"
+                    ]
+                },
+                {
+                    "name": "Credit Risk",
+                    "aliases": [
+                        "Credit Risk Management",
+                        "Default Risk"
+                    ]
+                },
+                {
+                    "name": "Liquidity Risk",
+                    "aliases": [
+                        "Liquidity Management",
+                        "Funding Risk"
+                    ]
+                },
+                {
+                    "name": "Fraud Risk",
+                    "aliases": [
+                        "Fraud Prevention",
+                        "Fraud Detection"
+                    ]
+                },
+                {
+                    "name": "Regulatory Reporting",
+                    "aliases": [
+                        "Regulatory Filings",
+                        "Compliance Reporting"
+                    ]
+                },
+                {
+                    "name": "Basel Compliance",
+                    "aliases": [
+                        "Basel III",
+                        "Basel II",
+                        "Capital Adequacy"
+                    ]
+                },
+                {
+                    "name": "Stress Testing",
+                    "aliases": [
+                        "Scenario Analysis",
+                        "Risk Stress Testing"
+                    ]
+                },
+                {
+                    "name": "Risk Analytics",
+                    "aliases": [
+                        "Risk Models",
+                        "Quantitative Risk Analysis"
+                    ]
+                },
+                {
+                    "name": "Insurance Risk",
+                    "aliases": [
+                        "Insurance Management",
+                        "Risk Transfer"
+                    ]
+                }
+            ]
+        },
+        "FinTech & Digital Finance": {
+            "weight": 1.4,
+            "skills": [
+                {
+                    "name": "FinTech",
+                    "aliases": [
+                        "Financial Technology",
+                        "Digital Finance",
+                        "Financial Innovation"
+                    ]
+                },
+                {
+                    "name": "Digital Payments",
+                    "aliases": [
+                        "Online Payments",
+                        "Mobile Payments",
+                        "Digital Wallets"
+                    ]
+                },
+                {
+                    "name": "Blockchain",
+                    "aliases": [
+                        "Distributed Ledger",
+                        "Cryptocurrency",
+                        "Digital Assets"
+                    ]
+                },
+                {
+                    "name": "Robo-Advisory",
+                    "aliases": [
+                        "Automated Investment",
+                        "Digital Advisory"
+                    ]
+                },
+                {
+                    "name": "Peer to Peer Lending",
+                    "aliases": [
+                        "P2P Lending",
+                        "Crowdfunding"
+                    ]
+                },
+                {
+                    "name": "InsurTech",
+                    "aliases": [
+                        "Insurance Technology",
+                        "Digital Insurance"
+                    ]
+                },
+                {
+                    "name": "RegTech",
+                    "aliases": [
+                        "Regulatory Technology",
+                        "Compliance Technology"
+                    ]
+                },
+                {
+                    "name": "API Banking",
+                    "aliases": [
+                        "Open Banking",
+                        "Banking APIs"
+                    ]
+                },
+                {
+                    "name": "Mobile Banking Apps",
+                    "aliases": [
+                        "Mobile Finance",
+                        "Banking Applications"
+                    ]
+                },
+                {
+                    "name": "Data Analytics",
+                    "aliases": [
+                        "Financial Analytics",
+                        "Big Data in Finance",
+                        "Predictive Analytics"
+                    ]
+                },
+                {
+                    "name": "Machine Learning",
+                    "aliases": [
+                        "AI in Finance",
+                        "Algorithmic Trading",
+                        "Quantitative Models"
+                    ]
+                },
+                {
+                    "name": "Cybersecurity",
+                    "aliases": [
+                        "Information Security",
+                        "Data Protection",
+                        "Network Security"
+                    ]
+                },
+                {
+                    "name": "Cloud Computing",
+                    "aliases": [
+                        "Cloud Banking",
+                        "SaaS",
+                        "Cloud Infrastructure"
+                    ]
+                },
+                {
+                    "name": "Neobanks",
+                    "aliases": [
+                        "Digital Banks",
+                        "Challenger Banks"
+                    ]
+                },
+                {
+                    "name": "Payment Gateways",
+                    "aliases": [
+                        "Payment Processing",
+                        "Merchant Services"
+                    ]
+                }
+            ]
+        },
+        "Banking & Financial Services": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Retail Banking",
+                    "aliases": [
+                        "Consumer Banking",
+                        "Personal Banking"
+                    ]
+                },
+                {
+                    "name": "Commercial Banking",
+                    "aliases": [
+                        "Business Banking",
+                        "Corporate Banking"
+                    ]
+                },
+                {
+                    "name": "Credit Analysis",
+                    "aliases": [
+                        "Credit Risk Assessment",
+                        "Loan Underwriting"
+                    ]
+                },
+                {
+                    "name": "Loan Processing",
+                    "aliases": [
+                        "Credit Underwriting",
+                        "Mortgage Underwriting"
                     ]
                 },
                 {
@@ -45,134 +805,103 @@
                     "aliases": [
                         "Credit Risk",
                         "Market Risk",
-                        "Operational Risk",
-                        "Liquidity Risk",
-                        "Enterprise Risk Management",
-                        "ERM"
-                    ]
-                }
-            ]
-        },
-        "Banking & Investment": {
-            "weight": 1.4,
-            "skills": [
-                {
-                    "name": "Investment Banking",
-                    "aliases": [
-                        "M&A Advisory",
-                        "Equity Capital Markets",
-                        "ECM",
-                        "Debt Capital Markets",
-                        "DCM"
+                        "Operational Risk"
                     ]
                 },
                 {
-                    "name": "Portfolio Management",
+                    "name": "Compliance",
                     "aliases": [
-                        "Asset Allocation",
-                        "Investment Strategy",
-                        "Wealth Management",
-                        "Fund Management"
-                    ]
-                },
-                {
-                    "name": "Private Equity",
-                    "aliases": [
-                        "Venture Capital",
-                        "Deal Sourcing",
-                        "Due Diligence",
-                        "Buyouts"
-                    ]
-                },
-                {
-                    "name": "Retail & Commercial Banking",
-                    "aliases": [
-                        "Underwriting",
-                        "Loan Origination",
-                        "Credit Analysis",
-                        "Treasury Management"
-                    ]
-                }
-            ]
-        },
-        "Accounting & Compliance": {
-            "weight": 1.3,
-            "skills": [
-                {
-                    "name": "Financial Reporting",
-                    "aliases": [
-                        "GAAP",
-                        "IFRS",
-                        "SEC Reporting",
-                        "10-K",
-                        "10-Q",
-                        "Consolidated Financials"
-                    ]
-                },
-                {
-                    "name": "Auditing",
-                    "aliases": [
-                        "Internal Audit",
-                        "External Audit",
-                        "SOX Compliance",
-                        "Sarbanes-Oxley"
-                    ]
-                },
-                {
-                    "name": "Taxation",
-                    "aliases": [
-                        "Corporate Tax",
-                        "Tax Planning",
-                        "Transfer Pricing",
-                        "Tax Compliance"
-                    ]
-                },
-                {
-                    "name": "Regulatory Compliance",
-                    "aliases": [
-                        "AML",
-                        "Anti-Money Laundering",
+                        "Banking Compliance",
+                        "Regulatory Compliance",
                         "KYC",
-                        "Know Your Customer",
-                        "Basel III",
+                        "AML"
+                    ]
+                },
+                {
+                    "name": "Fraud Detection",
+                    "aliases": [
+                        "Fraud Prevention",
+                        "Anti-Money Laundering"
+                    ]
+                },
+                {
+                    "name": "Treasury Management",
+                    "aliases": [
+                        "Cash Management",
+                        "Liquidity Management"
+                    ]
+                },
+                {
+                    "name": "Bank Operations",
+                    "aliases": [
+                        "Branch Operations",
+                        "Bank Operations Management"
+                    ]
+                },
+                {
+                    "name": "Mortgage Lending",
+                    "aliases": [
+                        "Mortgage Banking",
+                        "Home Loans"
+                    ]
+                },
+                {
+                    "name": "Trade Finance",
+                    "aliases": [
+                        "Letters of Credit",
+                        "Trade Services",
+                        "LC"
+                    ]
+                },
+                {
+                    "name": "International Banking",
+                    "aliases": [
+                        "Cross-border Banking",
+                        "Foreign Exchange"
+                    ]
+                },
+                {
+                    "name": "Customer Relationship Management",
+                    "aliases": [
+                        "CRM",
+                        "Banking CRM",
+                        "Client Relations"
+                    ]
+                },
+                {
+                    "name": "Digital Banking",
+                    "aliases": [
+                        "Online Banking",
+                        "Mobile Banking",
+                        "Fintech"
+                    ]
+                },
+                {
+                    "name": "Banking Regulations",
+                    "aliases": [
+                        "Basel",
                         "Dodd-Frank",
-                        "Regulatory Reporting"
-                    ]
-                }
-            ]
-        },
-        "Financial Software & Data": {
-            "weight": 1.2,
-            "skills": [
-                {
-                    "name": "Bloomberg Terminal",
-                    "aliases": [
-                        "Bloomberg",
-                        "FactSet",
-                        "Capital IQ",
-                        "Refinitiv"
+                        "Banking Supervision"
                     ]
                 },
                 {
-                    "name": "ERP Systems",
+                    "name": "Loan Portfolio Management",
                     "aliases": [
-                        "SAP FICO",
-                        "Oracle Financials",
-                        "NetSuite",
-                        "Workday Financials"
+                        "Credit Portfolio",
+                        "Loan Administration"
                     ]
                 },
                 {
-                    "name": "Data Analytics (Finance)",
+                    "name": "Debt Recovery",
                     "aliases": [
-                        "Excel Analytics",
-                        "Advanced Excel",
-                        "VBA",
-                        "Power Query",
-                        "Macros",
-                        "MIS Reporting",
-                        "Power BI",
-                        "Tableau"
+                        "Collections",
+                        "Bad Debt Recovery"
+                    ]
+                },
+                {
+                    "name": "Treasury Operations",
+                    "aliases": [
+                        "Bank Treasury"
                     ]
                 }
             ]

@@ -6,8 +6,7 @@ docx2txt
 python-docx
 pytesseract
 pdf2image
-spacy
-sentence-transformers
+spacy>=3.7.0,<3.8.0
 matplotlib
 seaborn
 reportlab
@@ -17,5 +16,7 @@ motor
 pymongo
 python-jose
 passlib>=1.7.4
-bcrypt>=3.1.0,<5.0
+bcrypt>=3.1.0,<4.0.0
 email-validator
+httpx
+pydantic>=2.0.0

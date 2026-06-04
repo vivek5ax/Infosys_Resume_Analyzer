@@ -1,10 +1,7 @@
-# Python
-backend/venv/
-backend/__pycache__/
-**/*.pyc
+# Python caches and build artifacts
 __pycache__/
-*.pyc
-*.pyo
+**/__pycache__/
+*.py[cod]
 *.pyd
 *.so
 *.egg-info/
@@ -15,15 +12,16 @@ __pycache__/
 .coverage.*
 htmlcov/
 
-# Virtual environments
+# Python virtual environments
 .venv/
 venv/
 env/
+backend/venv/
+backend/.venv/
+backend/env/
 
-# Jupyter notebooks
-.ipynb_checkpoints/
-
-# Node
+# Node / frontend artifacts
+node_modules/
 frontend/node_modules/
 frontend/dist/
 frontend/.vite/
@@ -32,25 +30,33 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Build and package metadata
+dist/
+.vite/
+
+# Environment files
+.env
+.env.*
+!.env.example
+!**/.env.example
+frontend/.env
+frontend/.env.*
+backend/.env
+backend/.env.*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Vercel / Render local files
+.vercel/
+.render/
+
 # Local data & sessions
 backend/data/sessions/
 *.log
 *.tmp
 *.temp
-*.md
-
-# Environment & OS
-.env
-.env.*
-!.env.example
-!**/.env.example
-.DS_Store
-Thumbs.db
-
-# Editors/IDEs
-.vscode/
-.idea/
-*.swp
-
-# Salesforce DX artifacts
-.sfdx/

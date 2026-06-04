@@ -298,17 +298,17 @@ const VisualizationModal = ({ isOpen, onClose, isClosing, data, isEmbedded = fal
     const moderateSemantics = (partition.moderate_semantic || []).map(s => ({ skill: s.skill, type: 'Moderate Semantic', score: s.score, color: COLORS.warning }));
     const matchTableData = [...exactMatches, ...strongSemantics, ...moderateSemantics].sort((a, b) => b.score - a.score);
 
-    // 8. Semantic Confidence Distribution (Combined with Exact Matches)
-    const allMatches = [
-        ...(partition.exact_match || []).map(skill => ({ skill, score: 1.0 })),
-        ...(partition.strong_semantic || []),
-        ...(partition.moderate_semantic || [])
-    ];
+    // 8. Semantic Confidence Distribution (Categorized by Backend Match Type)
+    const exactCount = (partition.exact_match || []).length;
+    const strongCount = (partition.strong_semantic || []).length;
+    const moderateCount = (partition.moderate_semantic || []).length;
+    const missingCount = (missingFromResume || []).length;
+
     const buckets = [
-        { range: '90-100%', count: allMatches.filter(s => s.score >= 0.9).length, fill: '#10b981' },
-        { range: '80-89%', count: allMatches.filter(s => s.score >= 0.8 && s.score < 0.9).length, fill: '#3b82f6' },
-        { range: '70-79%', count: allMatches.filter(s => s.score >= 0.7 && s.score < 0.8).length, fill: '#f59e0b' },
-        { range: 'Below 70%', count: allMatches.filter(s => s.score < 0.7).length, fill: '#ef4444' }
+        { range: 'Exact Matches', count: exactCount, fill: '#10b981' },
+        { range: 'Strong Semantic', count: strongCount, fill: '#3b82f6' },
+        { range: 'Moderate Semantic', count: moderateCount, fill: '#f59e0b' },
+        { range: 'Missing Skills', count: missingCount, fill: '#ef4444' }
     ];
 
     const CustomTooltip = ({ active, payload, label }) => {
@@ -680,7 +680,7 @@ const VisualizationModal = ({ isOpen, onClose, isClosing, data, isEmbedded = fal
                                 <ResponsiveContainer width="100%" height="100%">
                                     <BarChart data={buckets} margin={{ top: 10, right: 20, left: 0, bottom: 30 }}>
                                         <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#334155" />
-                                        <XAxis dataKey="range" tick={{ fontSize: 13, fill: 'white', fontWeight: 600 }} axisLine={false} tickLine={false} interval={0} />
+                                        <XAxis dataKey="range" tick={{ fontSize: 13, fill: 'white', fontWeight: 600 }} axisLine={false} tickLine={false} interval={0} angle={-15} textAnchor="end" height={60} />
                                         <YAxis allowDecimals={false} tick={{ fontSize: 13, fill: 'white', fontWeight: 600 }} axisLine={false} tickLine={false} />
                                         <Tooltip cursor={{ fill: 'rgba(255, 255, 255, 0.05)' }} content={<CustomTooltip />} />
                                         <Bar dataKey="count" name="Skills" radius={[6, 6, 0, 0]} barSize={40}>
@@ -699,53 +699,71 @@ const VisualizationModal = ({ isOpen, onClose, isClosing, data, isEmbedded = fal
 
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.75rem', width: '100%' }}>
 
-                                {/* 90-100% Column */}
+                                {/* Exact Match Column */}
                                 <div style={{ display: 'flex', flexDirection: 'column', background: '#0f172a', borderRadius: '12px', border: '1px solid #334155', overflow: 'hidden' }}>
-                                    <div style={{ background: '#10b98115', padding: '0.6rem', borderBottom: '2px solid #10b981', textAlign: 'center', fontWeight: 'bold', color: '#34d399', fontSize: '0.85rem' }}>90-100% Match</div>
+                                    <div style={{ background: '#10b98115', padding: '0.6rem', borderBottom: '2px solid #10b981', textAlign: 'center', fontWeight: 'bold', color: '#34d399', fontSize: '0.85rem' }}>Exact Matches (100%)</div>
                                     <div className="match-ledger-column" style={{ maxHeight: '210px', overflowY: 'auto', padding: '0.6rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                                        {allMatches.filter(s => s.score >= 0.9).length > 0 ? allMatches.filter(s => s.score >= 0.9).map((match, i) => (
+                                        {(partition.exact_match || []).length > 0 ? (partition.exact_match || []).map((skill, i) => (
                                             <div key={i} style={{ background: '#1e293b', padding: '0.6rem', borderRadius: '8px', borderLeft: `4px solid #10b981`, boxShadow: '0 1px 2px rgba(0,0,0,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                <span style={{ fontWeight: '600', color: 'white', fontSize: '0.8rem' }}>{match.skill}</span>
-                                                <span style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#10b981' }}>{(match.score * 100).toFixed(0)}%</span>
+                                                <span style={{ fontWeight: '600', color: 'white', fontSize: '0.8rem' }}>{skill}</span>
+                                                <span style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#10b981' }}>100%</span>
                                             </div>
                                         )) : <p style={{ color: '#94a3b8', fontSize: '0.8rem', textAlign: 'center', fontStyle: 'italic', margin: '0.75rem 0' }}>None</p>}
                                     </div>
                                 </div>
 
-                                {/* 80-89% Column */}
+                                {/* Strong Semantic Column */}
                                 <div style={{ display: 'flex', flexDirection: 'column', background: '#0f172a', borderRadius: '12px', border: '1px solid #334155', overflow: 'hidden' }}>
-                                    <div style={{ background: '#3b82f615', padding: '0.6rem', borderBottom: '2px solid #3b82f6', textAlign: 'center', fontWeight: 'bold', color: '#60a5fa', fontSize: '0.85rem' }}>80-89% Match</div>
+                                    <div style={{ background: '#3b82f615', padding: '0.6rem', borderBottom: '2px solid #3b82f6', textAlign: 'center', fontWeight: 'bold', color: '#60a5fa', fontSize: '0.85rem' }}>Strong (75-99%)</div>
                                     <div className="match-ledger-column" style={{ maxHeight: '210px', overflowY: 'auto', padding: '0.6rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                                        {allMatches.filter(s => s.score >= 0.8 && s.score < 0.9).length > 0 ? allMatches.filter(s => s.score >= 0.8 && s.score < 0.9).map((match, i) => (
-                                            <div key={i} style={{ background: '#1e293b', padding: '0.6rem', borderRadius: '8px', borderLeft: `4px solid #3b82f6`, boxShadow: '0 1px 2px rgba(0,0,0,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                <span style={{ fontWeight: '600', color: 'white', fontSize: '0.8rem' }}>{match.skill}</span>
-                                                <span style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#3b82f6' }}>{(match.score * 100).toFixed(0)}%</span>
+                                        {(partition.strong_semantic || []).length > 0 ? Object.entries((partition.strong_semantic || []).reduce((acc, curr) => {
+                                            const key = curr.similar_to || curr.skill;
+                                            if (!acc[key]) acc[key] = { matches: [], maxScore: curr.score };
+                                            acc[key].matches.push(curr.skill);
+                                            if (curr.score > acc[key].maxScore) acc[key].maxScore = curr.score;
+                                            return acc;
+                                        }, {})).map(([jdSkill, data], i) => (
+                                            <div key={i} style={{ background: '#1e293b', padding: '0.6rem', borderRadius: '8px', borderLeft: `4px solid #3b82f6`, boxShadow: '0 1px 2px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                    <span style={{ fontWeight: '600', color: 'white', fontSize: '0.8rem' }}>{jdSkill}</span>
+                                                    <span style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#3b82f6' }}>{data.maxScore ? (data.maxScore * 100).toFixed(0) : '85'}%</span>
+                                                </div>
+                                                <span style={{ fontSize: '0.65rem', color: '#94a3b8' }}>Matched: {data.matches.join(', ')}</span>
                                             </div>
                                         )) : <p style={{ color: '#94a3b8', fontSize: '0.8rem', textAlign: 'center', fontStyle: 'italic', margin: '0.75rem 0' }}>None</p>}
                                     </div>
                                 </div>
 
-                                {/* 70-79% Column */}
+                                {/* Moderate Semantic Column */}
                                 <div style={{ display: 'flex', flexDirection: 'column', background: '#0f172a', borderRadius: '12px', border: '1px solid #334155', overflow: 'hidden' }}>
-                                    <div style={{ background: '#f59e0b15', padding: '0.6rem', borderBottom: '2px solid #f59e0b', textAlign: 'center', fontWeight: 'bold', color: '#fbbf24', fontSize: '0.85rem' }}>70-79% Match</div>
+                                    <div style={{ background: '#f59e0b15', padding: '0.6rem', borderBottom: '2px solid #f59e0b', textAlign: 'center', fontWeight: 'bold', color: '#fbbf24', fontSize: '0.85rem' }}>Moderate (50-74%)</div>
                                     <div className="match-ledger-column" style={{ maxHeight: '210px', overflowY: 'auto', padding: '0.6rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                                        {allMatches.filter(s => s.score >= 0.7 && s.score < 0.8).length > 0 ? allMatches.filter(s => s.score >= 0.7 && s.score < 0.8).map((match, i) => (
-                                            <div key={i} style={{ background: '#1e293b', padding: '0.6rem', borderRadius: '8px', borderLeft: `4px solid #f59e0b`, boxShadow: '0 1px 2px rgba(0,0,0,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                <span style={{ fontWeight: '600', color: 'white', fontSize: '0.8rem' }}>{match.skill}</span>
-                                                <span style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#f59e0b' }}>{(match.score * 100).toFixed(0)}%</span>
+                                        {(partition.moderate_semantic || []).length > 0 ? Object.entries((partition.moderate_semantic || []).reduce((acc, curr) => {
+                                            const key = curr.similar_to || curr.skill;
+                                            if (!acc[key]) acc[key] = { matches: [], maxScore: curr.score };
+                                            acc[key].matches.push(curr.skill);
+                                            if (curr.score > acc[key].maxScore) acc[key].maxScore = curr.score;
+                                            return acc;
+                                        }, {})).map(([jdSkill, data], i) => (
+                                            <div key={i} style={{ background: '#1e293b', padding: '0.6rem', borderRadius: '8px', borderLeft: `4px solid #f59e0b`, boxShadow: '0 1px 2px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                    <span style={{ fontWeight: '600', color: 'white', fontSize: '0.8rem' }}>{jdSkill}</span>
+                                                    <span style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#f59e0b' }}>{data.maxScore ? (data.maxScore * 100).toFixed(0) : '65'}%</span>
+                                                </div>
+                                                <span style={{ fontSize: '0.65rem', color: '#94a3b8' }}>Matched: {data.matches.join(', ')}</span>
                                             </div>
                                         )) : <p style={{ color: '#94a3b8', fontSize: '0.8rem', textAlign: 'center', fontStyle: 'italic', margin: '0.75rem 0' }}>None</p>}
                                     </div>
                                 </div>
 
-                                {/* Below 70% Column */}
+                                {/* Missing Column */}
                                 <div style={{ display: 'flex', flexDirection: 'column', background: '#0f172a', borderRadius: '12px', border: '1px solid #334155', overflow: 'hidden' }}>
-                                    <div style={{ background: '#ef444415', padding: '0.6rem', borderBottom: '2px solid #ef4444', textAlign: 'center', fontWeight: 'bold', color: '#f87171', fontSize: '0.85rem' }}>Below 70%</div>
+                                    <div style={{ background: '#ef444415', padding: '0.6rem', borderBottom: '2px solid #ef4444', textAlign: 'center', fontWeight: 'bold', color: '#f87171', fontSize: '0.85rem' }}>Missing (0%)</div>
                                     <div className="match-ledger-column" style={{ maxHeight: '210px', overflowY: 'auto', padding: '0.6rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                                        {allMatches.filter(s => s.score < 0.7).length > 0 ? allMatches.filter(s => s.score < 0.7).map((match, i) => (
+                                        {(missingFromResume || []).length > 0 ? (missingFromResume || []).map((match, i) => (
                                             <div key={i} style={{ background: '#1e293b', padding: '0.6rem', borderRadius: '8px', borderLeft: `4px solid #ef4444`, boxShadow: '0 1px 2px rgba(0,0,0,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                <span style={{ fontWeight: '600', color: 'white', fontSize: '0.8rem' }}>{match.skill}</span>
-                                                <span style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#ef4444' }}>{(match.score * 100).toFixed(0)}%</span>
+                                                <span style={{ fontWeight: '600', color: 'white', fontSize: '0.8rem', opacity: 0.7 }}>{match.skill || match}</span>
+                                                <span style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#ef4444' }}>0%</span>
                                             </div>
                                         )) : <p style={{ color: '#94a3b8', fontSize: '0.8rem', textAlign: 'center', fontStyle: 'italic', margin: '0.75rem 0' }}>None</p>}
                                     </div>

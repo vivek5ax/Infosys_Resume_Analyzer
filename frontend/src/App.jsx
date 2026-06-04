@@ -30,7 +30,10 @@ import {
 } from 'lucide-react';
 
 function AppContent() {
-    const { user, logout, token } = useAuth();
+    // Authentication variables mocked as null for database-free and offline operation
+    const user = null;
+    const token = null;
+    const logout = () => {};
     const [resume, setResume] = useState(null);
     const [jdFile, setJdFile] = useState(null);
     const [jdText, setJdText] = useState("");
@@ -299,7 +302,6 @@ function AppContent() {
         { id: 'skill-matching', label: 'Skill Matching', icon: Workflow },
         { id: 'evidence', label: 'AI Playground', icon: Microscope },
         { id: 'visuals', label: 'Visualization', icon: BarChart3 },
-        { id: 'multi-resume', label: 'Multi Resume', icon: Files },
     ];
 
     if (isAdmin) {
@@ -1852,36 +1854,28 @@ function AppContent() {
                         })}
                     </nav>
 
-                    {extractedData && (
-                        <div className="sidebar-action-stack">
+                    <div className="sidebar-action-stack">
+                        {extractedData && (
                             <button className="sidebar-action-btn primary" onClick={handleExportPdf} disabled={isGeneratingPDF}>
                                 <FileDown size={16} />
                                 <span>{isGeneratingPDF ? 'Exporting...' : 'Export PDF'}</span>
                             </button>
-                        </div>
-                    )}
+                        )}
+                        <button
+                            className="sidebar-action-btn secondary"
+                            onClick={() => {
+                                setActivePage('multi-resume');
+                                if (isCompactScreen) setIsSidebarOpen(false);
+                            }}
+                        >
+                            <Files size={16} />
+                            <span>Multi Resume</span>
+                        </button>
+                    </div>
 
                     <div className="sidebar-mini-card">
                         <p className="doc-label">Current Domain</p>
                         <p className="doc-value">{selectedDomain?.label}</p>
-                    </div>
-
-                    <div className="sidebar-user-info">
-                        <div className="user-details">
-                            <p className="user-label">Logged in as</p>
-                            <p className="user-email">{user?.email}</p>
-                        </div>
-                        <button
-                            className="sidebar-logout-btn"
-                            onClick={() => {
-                                logout();
-                                setActivePage('landing');
-                            }}
-                            title="Logout"
-                        >
-                            <LogOut size={16} />
-                            <span>Logout</span>
-                        </button>
                     </div>
                 </aside>
 
@@ -1954,11 +1948,7 @@ function AppContent() {
 }
 
 function App() {
-    return (
-        <AuthGate>
-            <AppContent />
-        </AuthGate>
-    );
+    return <AppContent />;
 }
 
 export default App;

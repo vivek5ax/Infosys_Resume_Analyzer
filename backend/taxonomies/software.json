@@ -1,25 +1,30 @@
 {
     "_meta": {
         "domain": "software",
-        "version": "2.1-alias-enhanced",
-        "last_updated": "2026-03-11"
+        "version": "5.0-enterprise",
+        "last_updated": "2026-06-04"
     },
     "categories": {
         "Programming Languages": {
-            "weight": 1.3,
+            "weight": 1.5,
+            "matching_strictness": "strict",
             "skills": [
                 {
                     "name": "Python",
                     "aliases": [
+                        "Python3",
+                        "Py",
                         "Python 3",
-                        "Python3"
+                        "Py3"
                     ]
                 },
                 {
                     "name": "Java",
                     "aliases": [
+                        "Core Java",
                         "J2EE",
-                        "Core Java"
+                        "Java SE",
+                        "Java EE"
                     ]
                 },
                 {
@@ -27,13 +32,20 @@
                     "aliases": [
                         "JS",
                         "ES6",
-                        "Vanilla JS"
+                        "ES2015",
+                        "ECMAScript"
                     ]
                 },
                 {
                     "name": "TypeScript",
                     "aliases": [
                         "TS"
+                    ]
+                },
+                {
+                    "name": "C",
+                    "aliases": [
+                        "C Language"
                     ]
                 },
                 {
@@ -47,17 +59,14 @@
                     "name": "C#",
                     "aliases": [
                         "C Sharp",
-                        ".NET C#"
+                        "CSharp"
                     ]
-                },
-                {
-                    "name": "Ruby",
-                    "aliases": []
                 },
                 {
                     "name": "Go",
                     "aliases": [
-                        "Golang"
+                        "Golang",
+                        "Go Language"
                     ]
                 },
                 {
@@ -65,39 +74,301 @@
                     "aliases": []
                 },
                 {
+                    "name": "Kotlin",
+                    "aliases": []
+                },
+                {
+                    "name": "Swift",
+                    "aliases": []
+                },
+                {
                     "name": "PHP",
                     "aliases": []
                 },
                 {
+                    "name": "Ruby",
+                    "aliases": [
+                        "Ruby on Rails"
+                    ]
+                },
+                {
                     "name": "SQL",
                     "aliases": [
+                        "TSQL",
+                        "PLSQL",
                         "Structured Query Language"
                     ]
                 },
                 {
-                    "name": "HTML",
+                    "name": "Scala",
+                    "aliases": []
+                },
+                {
+                    "name": "Haskell",
+                    "aliases": []
+                },
+                {
+                    "name": "Lua",
+                    "aliases": []
+                },
+                {
+                    "name": "Perl",
+                    "aliases": []
+                },
+                {
+                    "name": "R",
                     "aliases": [
-                        "HTML5"
+                        "R Language"
                     ]
                 },
                 {
-                    "name": "CSS",
+                    "name": "MATLAB",
+                    "aliases": []
+                },
+                {
+                    "name": "Shell Scripting",
                     "aliases": [
-                        "CSS3"
+                        "Bash",
+                        "Shell",
+                        "Bash Scripting"
+                    ]
+                },
+                {
+                    "name": "PowerShell",
+                    "aliases": []
+                },
+                {
+                    "name": "Julia",
+                    "aliases": []
+                },
+                {
+                    "name": "Elixir",
+                    "aliases": []
+                },
+                {
+                    "name": "Clojure",
+                    "aliases": []
+                },
+                {
+                    "name": "F#",
+                    "aliases": [
+                        "F Sharp"
+                    ]
+                },
+                {
+                    "name": "Objective-C",
+                    "aliases": []
+                },
+                {
+                    "name": "Dart",
+                    "aliases": []
+                },
+                {
+                    "name": "Solidity",
+                    "aliases": []
+                }
+            ]
+        },
+        "Frontend Development": {
+            "weight": 1.4,
+            "skills": [
+                {
+                    "name": "React",
+                    "aliases": [
+                        "ReactJS",
+                        "React.js",
+                        "ReactJS",
+                        "React 18"
+                    ]
+                },
+                {
+                    "name": "Angular",
+                    "aliases": [
+                        "AngularJS",
+                        "Angular 2+",
+                        "Angular 17"
+                    ]
+                },
+                {
+                    "name": "Vue.js",
+                    "aliases": [
+                        "Vue",
+                        "VueJS",
+                        "Vue 3"
+                    ]
+                },
+                {
+                    "name": "Next.js",
+                    "aliases": [
+                        "NextJS",
+                        "NextJS 13",
+                        "NextJS 14"
+                    ]
+                },
+                {
+                    "name": "Svelte",
+                    "aliases": [
+                        "SvelteKit"
+                    ]
+                },
+                {
+                    "name": "Redux",
+                    "aliases": [
+                        "Redux Toolkit",
+                        "Redux Saga"
+                    ]
+                },
+                {
+                    "name": "Tailwind CSS",
+                    "aliases": [
+                        "Tailwind",
+                        "Tailwind CSS Framework"
+                    ]
+                },
+                {
+                    "name": "Bootstrap",
+                    "aliases": [
+                        "Bootstrap 5",
+                        "Bootstrap 4"
+                    ]
+                },
+                {
+                    "name": "Webpack",
+                    "aliases": [
+                        "Webpack 5",
+                        "Module Bundler"
+                    ]
+                },
+                {
+                    "name": "Vite",
+                    "aliases": [
+                        "Vite Build Tool"
+                    ]
+                },
+                {
+                    "name": "Nuxt.js",
+                    "aliases": [
+                        "Nuxt",
+                        "NuxtJS"
+                    ]
+                },
+                {
+                    "name": "Gatsby",
+                    "aliases": [
+                        "GatsbyJS"
+                    ]
+                },
+                {
+                    "name": "Ember.js",
+                    "aliases": [
+                        "Ember",
+                        "EmberJS"
+                    ]
+                },
+                {
+                    "name": "Backbone.js",
+                    "aliases": [
+                        "Backbone"
+                    ]
+                },
+                {
+                    "name": "jQuery",
+                    "aliases": []
+                },
+                {
+                    "name": "Material-UI",
+                    "aliases": [
+                        "MUI",
+                        "Material UI"
+                    ]
+                },
+                {
+                    "name": "Ant Design",
+                    "aliases": [
+                        "AntD"
+                    ]
+                },
+                {
+                    "name": "Chakra UI",
+                    "aliases": []
+                },
+                {
+                    "name": "SASS",
+                    "aliases": [
+                        "SCSS"
+                    ]
+                },
+                {
+                    "name": "LESS",
+                    "aliases": []
+                },
+                {
+                    "name": "PostCSS",
+                    "aliases": []
+                },
+                {
+                    "name": "Responsive Design",
+                    "aliases": [
+                        "Mobile First",
+                        "Responsive Web Design"
+                    ]
+                },
+                {
+                    "name": "CSS Grid",
+                    "aliases": [
+                        "Grid Layout"
+                    ]
+                },
+                {
+                    "name": "Flexbox",
+                    "aliases": [
+                        "CSS Flexbox"
+                    ]
+                },
+                {
+                    "name": "HTML5",
+                    "aliases": [
+                        "HTML 5"
+                    ]
+                },
+                {
+                    "name": "CSS3",
+                    "aliases": [
+                        "CSS 3"
                     ]
                 }
             ]
         },
         "Backend Development": {
-            "weight": 1.35,
+            "weight": 1.4,
             "skills": [
                 {
+                    "name": "Node.js",
+                    "aliases": [
+                        "NodeJS",
+                        "Node",
+                        "Nodejs"
+                    ]
+                },
+                {
+                    "name": "Express.js",
+                    "aliases": [
+                        "Express",
+                        "ExpressJS"
+                    ]
+                },
+                {
                     "name": "Django",
-                    "aliases": []
+                    "aliases": [
+                        "Django REST Framework",
+                        "DRF"
+                    ]
                 },
                 {
                     "name": "Flask",
-                    "aliases": []
+                    "aliases": [
+                        "Flask RESTful"
+                    ]
                 },
                 {
                     "name": "FastAPI",
@@ -106,29 +377,65 @@
                 {
                     "name": "Spring Boot",
                     "aliases": [
-                        "Spring"
+                        "Spring",
+                        "Spring Framework"
                     ]
                 },
                 {
-                    "name": "Node.js",
-                    "aliases": [
-                        "NodeJS",
-                        "Node"
-                    ]
-                },
-                {
-                    "name": "Express",
-                    "aliases": [
-                        "Express.js",
-                        "ExpressJS"
-                    ]
-                },
-                {
-                    "name": "ASP.NET",
+                    "name": "ASP.NET Core",
                     "aliases": [
                         ".NET Core",
-                        ".NET"
+                        "ASPNET Core"
                     ]
+                },
+                {
+                    "name": "GraphQL",
+                    "aliases": [
+                        "Apollo GraphQL",
+                        "GraphQL API"
+                    ]
+                },
+                {
+                    "name": "REST API",
+                    "aliases": [
+                        "RESTful API",
+                        "REST"
+                    ]
+                },
+                {
+                    "name": "Microservices",
+                    "aliases": [
+                        "Microservice Architecture"
+                    ]
+                },
+                {
+                    "name": "NestJS",
+                    "aliases": [
+                        "Nest",
+                        "Nest JS"
+                    ]
+                },
+                {
+                    "name": "Koa.js",
+                    "aliases": [
+                        "Koa",
+                        "Koa JS"
+                    ]
+                },
+                {
+                    "name": "Hapi.js",
+                    "aliases": [
+                        "Hapi",
+                        "Hapi JS"
+                    ]
+                },
+                {
+                    "name": "Laravel",
+                    "aliases": []
+                },
+                {
+                    "name": "Symfony",
+                    "aliases": []
                 },
                 {
                     "name": "Ruby on Rails",
@@ -138,115 +445,1001 @@
                     ]
                 },
                 {
+                    "name": "CakePHP",
+                    "aliases": []
+                },
+                {
+                    "name": "Gin",
+                    "aliases": [
+                        "Gin Framework"
+                    ]
+                },
+                {
+                    "name": "Echo",
+                    "aliases": [
+                        "Echo Framework"
+                    ]
+                },
+                {
+                    "name": "Fiber",
+                    "aliases": [
+                        "Fiber Framework"
+                    ]
+                },
+                {
+                    "name": "Axios",
+                    "aliases": []
+                },
+                {
+                    "name": "JWT",
+                    "aliases": [
+                        "JSON Web Tokens"
+                    ]
+                },
+                {
+                    "name": "OAuth",
+                    "aliases": [
+                        "OAuth2",
+                        "OpenID Connect"
+                    ]
+                },
+                {
+                    "name": "API Gateway",
+                    "aliases": [
+                        "API Management"
+                    ]
+                }
+            ]
+        },
+        "Databases": {
+            "weight": 1.35,
+            "matching_strictness": "moderate",
+            "skills": [
+                {
+                    "name": "MySQL",
+                    "aliases": [
+                        "MySQL Server",
+                        "MariaDB"
+                    ]
+                },
+                {
                     "name": "PostgreSQL",
                     "aliases": [
-                        "Postgres"
+                        "Postgres",
+                        "PostgreSQL Server"
                     ]
                 },
                 {
                     "name": "MongoDB",
                     "aliases": [
-                        "Mongo"
+                        "Mongo",
+                        "Mongo DB"
                     ]
                 },
                 {
                     "name": "Redis",
-                    "aliases": []
-                },
-                {
-                    "name": "REST API",
                     "aliases": [
-                        "RESTful API",
-                        "REST",
-                        "RESTful Services",
-                        "RESTful Web Services"
+                        "Redis Cache"
                     ]
                 },
                 {
-                    "name": "GraphQL",
+                    "name": "Oracle Database",
+                    "aliases": [
+                        "Oracle",
+                        "Oracle DB"
+                    ]
+                },
+                {
+                    "name": "Microsoft SQL Server",
+                    "aliases": [
+                        "MSSQL",
+                        "SQL Server"
+                    ]
+                },
+                {
+                    "name": "Cassandra",
+                    "aliases": [
+                        "Apache Cassandra"
+                    ]
+                },
+                {
+                    "name": "DynamoDB",
+                    "aliases": [
+                        "Amazon DynamoDB"
+                    ]
+                },
+                {
+                    "name": "SQLite",
                     "aliases": []
+                },
+                {
+                    "name": "Elasticsearch",
+                    "aliases": [
+                        "Elastic Search",
+                        "ELK Stack"
+                    ]
+                },
+                {
+                    "name": "Firebase",
+                    "aliases": [
+                        "Firebase Database"
+                    ]
+                },
+                {
+                    "name": "Couchbase",
+                    "aliases": []
+                },
+                {
+                    "name": "Neo4j",
+                    "aliases": [
+                        "Neo4j Graph Database"
+                    ]
+                },
+                {
+                    "name": "InfluxDB",
+                    "aliases": [
+                        "Time Series Database"
+                    ]
+                },
+                {
+                    "name": "Snowflake",
+                    "aliases": [
+                        "Snowflake Data Warehouse"
+                    ]
+                },
+                {
+                    "name": "BigQuery",
+                    "aliases": [
+                        "Google BigQuery"
+                    ]
+                },
+                {
+                    "name": "Amazon RDS",
+                    "aliases": [
+                        "AWS RDS",
+                        "Relational Database Service"
+                    ]
+                },
+                {
+                    "name": "Amazon Redshift",
+                    "aliases": [
+                        "AWS Redshift"
+                    ]
+                },
+                {
+                    "name": "Database Optimization",
+                    "aliases": [
+                        "SQL Tuning",
+                        "Query Optimization"
+                    ]
+                },
+                {
+                    "name": "Database Design",
+                    "aliases": [
+                        "Schema Design",
+                        "Database Architecture"
+                    ]
                 }
             ]
         },
-        "Frontend Development": {
-            "weight": 1.05,
+        "Cloud & Infrastructure": {
+            "weight": 1.5,
             "skills": [
                 {
-                    "name": "React",
+                    "name": "AWS",
                     "aliases": [
-                        "React.js",
-                        "ReactJS"
+                        "Amazon Web Services",
+                        "EC2",
+                        "S3",
+                        "Lambda"
                     ]
                 },
                 {
-                    "name": "Angular",
+                    "name": "Microsoft Azure",
                     "aliases": [
-                        "Angular.js",
-                        "AngularJS"
+                        "Azure"
                     ]
                 },
                 {
-                    "name": "Vue.js",
+                    "name": "Google Cloud Platform",
                     "aliases": [
-                        "Vue",
-                        "VueJS"
+                        "GCP"
                     ]
                 },
                 {
-                    "name": "Next.js",
+                    "name": "Docker",
                     "aliases": [
-                        "Next",
-                        "NextJS"
+                        "Containers"
                     ]
                 },
                 {
-                    "name": "Tailwind CSS",
+                    "name": "Kubernetes",
                     "aliases": [
-                        "Tailwind"
+                        "K8s"
                     ]
                 },
                 {
-                    "name": "Redux",
+                    "name": "Terraform",
+                    "aliases": [
+                        "IaC"
+                    ]
+                },
+                {
+                    "name": "Linux",
+                    "aliases": [
+                        "Ubuntu",
+                        "Linux Administration",
+                        "Linux System Administration"
+                    ]
+                },
+                {
+                    "name": "Git",
+                    "aliases": [
+                        "Version Control",
+                        "Git Version Control",
+                        "GitHub",
+                        "GitLab"
+                    ]
+                },
+                {
+                    "name": "CI/CD",
+                    "aliases": [
+                        "Continuous Integration",
+                        "Continuous Deployment",
+                        "CI CD Pipeline"
+                    ]
+                },
+                {
+                    "name": "Jenkins",
+                    "aliases": [
+                        "Jenkins CI",
+                        "Jenkins Pipeline"
+                    ]
+                },
+                {
+                    "name": "GitHub Actions",
+                    "aliases": [
+                        "GitHub Actions CI",
+                        "GH Actions"
+                    ]
+                },
+                {
+                    "name": "GitLab CI",
+                    "aliases": [
+                        "GitLab CI/CD"
+                    ]
+                },
+                {
+                    "name": "Ansible",
+                    "aliases": [
+                        "Configuration Management",
+                        "Ansible Automation"
+                    ]
+                },
+                {
+                    "name": "Puppet",
+                    "aliases": [
+                        "Puppet Configuration Management"
+                    ]
+                },
+                {
+                    "name": "Chef",
+                    "aliases": [
+                        "Chef Configuration Management"
+                    ]
+                },
+                {
+                    "name": "Nginx",
+                    "aliases": [
+                        "Nginx Server",
+                        "Reverse Proxy"
+                    ]
+                },
+                {
+                    "name": "Apache",
+                    "aliases": [
+                        "Apache HTTP Server",
+                        "Apache Web Server"
+                    ]
+                },
+                {
+                    "name": "Vagrant",
+                    "aliases": [
+                        "Vagrant Virtualization"
+                    ]
+                },
+                {
+                    "name": "Packer",
+                    "aliases": [
+                        "HashiCorp Packer"
+                    ]
+                },
+                {
+                    "name": "Consul",
+                    "aliases": [
+                        "Service Discovery"
+                    ]
+                },
+                {
+                    "name": "Prometheus",
+                    "aliases": [
+                        "Monitoring",
+                        "Metrics"
+                    ]
+                },
+                {
+                    "name": "Grafana",
+                    "aliases": [
+                        "Visualization",
+                        "Monitoring Dashboard"
+                    ]
+                },
+                {
+                    "name": "ELK Stack",
+                    "aliases": [
+                        "Elasticsearch Logstash Kibana",
+                        "Elastic Stack"
+                    ]
+                },
+                {
+                    "name": "Cloudflare",
+                    "aliases": [
+                        "CDN",
+                        "DNS"
+                    ]
+                },
+                {
+                    "name": "Heroku",
+                    "aliases": [
+                        "PaaS",
+                        "Platform as a Service"
+                    ]
+                },
+                {
+                    "name": "DigitalOcean",
+                    "aliases": [
+                        "DO",
+                        "Digital Ocean"
+                    ]
+                },
+                {
+                    "name": "Serverless",
+                    "aliases": [
+                        "Serverless Architecture",
+                        "FaaS"
+                    ]
+                }
+            ]
+        },
+        "DevOps & CI/CD": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Jenkins",
+                    "aliases": [
+                        "Jenkins CI",
+                        "Jenkins Pipeline"
+                    ]
+                },
+                {
+                    "name": "GitHub Actions",
+                    "aliases": [
+                        "GitHub Actions CI",
+                        "GH Actions"
+                    ]
+                },
+                {
+                    "name": "GitLab CI",
+                    "aliases": [
+                        "GitLab CI/CD",
+                        "GitLab Runner"
+                    ]
+                },
+                {
+                    "name": "Azure DevOps",
+                    "aliases": [
+                        "Azure Pipelines",
+                        "Azure DevOps Server"
+                    ]
+                },
+                {
+                    "name": "Ansible",
+                    "aliases": [
+                        "Ansible Automation",
+                        "Ansible Playbook"
+                    ]
+                },
+                {
+                    "name": "ArgoCD",
+                    "aliases": [
+                        "Argo CD",
+                        "GitOps"
+                    ]
+                },
+                {
+                    "name": "CircleCI",
                     "aliases": []
                 },
                 {
-                    "name": "Webpack",
+                    "name": "TravisCI",
                     "aliases": []
                 },
                 {
-                    "name": "Bootstrap",
+                    "name": "Bitbucket",
+                    "aliases": [
+                        "Bitbucket Pipelines"
+                    ]
+                },
+                {
+                    "name": "Puppet",
+                    "aliases": [
+                        "Puppet Configuration Management"
+                    ]
+                },
+                {
+                    "name": "Chef",
+                    "aliases": [
+                        "Chef Configuration Management"
+                    ]
+                },
+                {
+                    "name": "SaltStack",
+                    "aliases": [
+                        "Salt",
+                        "Salt Configuration Management"
+                    ]
+                },
+                {
+                    "name": "Nagios",
+                    "aliases": [
+                        "Nagios Monitoring"
+                    ]
+                },
+                {
+                    "name": "Zabbix",
+                    "aliases": [
+                        "Zabbix Monitoring"
+                    ]
+                },
+                {
+                    "name": "Datadog",
+                    "aliases": [
+                        "Datadog Monitoring"
+                    ]
+                },
+                {
+                    "name": "New Relic",
+                    "aliases": []
+                },
+                {
+                    "name": "Splunk",
+                    "aliases": [
+                        "Log Analysis",
+                        "Splunk Enterprise"
+                    ]
+                },
+                {
+                    "name": "Logstash",
+                    "aliases": []
+                },
+                {
+                    "name": "Kibana",
+                    "aliases": []
+                },
+                {
+                    "name": "Fluentd",
+                    "aliases": []
+                },
+                {
+                    "name": "SonarQube",
+                    "aliases": [
+                        "Code Quality",
+                        "Static Analysis"
+                    ]
+                },
+                {
+                    "name": "Infrastructure Monitoring",
+                    "aliases": [
+                        "Infrastructure Observability",
+                        "System Monitoring"
+                    ]
+                }
+            ]
+        },
+        "Business Intelligence & Visualization": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "Microsoft Power BI",
+                    "aliases": [
+                        "Power BI",
+                        "DAX",
+                        "Power Query"
+                    ]
+                },
+                {
+                    "name": "Tableau",
+                    "aliases": [
+                        "Tableau Desktop",
+                        "Tableau Server"
+                    ]
+                },
+                {
+                    "name": "Qlik Sense",
+                    "aliases": [
+                        "QlikView",
+                        "Qlik"
+                    ]
+                },
+                {
+                    "name": "Looker",
+                    "aliases": [
+                        "Looker Studio",
+                        "Google Looker"
+                    ]
+                },
+                {
+                    "name": "SSRS",
+                    "aliases": [
+                        "SQL Server Reporting Services"
+                    ]
+                },
+                {
+                    "name": "SSIS",
+                    "aliases": [
+                        "SQL Server Integration Services"
+                    ]
+                },
+                {
+                    "name": "SSAS",
+                    "aliases": [
+                        "SQL Server Analysis Services"
+                    ]
+                },
+                {
+                    "name": "Spotfire",
+                    "aliases": [
+                        "TIBCO Spotfire"
+                    ]
+                },
+                {
+                    "name": "Domo",
+                    "aliases": []
+                },
+                {
+                    "name": "Sisense",
+                    "aliases": []
+                },
+                {
+                    "name": "MicroStrategy",
+                    "aliases": []
+                },
+                {
+                    "name": "Google Data Studio",
+                    "aliases": [
+                        "Looker Studio"
+                    ]
+                },
+                {
+                    "name": "Apache Superset",
+                    "aliases": []
+                },
+                {
+                    "name": "Metabase",
+                    "aliases": []
+                },
+                {
+                    "name": "Grafana",
+                    "aliases": [
+                        "Grafana Dashboards"
+                    ]
+                },
+                {
+                    "name": "Kibana",
+                    "aliases": []
+                },
+                {
+                    "name": "Data Visualization",
+                    "aliases": [
+                        "Data Viz",
+                        "Visualization"
+                    ]
+                },
+                {
+                    "name": "Dashboard Development",
+                    "aliases": []
+                },
+                {
+                    "name": "ETL",
+                    "aliases": [
+                        "Extract Transform Load",
+                        "Data Integration"
+                    ]
+                },
+                {
+                    "name": "Data Warehousing",
+                    "aliases": [
+                        "Data Warehouse",
+                        "DW"
+                    ]
+                },
+                {
+                    "name": "Business Analytics",
+                    "aliases": [
+                        "BA",
+                        "Business Analysis"
+                    ]
+                },
+                {
+                    "name": "Statistical Analysis",
                     "aliases": []
                 }
             ]
         },
-        "Data Science & AI": {
-            "weight": 1.15,
+        "Data Engineering & Big Data": {
+            "weight": 1.5,
+            "skills": [
+                {
+                    "name": "Apache Spark",
+                    "aliases": [
+                        "Spark",
+                        "PySpark",
+                        "Spark SQL"
+                    ]
+                },
+                {
+                    "name": "Databricks",
+                    "aliases": [
+                        "Azure Databricks"
+                    ]
+                },
+                {
+                    "name": "Apache Kafka",
+                    "aliases": [
+                        "Kafka",
+                        "Kafka Streams"
+                    ]
+                },
+                {
+                    "name": "Apache Airflow",
+                    "aliases": [
+                        "Airflow",
+                        "Workflow Orchestration"
+                    ]
+                },
+                {
+                    "name": "Apache Flink",
+                    "aliases": [
+                        "Flink",
+                        "Stream Processing"
+                    ]
+                },
+                {
+                    "name": "Snowflake",
+                    "aliases": [
+                        "Snowflake Data Warehouse",
+                        "Snowflake DB"
+                    ]
+                },
+                {
+                    "name": "BigQuery",
+                    "aliases": [
+                        "Google BigQuery",
+                        "GCP BigQuery"
+                    ]
+                },
+                {
+                    "name": "Hadoop",
+                    "aliases": [
+                        "HDFS",
+                        "MapReduce"
+                    ]
+                },
+                {
+                    "name": "Hive",
+                    "aliases": [
+                        "Apache Hive"
+                    ]
+                },
+                {
+                    "name": "Presto",
+                    "aliases": [
+                        "Presto SQL",
+                        "Trino"
+                    ]
+                },
+                {
+                    "name": "Apache Cassandra",
+                    "aliases": [
+                        "Cassandra",
+                        "NoSQL Database"
+                    ]
+                },
+                {
+                    "name": "HBase",
+                    "aliases": []
+                },
+                {
+                    "name": "MongoDB",
+                    "aliases": [
+                        "Mongo",
+                        "NoSQL"
+                    ]
+                },
+                {
+                    "name": "Data Pipeline",
+                    "aliases": [
+                        "ETL Pipeline",
+                        "Data Pipeline Architecture"
+                    ]
+                },
+                {
+                    "name": "Stream Processing",
+                    "aliases": [
+                        "Real-time Processing",
+                        "Streaming"
+                    ]
+                },
+                {
+                    "name": "Batch Processing",
+                    "aliases": []
+                },
+                {
+                    "name": "Data Lake",
+                    "aliases": [
+                        "Data Lake Architecture",
+                        "Lakehouse"
+                    ]
+                },
+                {
+                    "name": "Delta Lake",
+                    "aliases": []
+                },
+                {
+                    "name": "Apache Parquet",
+                    "aliases": [
+                        "Parquet Format"
+                    ]
+                },
+                {
+                    "name": "Apache Avro",
+                    "aliases": []
+                },
+                {
+                    "name": "ORC",
+                    "aliases": [
+                        "Apache ORC"
+                    ]
+                },
+                {
+                    "name": "Amazon Redshift",
+                    "aliases": [
+                        "Redshift",
+                        "AWS Redshift"
+                    ]
+                },
+                {
+                    "name": "ETL",
+                    "aliases": [
+                        "Extract Transform Load",
+                        "Data Integration"
+                    ]
+                },
+                {
+                    "name": "Data Pipelines",
+                    "aliases": [
+                        "Data Pipeline Architecture",
+                        "ETL Pipeline"
+                    ]
+                }
+            ]
+        },
+        "AI ML & Generative AI": {
+            "weight": 1.6,
             "skills": [
                 {
                     "name": "Machine Learning",
                     "aliases": [
                         "ML",
-                        "Machine-Learning"
+                        "Machine Learning Algorithms",
+                        "ML Models"
                     ]
                 },
                 {
                     "name": "Deep Learning",
                     "aliases": [
                         "DL",
-                        "Neural Networks"
+                        "Deep Neural Networks"
                     ]
                 },
                 {
-                    "name": "Natural Language Processing",
+                    "name": "NLP",
                     "aliases": [
-                        "NLP"
+                        "Natural Language Processing",
+                        "Text Analytics",
+                        "Computational Linguistics"
                     ]
                 },
                 {
                     "name": "Computer Vision",
                     "aliases": [
-                        "CV"
+                        "CV",
+                        "Image Processing",
+                        "Object Detection"
                     ]
+                },
+                {
+                    "name": "TensorFlow",
+                    "aliases": [
+                        "TF",
+                        "Google TensorFlow"
+                    ]
+                },
+                {
+                    "name": "PyTorch",
+                    "aliases": [
+                        "Torch",
+                        "Facebook PyTorch"
+                    ]
+                },
+                {
+                    "name": "Scikit-learn",
+                    "aliases": [
+                        "sklearn",
+                        "scikit-learn"
+                    ]
+                },
+                {
+                    "name": "Keras",
+                    "aliases": []
+                },
+                {
+                    "name": "Generative AI",
+                    "aliases": [
+                        "GenAI",
+                        "Generative Models"
+                    ]
+                },
+                {
+                    "name": "Large Language Models",
+                    "aliases": [
+                        "LLM",
+                        "Language Models",
+                        "GPT",
+                        "BERT"
+                    ]
+                },
+                {
+                    "name": "LLaMA",
+                    "aliases": [
+                        "Meta LLaMA",
+                        "Llama 2",
+                        "Llama 3"
+                    ]
+                },
+                {
+                    "name": "ChatGPT",
+                    "aliases": [
+                        "GPT-4",
+                        "GPT-3",
+                        "OpenAI API"
+                    ]
+                },
+                {
+                    "name": "LangChain",
+                    "aliases": [
+                        "Lang Chain"
+                    ]
+                },
+                {
+                    "name": "Hugging Face",
+                    "aliases": [
+                        "Transformers",
+                        "HF Hub"
+                    ]
+                },
+                {
+                    "name": "OpenAI",
+                    "aliases": [
+                        "OpenAI API",
+                        "GPT API"
+                    ]
+                },
+                {
+                    "name": "Anthropic",
+                    "aliases": [
+                        "Claude",
+                        "Claude AI"
+                    ]
+                },
+                {
+                    "name": "Stable Diffusion",
+                    "aliases": [
+                        "SD",
+                        "Image Generation"
+                    ]
+                },
+                {
+                    "name": "Midjourney",
+                    "aliases": [
+                        "AI Art Generation"
+                    ]
+                },
+                {
+                    "name": "Data Science",
+                    "aliases": [
+                        "DS",
+                        "Data Analytics",
+                        "Data Analysis"
+                    ]
+                },
+                {
+                    "name": "Feature Engineering",
+                    "aliases": []
+                },
+                {
+                    "name": "Model Deployment",
+                    "aliases": [
+                        "ML Deployment",
+                        "MLOps"
+                    ]
+                },
+                {
+                    "name": "MLOps",
+                    "aliases": [
+                        "Machine Learning Operations",
+                        "ML Ops"
+                    ]
+                },
+                {
+                    "name": "AI Ethics",
+                    "aliases": [
+                        "Responsible AI",
+                        "AI Safety"
+                    ]
+                },
+                {
+                    "name": "Prompt Engineering",
+                    "aliases": [
+                        "Prompt Design",
+                        "Prompt Optimization"
+                    ]
+                },
+                {
+                    "name": "RAG",
+                    "aliases": [
+                        "Retrieval Augmented Generation",
+                        "Vector Database"
+                    ]
+                },
+                {
+                    "name": "Vector Database",
+                    "aliases": [
+                        "Vector Search",
+                        "Embedding Database"
+                    ]
+                },
+                {
+                    "name": "Reinforcement Learning",
+                    "aliases": [
+                        "RL"
+                    ]
+                },
+                {
+                    "name": "Transfer Learning",
+                    "aliases": []
+                },
+                {
+                    "name": "Fine-tuning",
+                    "aliases": [
+                        "Model Fine-tuning",
+                        "LLM Fine-tuning"
+                    ]
+                }
+                ,
+                {
+                    "name": "Computer Vision",
+                    "aliases": []
                 },
                 {
                     "name": "TensorFlow",
@@ -259,132 +1452,304 @@
                     "aliases": []
                 },
                 {
-                    "name": "Scikit-learn",
+                    "name": "Scikit Learn",
                     "aliases": [
-                        "Sklearn"
+                        "sklearn"
                     ]
-                },
-                {
-                    "name": "Pandas",
-                    "aliases": []
-                },
-                {
-                    "name": "NumPy",
-                    "aliases": []
-                },
-                {
-                    "name": "Keras",
-                    "aliases": []
                 },
                 {
                     "name": "Large Language Models",
                     "aliases": [
                         "LLM",
-                        "LLMs",
-                        "Generative AI"
+                        "GenAI"
                     ]
                 },
                 {
-                    "name": "BERT",
+                    "name": "OpenAI API",
+                    "aliases": [
+                        "GPT API"
+                    ]
+                },
+                {
+                    "name": "Azure OpenAI",
+                    "aliases": []
+                },
+                {
+                    "name": "LangChain",
+                    "aliases": []
+                },
+                {
+                    "name": "LangGraph",
+                    "aliases": []
+                },
+                {
+                    "name": "LlamaIndex",
+                    "aliases": []
+                },
+                {
+                    "name": "Prompt Engineering",
+                    "aliases": []
+                },
+                {
+                    "name": "RAG",
+                    "aliases": [
+                        "Retrieval Augmented Generation"
+                    ]
+                },
+                {
+                    "name": "AI Agents",
+                    "aliases": [
+                        "Agentic AI"
+                    ]
+                },
+                {
+                    "name": "MCP",
+                    "aliases": [
+                        "Model Context Protocol"
+                    ]
+                },
+                {
+                    "name": "Pinecone",
+                    "aliases": []
+                },
+                {
+                    "name": "FAISS",
                     "aliases": []
                 }
             ]
         },
-        "Data Analysis & Visualization": {
-            "weight": 1.0,
+        "MLOps": {
+            "weight": 1.5,
             "skills": [
                 {
-                    "name": "Matplotlib",
+                    "name": "MLflow",
                     "aliases": []
                 },
                 {
-                    "name": "Seaborn",
+                    "name": "Kubeflow",
                     "aliases": []
                 },
                 {
-                    "name": "Tableau",
+                    "name": "SageMaker",
                     "aliases": []
                 },
                 {
-                    "name": "Power BI",
-                    "aliases": [
-                        "PowerBI"
-                    ]
-                },
-                {
-                    "name": "Data Cleaning",
-                    "aliases": [
-                        "Data Wrangling"
-                    ]
-                },
-                {
-                    "name": "Statistics",
-                    "aliases": [
-                        "Statistical Analysis"
-                    ]
-                },
-                {
-                    "name": "Probability",
+                    "name": "Vertex AI",
                     "aliases": []
                 },
                 {
-                    "name": "R Programming",
+                    "name": "Azure ML",
+                    "aliases": []
+                }
+            ]
+        },
+        "RPA & Hyperautomation": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "UiPath",
                     "aliases": [
-                        "R Language",
-                        "R"
+                        "UiPath Studio",
+                        "UiPath Orchestrator"
                     ]
                 },
                 {
-                    "name": "Excel",
+                    "name": "Microsoft Power Automate",
                     "aliases": [
-                        "MS Excel"
+                        "Power Automate"
+                    ]
+                },
+                {
+                    "name": "Automation Anywhere",
+                    "aliases": []
+                },
+                {
+                    "name": "Blue Prism",
+                    "aliases": []
+                },
+                {
+                    "name": "RPA",
+                    "aliases": [
+                        "Robotic Process Automation"
                     ]
                 }
             ]
         },
-        "DevOps & Cloud": {
+        "Test Automation & QA": {
             "weight": 1.4,
             "skills": [
                 {
-                    "name": "AWS",
+                    "name": "Selenium",
                     "aliases": [
-                        "Amazon Web Services"
+                        "Selenium WebDriver"
                     ]
                 },
                 {
-                    "name": "Azure",
-                    "aliases": [
-                        "Microsoft Azure"
-                    ]
-                },
-                {
-                    "name": "Google Cloud",
-                    "aliases": [
-                        "GCP",
-                        "Google Cloud Platform"
-                    ]
-                },
-                {
-                    "name": "Docker",
-                    "aliases": [
-                        "Docker Containers"
-                    ]
-                },
-                {
-                    "name": "Kubernetes",
-                    "aliases": [
-                        "K8s"
-                    ]
-                },
-                {
-                    "name": "Jenkins",
+                    "name": "Playwright",
                     "aliases": []
                 },
                 {
-                    "name": "Git",
+                    "name": "Cypress",
+                    "aliases": []
+                },
+                {
+                    "name": "Appium",
+                    "aliases": []
+                },
+                {
+                    "name": "JUnit",
+                    "aliases": []
+                },
+                {
+                    "name": "TestNG",
+                    "aliases": []
+                },
+                {
+                    "name": "Postman",
                     "aliases": [
-                        "Version Control"
+                        "API Testing"
                     ]
+                },
+                {
+                    "name": "JMeter",
+                    "aliases": [
+                        "Performance Testing"
+                    ]
+                }
+            ]
+        },
+        "Security & DevSecOps": {
+            "weight": 1.45,
+            "skills": [
+                {
+                    "name": "OAuth 2.0",
+                    "aliases": []
+                },
+                {
+                    "name": "JWT",
+                    "aliases": [
+                        "JSON Web Token"
+                    ]
+                },
+                {
+                    "name": "OWASP",
+                    "aliases": []
+                },
+                {
+                    "name": "SonarQube",
+                    "aliases": []
+                },
+                {
+                    "name": "Penetration Testing",
+                    "aliases": []
+                },
+                {
+                    "name": "Cybersecurity",
+                    "aliases": []
+                }
+            ]
+        },
+        "Observability & Monitoring": {
+            "weight": 1.35,
+            "skills": [
+                {
+                    "name": "Prometheus",
+                    "aliases": []
+                },
+                {
+                    "name": "Grafana",
+                    "aliases": []
+                },
+                {
+                    "name": "Splunk",
+                    "aliases": []
+                },
+                {
+                    "name": "ELK Stack",
+                    "aliases": [
+                        "Elasticsearch",
+                        "Logstash",
+                        "Kibana"
+                    ]
+                },
+                {
+                    "name": "Datadog",
+                    "aliases": []
+                },
+                {
+                    "name": "New Relic",
+                    "aliases": []
+                }
+            ]
+        },
+        "Salesforce Ecosystem": {
+            "weight": 1.4,
+            "skills": [
+                {
+                    "name": "Salesforce",
+                    "aliases": [
+                        "Salesforce CRM"
+                    ]
+                },
+                {
+                    "name": "Apex",
+                    "aliases": []
+                },
+                {
+                    "name": "Lightning Web Components",
+                    "aliases": [
+                        "LWC"
+                    ]
+                },
+                {
+                    "name": "Sales Cloud",
+                    "aliases": []
+                },
+                {
+                    "name": "Service Cloud",
+                    "aliases": []
+                }
+            ]
+        },
+        "ServiceNow Ecosystem": {
+            "weight": 1.4,
+            "skills": [
+                {
+                    "name": "ServiceNow",
+                    "aliases": []
+                },
+                {
+                    "name": "ITSM",
+                    "aliases": []
+                },
+                {
+                    "name": "Flow Designer",
+                    "aliases": []
+                },
+                {
+                    "name": "Service Portal",
+                    "aliases": []
+                },
+                {
+                    "name": "CSA",
+                    "aliases": [
+                        "Certified System Administrator"
+                    ]
+                },
+                {
+                    "name": "CAD",
+                    "aliases": [
+                        "Certified Application Developer"
+                    ]
+                }
+            ]
+        },
+        "Version Control & Collaboration": {
+            "weight": 1.2,
+            "skills": [
+                {
+                    "name": "Git",
+                    "aliases": []
                 },
                 {
                     "name": "GitHub",
@@ -395,96 +1760,15 @@
                     "aliases": []
                 },
                 {
-                    "name": "Terraform",
-                    "aliases": [
-                        "IaC",
-                        "Infrastructure as Code"
-                    ]
-                },
-                {
-                    "name": "CI/CD",
-                    "aliases": [
-                        "Continuous Integration",
-                        "Continuous Deployment",
-                        "Continuous Delivery",
-                        "CI CD",
-                        "CICD",
-                        "GitHub Actions"
-                    ]
-                },
-                {
-                    "name": "Linux",
-                    "aliases": [
-                        "Unix"
-                    ]
-                },
-                {
-                    "name": "Nginx",
+                    "name": "Bitbucket",
                     "aliases": []
                 },
                 {
-                    "name": "Apache",
+                    "name": "Jira",
                     "aliases": []
-                }
-            ]
-        },
-        "Architecture & APIs": {
-            "weight": 1.45,
-            "skills": [
-                {
-                    "name": "Microservices",
-                    "aliases": [
-                        "Microservice Architecture",
-                        "Micro-services",
-                        "Service Oriented Architecture",
-                        "SOA"
-                    ]
                 },
                 {
-                    "name": "System Design",
-                    "aliases": [
-                        "Software Architecture",
-                        "High Level Design",
-                        "HLD",
-                        "Low Level Design",
-                        "LLD"
-                    ]
-                },
-                {
-                    "name": "Distributed Systems",
-                    "aliases": [
-                        "Distributed Architecture"
-                    ]
-                },
-                {
-                    "name": "Data Structures and Algorithms",
-                    "aliases": [
-                        "Data Structures & Algorithms",
-                        "DSA",
-                        "Algorithms"
-                    ]
-                },
-                {
-                    "name": "Object-Oriented Programming",
-                    "aliases": [
-                        "OOP",
-                        "OOPS"
-                    ]
-                },
-                {
-                    "name": "Design Patterns",
-                    "aliases": [
-                        "Software Design Patterns"
-                    ]
-                },
-                {
-                    "name": "Agile",
-                    "aliases": [
-                        "Agile Methodology"
-                    ]
-                },
-                {
-                    "name": "Scrum",
+                    "name": "Confluence",
                     "aliases": []
                 }
             ]

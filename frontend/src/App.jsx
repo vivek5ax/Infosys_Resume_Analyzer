@@ -9,6 +9,7 @@ import ContextChatbot from './components/ContextChatbot';
 import MultiResumeAnalysis from './components/MultiResumeAnalysis';
 import LandingPage from './components/LandingPage';
 import AuthGate from './components/AuthGate';
+import ContextAnalysisPage from './components/ContextAnalysisPage';
 import { useAuth } from './hooks/useAuth';
 import { apiUrl } from './config/api';
 import {
@@ -27,6 +28,7 @@ import {
     Microscope,
     Files,
     LogOut,
+    BrainCircuit,
 } from 'lucide-react';
 
 function AppContent() {
@@ -51,7 +53,6 @@ function AppContent() {
     const [pdfProgressLabel, setPdfProgressLabel] = useState('Preparing report data...');
     const [isHighlightEnabled, setIsHighlightEnabled] = useState(false);
     const [evidencePersona, setEvidencePersona] = useState('hr');
-    const [evidenceSectionTab, setEvidenceSectionTab] = useState('overview');
     const [viewportWidth, setViewportWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1280);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [analysisHistory, setAnalysisHistory] = useState([]);
@@ -302,6 +303,7 @@ function AppContent() {
         { id: 'skill-matching', label: 'Skill Matching', icon: Workflow },
         { id: 'evidence', label: 'AI Playground', icon: Microscope },
         { id: 'visuals', label: 'Visualization', icon: BarChart3 },
+        { id: 'context-analysis', label: 'Context Analysis', icon: BrainCircuit },
     ];
 
     if (isAdmin) {
@@ -457,26 +459,33 @@ function AppContent() {
     const exactSkills = dedupeSkills(skillPartition.exact_match || []);
     const strongSemantic = skillPartition.strong_semantic || [];
     const moderateSemantic = skillPartition.moderate_semantic || [];
-    const partialResumeSkills = dedupeSkills([
-        ...strongSemantic.map((item) => item.skill),
-        ...moderateSemantic.map((item) => item.skill),
-    ]);
-    const partialJdSkills = dedupeSkills([
-        ...strongSemantic.map((item) => item.similar_to),
-        ...moderateSemantic.map((item) => item.similar_to),
-    ]);
+    
+    // Extract context analysis skills
+    const contextValidations = extractedData?.context_analysis?.context_validations || [];
+    const implicitContextSkills = dedupeSkills(contextValidations.filter(v => v.analysis_type === 'Implicit Match').map(v => v.skill_name));
+    const validatedContextSkills = dedupeSkills(contextValidations.filter(v => v.analysis_type === 'Contextually Validated').map(v => v.skill_name));
+    
+    const matchSkills = dedupeSkills([...exactSkills]);
+    const partialMatchSkills = dedupeSkills([...strongSemantic.map(item => item.skill), ...moderateSemantic.map(item => item.skill), ...strongSemantic.map(item => item.similar_to), ...moderateSemantic.map(item => item.similar_to), ...validatedContextSkills, ...implicitContextSkills]);
+    
     const missingJdSkills = dedupeSkills((extractedData?.bert_results?.missing_from_resume || []).map((item) => item.skill));
-    const additionalResumeSkills = dedupeSkills(extractedData?.bert_results?.extra_resume_skills || []);
+    const actualGaps = dedupeSkills(contextValidations.filter(v => v.analysis_type === 'Actual Gap').map(v => v.skill_name));
+    const allMissingSkills = dedupeSkills([...missingJdSkills, ...actualGaps]);
+    
+    const taxonomyExtraSkills = extractedData?.bert_results?.extra_resume_skills || [];
+    const groqAdditionalSkills = contextValidations.filter(v => v.analysis_type === 'Additional Skill').map(v => v.skill_name);
+    const allAdditionalSkills = dedupeSkills([...taxonomyExtraSkills, ...groqAdditionalSkills]);
 
     const jdHighlightEntries = [
-        ...toSkillEntries(exactSkills, 'exact'),
-        ...toSkillEntries(partialJdSkills, 'partial'),
-        ...toSkillEntries(missingJdSkills, 'missing'),
+        ...toSkillEntries(matchSkills, 'match'),
+        ...toSkillEntries(partialMatchSkills, 'partial'),
+        ...toSkillEntries(allMissingSkills, 'missing'), // Red in JD
     ];
+    
     const resumeHighlightEntries = [
-        ...toSkillEntries(exactSkills, 'exact'),
-        ...toSkillEntries(partialResumeSkills, 'partial'),
-        ...toSkillEntries(additionalResumeSkills, 'additional'),
+        ...toSkillEntries(matchSkills, 'match'),
+        ...toSkillEntries(partialMatchSkills, 'partial'),
+        ...toSkillEntries(allAdditionalSkills, 'additional'), // Purple in Resume
     ];
 
     const prettyMatchType = (value) => {
@@ -962,81 +971,6 @@ function AppContent() {
 
             return (
                 <section className="documents-panel evidence-layer-panel fade-in neo-panel">
-                    <section className="evidence-tab-shell">
-                        <div className="evidence-tab-nav" role="tablist" aria-label="Evidence navigation tabs">
-                            <button
-                                role="tab"
-                                aria-selected={evidenceSectionTab === 'overview'}
-                                className={`evidence-tab-btn ${evidenceSectionTab === 'overview' ? 'active' : ''}`}
-                                onClick={() => setEvidenceSectionTab('overview')}
-                            >
-                                Basic Evidence Overview
-                            </button>
-                            <button
-                                role="tab"
-                                aria-selected={evidenceSectionTab === 'ai'}
-                                className={`evidence-tab-btn ${evidenceSectionTab === 'ai' ? 'active' : ''}`}
-                                onClick={() => setEvidenceSectionTab('ai')}
-                            >
-                                AI Insight Studio
-                            </button>
-                            <button
-                                role="tab"
-                                aria-selected={evidenceSectionTab === 'viewmode'}
-                                className={`evidence-tab-btn ${evidenceSectionTab === 'viewmode' ? 'active' : ''}`}
-                                onClick={() => setEvidenceSectionTab('viewmode')}
-                            >
-                                View Mode
-                            </button>
-                        </div>
-                    </section>
-
-                    {evidenceSectionTab === 'overview' && (
-                        <>
-                            {evidenceOverviewShell}
-
-                            <section className="evidence-narrative-grid">
-                                <article className="document-card evidence-narrative-card">
-                                    <p className="doc-label"><span className="evidence-emoji">📝</span>Role-Fit Narrative</p>
-                                    <div className="evidence-narrative-columns">
-                                        <div style={{ background: 'linear-gradient(135deg, #eef1ff 0%, #f0f2ff 100%)', border: '1px solid #c7d2ff', borderRadius: '12px', padding: '0.7rem 0.8rem' }}>
-                                            <h5 style={{ color: '#5f67e8' }}>Strengths</h5>
-                                            <ul className="evidence-playbook-list">
-                                                {narrativeStrengths.length ? narrativeStrengths.map((line, idx) => <li key={`strength-${idx}`}>{line}</li>) : <li>No clear strengths identified.</li>}
-                                            </ul>
-                                        </div>
-                                        <div style={{ background: 'linear-gradient(135deg, #fff1f5 0%, #ffe4e6 100%)', border: '1px solid #fb7185', borderRadius: '12px', padding: '0.7rem 0.8rem' }}>
-                                            <h5 style={{ color: '#e11d48' }}>Blocking Gaps</h5>
-                                            <ul className="evidence-playbook-list">
-                                                {narrativeGaps.length ? narrativeGaps.map((line, idx) => <li key={`gap-${idx}`}>{line}</li>) : <li>No blocking gaps detected.</li>}
-                                            </ul>
-                                        </div>
-                                        {evidencePersona === 'hr' ? (
-                                            <div style={{ background: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', border: '1px solid #ddd6fe', borderRadius: '12px', padding: '0.7rem 0.8rem' }}>
-                                                <h5 style={{ color: '#7c3aed' }}>Trainable in 30-60 Days</h5>
-                                                <ul className="evidence-playbook-list">
-                                                    {narrativeTrainable.length ? narrativeTrainable.map((line, idx) => <li key={`train-${idx}`}>{line}</li>) : <li>No trainable gap recommendations available.</li>}
-                                                </ul>
-                                            </div>
-                                        ) : null}
-                                    </div>
-                                    <div className="evidence-recommendation-row">
-                                        <span className="evidence-recommendation-chip">{recommendationDecision}</span>
-                                        <p>{recommendationRationale}</p>
-                                    </div>
-                                </article>
-                            </section>
-                        </>
-                    )}
-
-                    {evidenceSectionTab === 'ai' && (
-                        <>
-                            {aiEnrichmentPanel}
-                        </>
-                    )}
-
-                    {evidenceSectionTab === 'viewmode' && (
-                        <>
                             <div className="evidence-viewmode-shell">
                                 <div className="evidence-persona-selector">
                                     <p className="evidence-viewmode-title">View Mode</p>
@@ -1419,8 +1353,6 @@ function AppContent() {
                             {!matchEvidence.length ? (
                                 <div className="results-empty">No evidence rows were generated for this run.</div>
                             ) : null}
-                        </>
-                    )}
                 </section>
             );
         }
@@ -1648,7 +1580,7 @@ function AppContent() {
                 return (
                     <section className="documents-panel fade-in neo-panel">
                         <div className="results-empty">
-                            Run an assessment to unlock the visual analytics dashboard.
+                            Run an assessment to unlock the dashboard.
                         </div>
                     </section>
                 );
@@ -1659,6 +1591,10 @@ function AppContent() {
                     <VisualizationModal isEmbedded={true} data={extractedData} />
                 </section>
             );
+        }
+
+        if (activePage === 'context-analysis') {
+            return <ContextAnalysisPage data={extractedData} />;
         }
 
         return (
@@ -1908,6 +1844,7 @@ function AppContent() {
                                 {activePage === 'evidence' && 'Evidence Layer'}
                                 {activePage === 'skill-matching' && 'Skill Matching'}
                                 {activePage === 'visuals' && 'Visual Analytics'}
+                                {activePage === 'context-analysis' && 'Context Analysis Evidence'}
                             </h1>
                         </div>
 
@@ -1925,10 +1862,10 @@ function AppContent() {
                                     </button>
 
                                     <div className="highlight-legend">
-                                        <span className="legend-pill exact">Exact Match</span>
+                                        <span className="legend-pill match">Match</span>
                                         <span className="legend-pill partial">Partial Match</span>
-                                        <span className="legend-pill missing">Missing Skills</span>
-                                        <span className="legend-pill additional">Additional Resume Skills</span>
+                                        <span className="legend-pill missing">Missing</span>
+                                        <span className="legend-pill additional">Additional Skills</span>
                                     </div>
                                 </div>
                             )}

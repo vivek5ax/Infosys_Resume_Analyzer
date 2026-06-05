@@ -328,12 +328,14 @@
                 {
                     "name": "HTML5",
                     "aliases": [
+                        "HTML",
                         "HTML 5"
                     ]
                 },
                 {
                     "name": "CSS3",
                     "aliases": [
+                        "CSS",
                         "CSS 3"
                     ]
                 }
@@ -399,6 +401,8 @@
                     "name": "REST API",
                     "aliases": [
                         "RESTful API",
+                        "RESTful Services",
+                        "RESTful Web Services",
                         "REST"
                     ]
                 },

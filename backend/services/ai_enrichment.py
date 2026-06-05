@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
-DEFAULT_MODEL = "llama-3.3-70b-versatile"
+DEFAULT_MODEL = "mixtral-8x7b-32768"
 
 
 def _load_local_env() -> None:
@@ -694,6 +694,45 @@ def _validate_and_sanitize(
 
 
 
+def _extract_context_analysis_groups(context_analysis: Dict[str, Any]) -> Dict[str, Any]:
+    """Extract context_validations from context_analysis into labelled skill groups."""
+    validations = context_analysis.get("context_validations", []) if isinstance(context_analysis, dict) else []
+    groups: Dict[str, List[str]] = {
+        "implicit_matches": [],
+        "contextually_validated": [],
+        "actual_gaps": [],
+        "additional_skills": [],
+        "false_positives": [],
+    }
+    for item in (validations or []):
+        if not isinstance(item, dict):
+            continue
+        atype = str(item.get("analysis_type") or item.get("category") or "").lower().replace(" ", "_")
+        skill = _clean_term(item.get("skill_name") or item.get("name") or "")
+        if not skill:
+            continue
+        reasoning = _clean_term(item.get("reasoning") or item.get("details") or "")[:200]
+        entry = f"{skill}: {reasoning}" if reasoning else skill
+        if "implicit" in atype:
+            groups["implicit_matches"].append(entry)
+        elif "context" in atype or "validated" in atype:
+            groups["contextually_validated"].append(entry)
+        elif "gap" in atype or "missing" in atype or "actual" in atype:
+            groups["actual_gaps"].append(entry)
+        elif "additional" in atype or "extra" in atype:
+            groups["additional_skills"].append(entry)
+        elif "false" in atype or "positive" in atype:
+            groups["false_positives"].append(entry)
+    return {
+        "implicit_matches": groups["implicit_matches"][:15],
+        "contextually_validated": groups["contextually_validated"][:15],
+        "actual_gaps": groups["actual_gaps"][:15],
+        "additional_skills": groups["additional_skills"][:10],
+        "false_positives": groups["false_positives"][:8],
+        "context_summary": _clean_term(context_analysis.get("context_summary", "") if isinstance(context_analysis, dict) else "")[:500],
+    }
+
+
 def _build_prompt_payload(
     run_id: str,
     domain: str,
@@ -704,12 +743,16 @@ def _build_prompt_payload(
     missing_skills: List[str],
     partition: Dict[str, Any],
     summary: Dict[str, Any],
+    context_analysis: Dict[str, Any] | None = None,
 ) -> Dict[str, Any]:
+    context_groups = _extract_context_analysis_groups(context_analysis or {})
     return {
         "run_id": run_id,
         "domain": domain,
+        # Full texts passed so LLM has complete signal
         "jd_text": (jd_text or "")[:12000],
         "resume_text": (resume_text or "")[:12000],
+        # ── Taxonomy analysis results ──────────────────────────────────────────
         "jd_skills": jd_skills[:250],
         "resume_skills": resume_skills[:350],
         "missing_skills": missing_skills[:150],
@@ -720,9 +763,14 @@ def _build_prompt_payload(
             "missing_skills_count": int(_to_float(summary.get("missing_skills_count"), 0.0)),
             "total_jd_skills": int(_to_float(summary.get("total_jd_skills"), 0.0)),
         },
-        "exact_match": partition.get("exact_match", [])[:200],
-        "strong_semantic": partition.get("strong_semantic", [])[:200],
-        "moderate_semantic": partition.get("moderate_semantic", [])[:200],
+        "taxonomy_partition": {
+            "exact_match": partition.get("exact_match", [])[:60],
+            "strong_semantic": partition.get("strong_semantic", [])[:40],
+            "moderate_semantic": partition.get("moderate_semantic", [])[:30],
+            "missing_from_resume": partition.get("missing_from_resume", [])[:40],
+        },
+        # ── Context analysis results (Groq deep NLU layer) ─────────────────────
+        "context_analysis": context_groups,
     }
 
 
@@ -735,6 +783,7 @@ def enrich_with_groq(
     jd_skills: List[str],
     resume_skills: List[str],
     bert_results: Dict[str, Any],
+    context_analysis: Dict[str, Any] | None = None,
 ) -> Dict[str, Any]:
     model = os.getenv("GROQ_MODEL", DEFAULT_MODEL)
     groq_url = (os.getenv("GROQ_API_URL", GROQ_URL) or GROQ_URL).strip()
@@ -767,39 +816,70 @@ def enrich_with_groq(
         missing_skills=missing_skills,
         partition=partition,
         summary=summary,
+        context_analysis=context_analysis,
     )
 
     system_prompt = (
-        "You are an HR-grade resume-ATS analysis assistant. "
-        "Use ONLY the provided input data and never fabricate technologies or achievements. "
-        "Return a single valid JSON object with ALL of these top-level keys: "
+        "You are a senior HR-grade resume analyst and ATS expert. "
+        "You receive a comprehensive input that contains: "
+        "(1) the full job description text, "
+        "(2) the full resume text, "
+        "(3) taxonomy skill analysis results (exact matches, semantic matches, missing skills from our rule-based algorithm), and "
+        "(4) deep context analysis results (implicit matches, contextually validated skills, and actual skill gaps "
+        "identified by NLU analysis of the raw texts). "
+        "CRITICAL RULES: "
+        "- Use ALL of the above inputs together to generate your analysis — do NOT ignore the context_analysis section. "
+        "- Treat context_analysis.implicit_matches and context_analysis.contextually_validated as REAL STRENGTHS even if they were not caught by taxonomy. "
+        "- Treat context_analysis.actual_gaps as CONFIRMED MISSING SKILLS in addition to missing_skills list. "
+        "- Use the full jd_text and resume_text to find additional evidence for your narrative. "
+        "- NEVER fabricate technologies or achievements not present in the resume. "
+        "Return ONLY a single valid JSON object with ALL of these top-level keys: "
         "version, run_id, model, created_at, normalization, missing_skill_triage, interview_focus, "
         "report_narrative, ats_readiness, hard_skills_narrative, soft_skills_assessment, "
         "top_recommendations, quality. "
         "No markdown, no explanation, JSON only."
     )
 
+    # Build context_analysis summary for user prompt injection
+    ctx = prompt_payload.get("context_analysis", {})
+    ctx_section = ""
+    if any(ctx.get(k) for k in ["implicit_matches", "contextually_validated", "actual_gaps", "additional_skills"]):
+        ctx_section = (
+            "\n\nCONTEXT ANALYSIS (deep NLU — treat as high-confidence, PRIORITIZE these over taxonomy alone):\n"
+            f"- Implicit Matches (candidate has these skills but expressed differently): {ctx.get('implicit_matches', [])}\n"
+            f"- Contextually Validated (confirmed through project/experience context): {ctx.get('contextually_validated', [])}\n"
+            f"- Actual Gaps (confirmed missing after NLU analysis): {ctx.get('actual_gaps', [])}\n"
+            f"- Additional Skills (in resume but not in JD): {ctx.get('additional_skills', [])}\n"
+            f"- Context Summary: {ctx.get('context_summary', '')}\n"
+        )
+
     user_prompt = (
         "Generate a comprehensive AI enrichment JSON for a resume-vs-JD analysis.\n"
+        "The input below includes BOTH the taxonomy analysis results AND the deep context analysis results.\n"
+        "Use BOTH together to produce the most accurate, evidence-grounded response.\n\n"
         "Constraints:\n"
-        "1) missing_skill_triage.skill MUST be from the missing_skills list only.\n"
-        "2) Include 3-6 missing_skill_triage items; each needs skill, priority "
-           "(role_critical|important|nice_to_have), trainability, impact (high|medium|low), "
-           "confidence (0-1), reason, evidence.jd_snippet.\n"
-        "3) Include 3-5 interview_focus items with topic, question, objective, expected_signal, confidence.\n"
-        "4) report_narrative must have: executive_overview(str), strengths(arr 3-5), "
-           "risk_flags(arr 3-4), onboarding_plan(arr 3), interview_strategy(str), final_recommendation(str).\n"
-        "5) ats_readiness must have: verdict('Pass'|'Borderline'|'At Risk'), score(0-100 int), "
-           "explanation(str, 1-2 sentences), tips(arr of 3-5 actionable ATS optimisation strings).\n"
-        "6) hard_skills_narrative: a single string paragraph (3-5 sentences) analysing the candidate's "
-           "technical skill alignment, coverage depth, and critical gaps vs the JD.\n"
-        "7) soft_skills_assessment must have: detected(arr of soft skills found in resume), "
-           "missing(arr of soft skills in JD not in resume), narrative(str 2-3 sentences).\n"
-        "8) top_recommendations: arr of up to 6 objects each with priority('Critical'|'High'|'Medium'), "
-           "action(str imperative sentence), reason(str 1-2 sentences). Include: add missing skills, "
-           "quantify achievements, fix ATS formatting issues, highlight soft skills.\n"
+        "1) missing_skill_triage: Include skills from both 'missing_skills' taxonomy list AND "
+           "'context_analysis.actual_gaps'. Each needs: skill, priority (role_critical|important|nice_to_have), "
+           "trainability, impact (high|medium|low), confidence (0-1), reason (cite JD evidence), evidence.jd_snippet.\n"
+        "2) Include 3-6 interview_focus items; for implicit_match and contextually_validated skills, ask "
+           "depth-probing questions that validate real experience behind the implicit signal.\n"
+        "3) report_narrative must incorporate both taxonomy AND context analysis insights: "
+           "executive_overview(str), strengths(arr 3-5, include implicit matches as strengths), "
+           "risk_flags(arr 3-4, based on actual_gaps), onboarding_plan(arr 3), "
+           "interview_strategy(str, reference specific skills to probe), final_recommendation(str).\n"
+        "4) ats_readiness: verdict('Pass'|'Borderline'|'At Risk'), score(0-100 int based on combined "
+           "exact+implicit+contextual matches), explanation (2 sentences using full JD text evidence), "
+           "tips(arr 3-5 ATS optimisation actions citing actual missing keywords from JD).\n"
+        "5) hard_skills_narrative: 3-5 sentence paragraph referencing exact JD requirements from jd_text, "
+           "candidate's actual skills from resume_text, implicit matches, and confirmed gaps.\n"
+        "6) soft_skills_assessment: detected(from resume_text), missing(from jd_text), narrative(2-3 sentences).\n"
+        "7) top_recommendations: up to 6 items with priority('Critical'|'High'|'Medium'), "
+           "action (imperative, specific), reason (cite jd_text or resume_text evidence).\n"
+        "8) normalization.mappings: list skill aliases/equivalences found by comparing jd_text and resume_text. "
+           "Include context_analysis.implicit_matches as alias mappings with high confidence.\n"
         "9) All confidence values 0..1. quality.coverage_score reflects completeness.\n"
-        "10) Output JSON only — no markdown.\n\n"
+        "10) Output JSON only — no markdown.\n"
+        f"{ctx_section}\n"
         f"INPUT:\n{json.dumps(prompt_payload, ensure_ascii=False)}"
     )
 
@@ -824,6 +904,7 @@ def enrich_with_groq(
     }
 
     raw = ""
+    parsed = None
     max_retries = int(max(0, min(3, _to_float(os.getenv("GROQ_MAX_RETRIES", "2"), 2))))
 
     for attempt in range(max_retries + 1):
@@ -841,39 +922,45 @@ def enrich_with_groq(
             status_code = int(getattr(err, "code", 0) or 0)
             detail = err.read().decode("utf-8", errors="ignore") if hasattr(err, "read") else str(err)
             if attempt < max_retries and _should_retry_http(status_code):
-                time.sleep(0.7 * (attempt + 1))
+                # Groq 429 rate limits often require a longer backoff
+                time.sleep(2.5 * (attempt + 1))
                 continue
             reason = _classify_http_error(status_code, detail)
-            return _default_response(run_id=run_id, model=model, status="failed", reason=reason)
+            parsed = _default_response(run_id=run_id, model=model, status="failed", reason=reason)
+            break
         except urllib.error.URLError as err:
             if attempt < max_retries:
-                time.sleep(0.7 * (attempt + 1))
+                time.sleep(2.5 * (attempt + 1))
                 continue
-            return _default_response(
+            parsed = _default_response(
                 run_id=run_id,
                 model=model,
                 status="failed",
                 reason=f"Groq network error: {str(getattr(err, 'reason', err))[:180]}",
             )
+            break
         except Exception as err:
             if attempt < max_retries:
                 time.sleep(0.7 * (attempt + 1))
                 continue
-            return _default_response(run_id=run_id, model=model, status="failed", reason=f"Groq request failed: {str(err)[:180]}")
+            parsed = _default_response(run_id=run_id, model=model, status="failed", reason=f"Groq request failed: {str(err)[:180]}")
+            break
 
-    raw_obj = _parse_json_object(raw)
-    if not raw_obj:
-        return _default_response(run_id=run_id, model=model, status="failed", reason="Groq returned non-JSON response")
-
-    content = ""
-    try:
-        content = raw_obj["choices"][0]["message"]["content"]
-    except Exception:
-        content = ""
-
-    parsed = _parse_json_object(content)
-    if not parsed:
-        return _default_response(run_id=run_id, model=model, status="failed", reason="Groq content parsing failed")
+    if parsed is None:
+        raw_obj = _parse_json_object(raw)
+        if not raw_obj:
+            parsed = _default_response(run_id=run_id, model=model, status="failed", reason="Groq returned non-JSON response")
+        else:
+            try:
+                content = raw_obj["choices"][0]["message"]["content"]
+            except Exception:
+                content = ""
+            
+            parsed_content = _parse_json_object(content)
+            if not parsed_content:
+                parsed = _default_response(run_id=run_id, model=model, status="failed", reason="Groq content parsing failed")
+            else:
+                parsed = parsed_content
 
     sanitized = _validate_and_sanitize(
         payload=parsed,

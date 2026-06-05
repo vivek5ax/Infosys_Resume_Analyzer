@@ -17,6 +17,12 @@ from .taxonomy_loader import load_taxonomy, BASE_PATH
 import httpx
 import json
 
+# Groq configuration for the enhanced matcher feature.
+MATCH_GROQ_API_KEY = "GROQ_MATCH_API_KEY"
+MATCH_GROQ_MODEL = "GROQ_MATCH_MODEL"
+MATCH_GROQ_API_URL = "GROQ_MATCH_API_URL"
+DEFAULT_MATCH_MODEL = "llama-3.1-8b-instant"
+
 # Configuration
 STRONG_SIMILARITY_THRESHOLD = 0.85
 MODERATE_SIMILARITY_THRESHOLD = 0.65
@@ -67,6 +73,19 @@ class EnhancedSemanticMatcher:
         
         # Build category strictness map
         self.category_strictness = self._build_category_strictness_map()
+
+    def _get_groq_match_config(self) -> Dict[str, str]:
+        api_key = os.getenv(MATCH_GROQ_API_KEY, "").strip()
+        if not api_key:
+            api_key = os.getenv("GROQ_API_KEY", "").strip()
+            if api_key:
+                print("⚠️ Using fallback GROQ_API_KEY for match analyzer; configure GROQ_MATCH_API_KEY to isolate Groq load.")
+
+        return {
+            "api_key": api_key,
+            "model": os.getenv(MATCH_GROQ_MODEL, os.getenv("GROQ_MODEL", DEFAULT_MATCH_MODEL)).strip(),
+            "url": os.getenv(MATCH_GROQ_API_URL, os.getenv("GROQ_API_URL", "https://api.groq.com/openai/v1/chat/completions")).strip(),
+        }
         
     def _build_skill_index(self) -> Dict[str, Dict]:
         """Build a comprehensive index for fast skill lookup"""
@@ -242,9 +261,10 @@ class EnhancedSemanticMatcher:
             return {}
         
         try:
-            groq_api_key = os.getenv("GROQ_API_KEY")
+            groq_config = self._get_groq_match_config()
+            groq_api_key = groq_config["api_key"]
             if not groq_api_key:
-                print("⚠️ GROQ_API_KEY not found, skipping LLM semantic matching")
+                print("⚠️ GROQ_MATCH_API_KEY/GROQ_API_KEY not found, skipping LLM semantic matching")
                 return {}
             
             # Prepare the prompt for LLM
@@ -274,7 +294,7 @@ Skill pairs to rate:
             }
             
             data = {
-                "model": os.getenv("GROQ_MODEL", "llama-3.1-8b-instant"),
+                "model": groq_config["model"],
                 "messages": [{"role": "user", "content": prompt}],
                 "temperature": 0.1,  # Low temperature for consistent scoring
                 "max_tokens": 500
@@ -282,7 +302,7 @@ Skill pairs to rate:
             
             async with httpx.AsyncClient(timeout=15.0) as client:
                 response = await client.post(
-                    os.getenv("GROQ_API_URL", "https://api.groq.com/openai/v1/chat/completions"),
+                    groq_config["url"],
                     headers=headers,
                     json=data
                 )
@@ -366,7 +386,13 @@ Skill pairs to rate:
         else:  # semantic
             # For semantic categories, use full enhanced category matching
             cat_score = self._calculate_category_similarity(resume_skill, jd_skill)
-            return cat_score >= MODERATE_SIMILARITY_THRESHOLD, cat_score
+            if cat_score >= MODERATE_SIMILARITY_THRESHOLD:
+                # Cap generic category semantic matches below Strong threshold (0.85) 
+                # to prevent cross-language frameworks (e.g. Spring Boot vs FastAPI) from getting 1.0
+                if r_canon != j_canon:
+                    cat_score = min(cat_score, 0.84)
+                return True, cat_score
+            return False, 0.0
 
     def find_exact_matches(self, resume_skills: List[str], jd_skills: List[str]) -> List[str]:
         """Find exact matches including aliases"""

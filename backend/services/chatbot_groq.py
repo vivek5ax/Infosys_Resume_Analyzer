@@ -609,12 +609,12 @@ def _is_projects_answer_grounded(answer: str, context: Dict[str, Any]) -> bool:
 
 
 def _matched_skills_from_context(context: Dict[str, Any]) -> List[str]:
-    """Extract matched skills (exact + semantic) from current session context only."""
+    """Extract matched skills (exact + semantic + implicit + contextually validated) from current session context."""
     findings = context.get("key_findings", {}) if isinstance(context.get("key_findings"), dict) else {}
     exact = findings.get("exact_matches", []) if isinstance(findings.get("exact_matches"), list) else []
     
-    # Include semantic matches too (extract skill names from "skill -> similar_to" pairs)
     skills = list(exact)
+    # Include taxonomy semantic matches
     semantic = findings.get("semantic_matches", []) if isinstance(findings.get("semantic_matches"), list) else []
     for item in semantic:
         if isinstance(item, str):
@@ -624,26 +624,48 @@ def _matched_skills_from_context(context: Dict[str, Any]) -> List[str]:
                 if skill_name and skill_name.lower() not in [s.lower() for s in skills]:
                     skills.append(skill_name)
     
-    return skills[:16]
+    # Also include implicit matches and contextually validated from context analysis
+    ctx_findings = context.get("context_analysis_findings", {}) if isinstance(context.get("context_analysis_findings"), dict) else {}
+    for group_key in ["implicit_matches", "contextually_validated"]:
+        for item in ctx_findings.get(group_key, []) or []:
+            skill_name = ""
+            if isinstance(item, dict):
+                skill_name = _clean_text(item.get("skill", ""))
+            elif isinstance(item, str):
+                skill_name = _clean_text(item.split(":")[0])
+            if skill_name and skill_name.lower() not in [s.lower() for s in skills]:
+                skills.append(skill_name)
+    
+    return skills[:20]
 
 
 def _missing_skills_from_context(context: Dict[str, Any]) -> List[str]:
-    """Extract missing skills from current session context only (BERT analysis results)."""
+    """Extract missing skills from taxonomy analysis AND actual_gaps from context analysis."""
     findings = context.get("key_findings", {}) if isinstance(context.get("key_findings"), dict) else {}
     missing = findings.get("missing_skills", []) if isinstance(findings.get("missing_skills"), list) else []
     
-    # Extract skill names from missing skills list (may be dicts or strings)
+    # Extract skill names from taxonomy missing skills list
     skills = []
     for item in missing:
         if isinstance(item, dict):
             skill_name = item.get("skill", "").strip()
         else:
             skill_name = str(item).strip()
-        
         if skill_name and skill_name.lower() not in [s.lower() for s in skills]:
             skills.append(skill_name)
     
-    return skills[:12]
+    # Also include actual_gaps from context analysis
+    ctx_findings = context.get("context_analysis_findings", {}) if isinstance(context.get("context_analysis_findings"), dict) else {}
+    for item in ctx_findings.get("actual_gaps", []) or []:
+        skill_name = ""
+        if isinstance(item, dict):
+            skill_name = _clean_text(item.get("skill", ""))
+        elif isinstance(item, str):
+            skill_name = _clean_text(item.split(":")[0])
+        if skill_name and skill_name.lower() not in [s.lower() for s in skills]:
+            skills.append(skill_name)
+    
+    return skills[:16]
 
 
 def _is_missing_skills_answer_grounded(answer: str, context: Dict[str, Any]) -> bool:
@@ -977,6 +999,7 @@ def _build_minimal_context(full_context: Dict[str, Any]) -> Dict[str, Any]:
         "session": full_context.get("session", {}),
         "summary": full_context.get("summary", {}),
         "key_findings": full_context.get("key_findings", {}),
+        "context_analysis_findings": full_context.get("context_analysis_findings", {}),
         "skills_inventory": full_context.get("skills_inventory", {}),
         "ai_guidance": full_context.get("ai_guidance", {}),
         "candidate_profile": {"projects": _project_reference_items(full_context, limit=4)},
@@ -1050,11 +1073,23 @@ def ask_contextual_chat(
         response_template = _intent_response_template(intent)
         template_example = response_template.get("example_structure", "")
         system_prompt = (
-            "You are an expert career coaching assistant. "
+            "You are an expert career coaching assistant with access to a COMPLETE resume analysis. "
+            "\n\n"
+            "## YOUR DATA SOURCES (use ALL of them together):\n"
+            "1. resume_raw_text — the candidate's actual resume content\n"
+            "2. jd_raw_text — the full job description\n"
+            "3. taxonomy_key_findings — exact and semantic skill matches from rule-based analysis\n"
+            "4. context_analysis_findings — deep NLU analysis results:\n"
+            "   - implicit_matches: skills the candidate has but expressed differently\n"
+            "   - contextually_validated: skills confirmed through project/experience context\n"
+            "   - actual_gaps: confirmed missing skills after NLU analysis\n"
+            "   - additional_skills: candidate has these but JD didn't ask for them\n"
             "\n\n"
             "## YOUR PRIMARY MISSION:\n"
             "Answer the user's exact question clearly, directly, and practically. Your answer must be:\n"
-            "- Grounded only in the provided resume raw text and job description raw text\n"
+            "- Grounded ONLY in the provided resume raw text, JD raw text, taxonomy findings, and context analysis\n"
+            "- When discussing strengths/matched skills: include BOTH exact matches AND implicit/contextually validated skills\n"
+            "- When discussing gaps: reference BOTH taxonomy missing_skills AND context_analysis actual_gaps\n"
             "- Structured in the EXACT markdown format specified below\n"
             "- Action-oriented and specific (not generic)\n"
             "\n\n"
@@ -1062,28 +1097,25 @@ def ask_contextual_chat(
             f"{_intent_output_contract(normalized_intent)}\n\n"
             "## FORMATTING RULES (CRITICAL - PREVENT ESCAPING):\n"
             "1. Use exact section headings specified in response_structure_template (with ## markdown)\n"
-            "2. MARKDOWN LINKS: Use [Link Text](URL) format for all external links - NOT **[Link]** or \\[Link\\]\n"
-            "3. BOLD TEXT: Use **text** for bold emphasis - NEVER escape with backslashes (no \\\\*\\\\*text\\\\*\\\\*)\n"
+            "2. MARKDOWN LINKS: Use [Link Text](URL) format for all external links\n"
+            "3. BOLD TEXT: Use **text** for bold emphasis - NEVER escape with backslashes\n"
             "4. Answer main content FIRST, then add separator '---' on its own line\n"
             "5. After separator, add 'Resume Context Reference:' section showing which analysis data supports your answer\n"
-            "6. Use concise bullet points for readability; avoid dense paragraphs (each bullet should be 1-2 lines)\n"
+            "6. Use concise bullet points for readability; avoid dense paragraphs\n"
             "7. Keep output compact but informative: prefer short, structured sections with mostly bullet points\n"
             "8. For skill names in bullets: use **Skill Name** format for emphasis\n"
-            "9. For key metrics, use format: - Metric: value (NOT - **Metric:** value)\n"
-            "10. For numbered lists, use: 1. item, 2. item format (NOT 1) item or 1- item)\n"
+            "9. For key metrics, use format: - Metric: value\n"
+            "10. For numbered lists, use: 1. item, 2. item format\n"
             "\n\n"
             "## EXAMPLE STRUCTURE FOR THIS INTENT:\n"
             f"{template_example}\n\n"
             "## EVIDENCE GROUNDING:\n"
-            "- Ground claims in resume_raw_text and jd_raw_text only\n"
-            "- Quote or paraphrase specific evidence from these two texts\n"
-            "- In Resume Context Reference, mention where evidence came from (resume_raw_text or jd_raw_text)\n"
-            "\n\n"
-            "## TONE & STYLE:\n"
+            "- Ground claims in resume_raw_text, jd_raw_text, taxonomy_key_findings, and context_analysis_findings\n"
+            "- Implicit matches and contextually validated skills are REAL confirmed skills, treat them as strengths\n"
+            "- In Resume Context Reference, cite which data source supports each claim\n"
             f"- Emphasis: {response_template.get('emphasis', 'Practical and specific')}\n"
-            "- Avoid generic advice; personalize to candidate's actual skills/projects\n"
+            "- Avoid generic advice; personalize to candidate's actual skills and analysis results\n"
             "- Be direct; avoid disclaimers and hedging language\n"
-            "- Use imperative tense for actions ('Do this', not 'You might consider')\n"
         )
     intent_hint = _intent_directive(normalized_intent)
 
@@ -1110,6 +1142,11 @@ def ask_contextual_chat(
         response_template = _intent_response_template(normalized_intent)
         raw_text_context = _extract_raw_text_prompt_context(context)
         resume_projects_only = _project_reference_items(context, limit=6)
+
+        # Build the context_analysis_findings block for this session
+        ctx_findings = context.get("context_analysis_findings", {}) if isinstance(context.get("context_analysis_findings"), dict) else {}
+        taxonomy_findings = context.get("key_findings", {}) if isinstance(context.get("key_findings"), dict) else {}
+
         payload_user = {
             "mode": normalized_mode,
             "question": _clip(question, 1500),
@@ -1124,14 +1161,30 @@ def ask_contextual_chat(
             },
             "answer_guidance": (
                 "1. Answer the user's question DIRECTLY and PRACTICALLY\n"
-                "2. Ground each claim in resume_raw_text and jd_raw_text only\n"
-                "3. Create a '---' separator line before 'Resume Context Reference' section\n"
-                "4. In Resume Context Reference, cite evidence source as resume_raw_text or jd_raw_text\n"
-                "5. Use exact section headings from response_structure_template with ## markdown\n"
-                "6. Keep response compact and structured with bullet-first formatting\n"
-                "7. Prefer 2-4 concise bullets per section (timeline sections can use 3-5 bullets)"
+                "2. Ground each claim in resume_raw_text, jd_raw_text, taxonomy_key_findings, AND context_analysis_findings\n"
+                "3. When listing strengths/matched skills: include both exact taxonomy matches AND implicit/contextually validated skills\n"
+                "4. When listing gaps: reference both taxonomy missing_skills AND context_analysis actual_gaps\n"
+                "5. Create a '---' separator line before 'Resume Context Reference' section\n"
+                "6. In Resume Context Reference, cite which data source supports each point\n"
+                "7. Use exact section headings from response_structure_template with ## markdown\n"
+                "8. Keep response compact and structured with bullet-first formatting"
             ),
             "resume_reference_context": raw_text_context,
+            # ── Taxonomy results ─────────────────────────────────────────────
+            "taxonomy_key_findings": {
+                "exact_matches": taxonomy_findings.get("exact_matches", [])[:16],
+                "semantic_matches": taxonomy_findings.get("semantic_matches", [])[:12],
+                "missing_skills": taxonomy_findings.get("missing_skills", [])[:16],
+                "additional_resume_skills": taxonomy_findings.get("additional_resume_skills", [])[:10],
+            },
+            # ── Context analysis results ─────────────────────────────────────
+            "context_analysis_findings": {
+                "implicit_matches": ctx_findings.get("implicit_matches", [])[:12],
+                "contextually_validated": ctx_findings.get("contextually_validated", [])[:12],
+                "actual_gaps": ctx_findings.get("actual_gaps", [])[:10],
+                "additional_skills": ctx_findings.get("additional_skills", [])[:8],
+                "context_summary": ctx_findings.get("context_summary", ""),
+            },
         }
         if normalized_intent == "matched_skills":
             matched_skills_list = _matched_skills_from_context(context)

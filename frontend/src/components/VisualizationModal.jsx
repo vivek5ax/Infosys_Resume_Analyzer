@@ -1,19 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { X, BarChart3, PieChart as PieChartIcon, Target, AlertTriangle, Layers, Activity } from 'lucide-react';
+import { X, BarChart3, PieChart as PieChartIcon, Target, AlertTriangle, Layers, Activity, BrainCircuit } from 'lucide-react';
 import {
     PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend,
     BarChart, Bar, XAxis, YAxis, CartesianGrid,
     Radar, RadarChart, PolarGrid, PolarAngleAxis
 } from 'recharts';
 
-const VisualizationModal = ({ isOpen, onClose, isClosing, data, isEmbedded = false }) => {
+const VisualizationModal = ({ isOpen, onClose, isClosing, data, isEmbedded = false, initialTab = 'progression' }) => {
     if (!isEmbedded && !isOpen) return null;
 
     const skillsMapRef = React.useRef(null);
     const visualScrollRef = React.useRef(null);
     const [skillsMapVisible, setSkillsMapVisible] = React.useState(false);
-    const [activeViz, setActiveViz] = React.useState('progression');
+    const [activeViz, setActiveViz] = React.useState(initialTab);
+
+    React.useEffect(() => {
+        if (initialTab) {
+            setActiveViz(initialTab);
+        }
+    }, [initialTab]);
 
     const vizTabs = [
         { id: 'progression', label: 'Skill Match Progression' },
@@ -28,6 +34,10 @@ const VisualizationModal = ({ isOpen, onClose, isClosing, data, isEmbedded = fal
     const missingFromResume = bertResults.missing_from_resume || [];
     const jdClusters = bertResults.jd_skill_clusters || {};
     const jdCategorizedSkills = data.jd_skills?.categorized_skills || {};
+    
+    const contextAnalysis = data.context_analysis || {};
+    const contextValidations = contextAnalysis.context_validations || [];
+    const contextSummary = contextAnalysis.context_summary || '';
     const resumeCategorizedSkills = data.resume_skills?.categorized_skills || {};
 
     // Default Colors

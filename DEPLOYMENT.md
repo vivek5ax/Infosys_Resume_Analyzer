@@ -81,7 +81,8 @@ In Render, configure the following environment variables:
 - `BCRYPT_ROUNDS` — default `12`
 - `FRONTEND_ORIGIN` — your deployed frontend URL, e.g. `https://<project>.vercel.app`
 - `GROQ_API_KEY` — if you use Groq AI enrichment
-- `GROQ_MODEL`, `GROQ_FALLBACK_MODEL`, `AI_ENRICHMENT_ENABLED`, etc. as needed
+- `GROQ_MATCH_API_KEY` — if you use the enhanced semantic matcher Groq feature
+- `GROQ_MODEL`, `GROQ_MATCH_MODEL`, `GROQ_FALLBACK_MODEL`, `AI_ENRICHMENT_ENABLED`, etc. as needed
 
 ### 2.4. Deploy
 

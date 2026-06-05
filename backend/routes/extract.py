@@ -12,6 +12,7 @@ from services.preprocessor import generate_versions, save_data, update_session_m
 from services.analyzer import extract_skills
 from services.taxonomy_analyzer import analyze_semantic_matching
 from services.ai_enrichment import enrich_with_groq
+from services.context_analyzer import master_skill_analysis
 from services.evidence_layer_builder import build_evidence_layer_payload
 from services.hr_decision_layer import build_hr_decision_layer
 from services.candidate_decision_layer import build_candidate_decision_layer
@@ -90,6 +91,30 @@ async def extract_content(
         jd_text=jd_versions["raw_text"]
     )
 
+    try:
+        context_analysis = await asyncio.to_thread(
+            master_skill_analysis,
+            run_id="pending",
+            domain=domain,
+            jd_text=jd_versions["raw_text"],
+            resume_text=resume_versions["raw_text"],
+            partition=bert_results.get("skill_partition", {}),
+            missing_from_resume=bert_results.get("missing_from_resume", []),
+            extra_resume_skills=bert_results.get("extra_resume_skills", []),
+            summary=bert_results.get("summary", {}),
+        )
+
+    except Exception as ctx_err:
+        context_analysis = {
+            "status": "failed",
+            "run_id": "pending",
+            "reason": f"Context analysis runtime error: {str(ctx_err)[:180]}",
+            "context_validations": [],
+            "context_summary": "",
+            "summary": {},
+            "warnings": [f"Context analysis runtime error: {str(ctx_err)[:180]}"],
+        }
+
     # Save Data (Persistence)
     resume_name = resume.filename
     jd_name = job_description_file.filename if job_description_file else "Manual Input"
@@ -104,6 +129,7 @@ async def extract_content(
             jd_skills=jd_flat_skills,
             resume_skills=resume_flat_skills,
             bert_results=bert_results,
+            context_analysis=context_analysis,
         )
     except Exception as ai_err:
         ai_enrichment = {
@@ -129,11 +155,14 @@ async def extract_content(
             },
         }
     
+    
     # Pass version dictionaries to save_data
     session_id = save_data(resume_versions, jd_versions, resume_name, jd_name, resume_skills, jd_skills, bert_results)
 
     if ai_enrichment.get("run_id") == "pending":
         ai_enrichment["run_id"] = session_id
+    if context_analysis.get("run_id") == "pending":
+        context_analysis["run_id"] = session_id
 
     evidence_layer = build_evidence_layer_payload(
         session_id=session_id,
@@ -167,6 +196,7 @@ async def extract_content(
         session_id,
         {
             "ai_enrichment": ai_enrichment,
+            "context_analysis": context_analysis,
             "evidence_layer": evidence_layer,
             "hr_decision_layer": hr_decision,
             "candidate_decision_layer": candidate_decision,
@@ -188,6 +218,7 @@ async def extract_content(
         "evidence_layer": evidence_layer,
         "hr_decision_layer": hr_decision,
         "candidate_decision_layer": candidate_decision,
+        "context_analysis": context_analysis,
     }
     
     # Database logging disabled by design (auth & database disconnected)

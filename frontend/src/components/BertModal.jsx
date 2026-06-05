@@ -18,18 +18,24 @@ const BertModal = ({ isOpen, onClose, isClosing, data, isEmbedded = false }) => 
     const bertResults = data.bert_results || {};
     const summary = bertResults.summary || defaultSummary;
     const partition = bertResults.skill_partition || defaultPartition;
-    const missingSkills = bertResults.missing_from_resume || [];
+    const contextValidations = data?.context_analysis?.context_validations || [];
+    const implicitContextSkills = contextValidations.filter(v => v.analysis_type === 'Implicit Match').map(v => ({ skill: v.skill_name, similar_to: 'NLU Context', score: 0.9 }));
+    const validatedContextSkills = contextValidations.filter(v => v.analysis_type === 'Contextually Validated').map(v => ({ skill: v.skill_name, similar_to: 'NLU Validated', score: 0.95 }));
+
+    const actualGaps = contextValidations.filter(v => v.analysis_type === 'Actual Gap').map(v => ({ skill: v.skill_name, categories: ['NLU Gap'], weight: 'Critical' }));
+    const missingSkills = [...(bertResults.missing_from_resume || []), ...actualGaps];
 
     // Join semantic arrays securely mapping the string outputs
-    const allSemanticMatches = [...(partition.strong_semantic || []), ...(partition.moderate_semantic || [])];
+    const allSemanticMatches = [...(partition.strong_semantic || []), ...(partition.moderate_semantic || []), ...implicitContextSkills, ...validatedContextSkills];
 
     // Calculate Venn Diagram Arrays Dynamically treating semantics as matches
     const exactMatchStrings = partition.exact_match || [];
     const semanticMatchStrings = allSemanticMatches.map(item => item.skill); // Resume's variants
-    const matchedSkills = [...exactMatchStrings, ...semanticMatchStrings];
+    const matchedSkills = [...new Set([...exactMatchStrings, ...semanticMatchStrings])];
 
-    const resumeOnly = partition.irrelevant || [];
-    const jdOnly = missingSkills.map(item => item.skill);
+    const groqAdditionalSkills = contextValidations.filter(v => v.analysis_type === 'Additional Skill').map(v => v.skill_name);
+    const resumeOnly = [...new Set([...(partition.irrelevant || []), ...groqAdditionalSkills])];
+    const jdOnly = [...new Set(missingSkills.map(item => item.skill))];
 
     // Filter long strings for Venn Diagram to prevent clipping/clutter
     const STR_LIMIT = 18;

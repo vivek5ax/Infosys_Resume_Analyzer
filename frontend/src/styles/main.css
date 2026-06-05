@@ -2787,7 +2787,7 @@ textarea.modern-input::placeholder {
     border: 1px solid transparent;
 }
 
-.legend-pill.exact {
+.legend-pill.match {
     background: #dbf5e6;
     border-color: #bce7ce;
     color: #0f7a43;
@@ -2869,7 +2869,7 @@ textarea.modern-input::placeholder {
     font-weight: 800;
 }
 
-.highlight-mark.exact {
+.highlight-mark.match {
     background: #9ee0b7;
 }
 

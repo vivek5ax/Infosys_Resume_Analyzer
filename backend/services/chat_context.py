@@ -127,6 +127,44 @@ def load_session_metadata(session_id: str) -> Dict[str, Any]:
         return json.load(f)
 
 
+def _extract_context_groups(context_analysis: Dict[str, Any]) -> Dict[str, Any]:
+    """Extract context_validations from the session's context_analysis into labelled groups."""
+    validations = context_analysis.get("context_validations", []) if isinstance(context_analysis, dict) else []
+    groups: Dict[str, List[Any]] = {
+        "implicit_matches": [],
+        "contextually_validated": [],
+        "actual_gaps": [],
+        "additional_skills": [],
+        "false_positives": [],
+    }
+    for item in (validations or []):
+        if not isinstance(item, dict):
+            continue
+        atype = str(item.get("analysis_type") or item.get("category") or "").lower().replace(" ", "_")
+        skill = _normalize_whitespace(item.get("skill_name") or item.get("name") or "")
+        if not skill:
+            continue
+        reasoning = _normalize_whitespace(item.get("reasoning") or item.get("details") or "")[:180]
+        entry = {"skill": skill, "reasoning": reasoning} if reasoning else {"skill": skill}
+        if "implicit" in atype:
+            groups["implicit_matches"].append(entry)
+        elif "context" in atype or "validated" in atype:
+            groups["contextually_validated"].append(entry)
+        elif "gap" in atype or "missing" in atype or "actual" in atype:
+            groups["actual_gaps"].append(entry)
+        elif "additional" in atype or "extra" in atype:
+            groups["additional_skills"].append(entry)
+        elif "false" in atype or "positive" in atype:
+            groups["false_positives"].append(entry)
+    return {
+        "implicit_matches": groups["implicit_matches"][:15],
+        "contextually_validated": groups["contextually_validated"][:15],
+        "actual_gaps": groups["actual_gaps"][:12],
+        "additional_skills": groups["additional_skills"][:10],
+        "context_summary": _clip(context_analysis.get("context_summary", "") if isinstance(context_analysis, dict) else "", 400),
+    }
+
+
 def build_chat_context(metadata: Dict[str, Any]) -> Dict[str, Any]:
     bert = metadata.get("bert_results", {}) if isinstance(metadata.get("bert_results"), dict) else {}
     summary = bert.get("summary", {}) if isinstance(bert.get("summary"), dict) else {}
@@ -138,6 +176,7 @@ def build_chat_context(metadata: Dict[str, Any]) -> Dict[str, Any]:
     resume_skills_obj = metadata.get("resume_skills", {}) if isinstance(metadata.get("resume_skills"), dict) else {}
     jd_skills_obj = metadata.get("jd_skills", {}) if isinstance(metadata.get("jd_skills"), dict) else {}
     ai_enrichment = metadata.get("ai_enrichment", {}) if isinstance(metadata.get("ai_enrichment"), dict) else {}
+    context_analysis_raw = metadata.get("context_analysis", {}) if isinstance(metadata.get("context_analysis"), dict) else {}
     candidate_decision_layer = metadata.get("candidate_decision_layer", {}) if isinstance(metadata.get("candidate_decision_layer"), dict) else {}
     hr_decision_layer = metadata.get("hr_decision_layer", {}) if isinstance(metadata.get("hr_decision_layer"), dict) else {}
 
@@ -175,6 +214,9 @@ def build_chat_context(metadata: Dict[str, Any]) -> Dict[str, Any]:
     interview_focus = ai_enrichment.get("interview_focus", []) if isinstance(ai_enrichment.get("interview_focus"), list) else []
     top_recommendations = ai_enrichment.get("top_recommendations", []) if isinstance(ai_enrichment.get("top_recommendations"), list) else []
 
+    # Extract structured context analysis groups
+    context_groups = _extract_context_groups(context_analysis_raw)
+
     context = {
         "session": {
             "session_id": metadata.get("session_id"),
@@ -183,6 +225,7 @@ def build_chat_context(metadata: Dict[str, Any]) -> Dict[str, Any]:
             "resume_filename": metadata.get("resume_filename", ""),
             "jd_filename": metadata.get("jd_filename", ""),
         },
+        # ── Taxonomy analysis summary ─────────────────────────────────────────
         "summary": {
             "overall_alignment_score": _to_int(summary.get("overall_alignment_score")),
             "total_jd_skills": _to_int(summary.get("total_jd_skills")),
@@ -191,12 +234,22 @@ def build_chat_context(metadata: Dict[str, Any]) -> Dict[str, Any]:
             "semantic_match_count": _to_int(summary.get("semantic_match_count")),
             "missing_skills_count": _to_int(summary.get("missing_skills_count")),
         },
+        # ── Key findings from taxonomy ────────────────────────────────────────
         "key_findings": {
             "exact_matches": exact_matches,
             "semantic_matches": semantic_pairs,
             "missing_skills": missing,
             "additional_resume_skills": extras,
         },
+        # ── Context analysis findings (deep NLU) ─────────────────────────────
+        "context_analysis_findings": {
+            "implicit_matches": context_groups["implicit_matches"],
+            "contextually_validated": context_groups["contextually_validated"],
+            "actual_gaps": context_groups["actual_gaps"],
+            "additional_skills": context_groups["additional_skills"],
+            "context_summary": context_groups["context_summary"],
+        },
+        # ── Full skill inventory ──────────────────────────────────────────────
         "skills_inventory": {
             "resume_technical": resume_tech,
             "resume_soft": resume_soft,
@@ -215,6 +268,7 @@ def build_chat_context(metadata: Dict[str, Any]) -> Dict[str, Any]:
             "candidate": candidate_decision_layer,
             "hr": hr_decision_layer,
         },
+        # ── Full raw texts so chatbot has complete signal ─────────────────────
         "text_snippets": {
             "job_description_excerpt": _clip(jd_versions.get("raw_text", ""), 2400),
             "resume_excerpt": _clip(resume_versions.get("raw_text", ""), 2400),
@@ -222,3 +276,4 @@ def build_chat_context(metadata: Dict[str, Any]) -> Dict[str, Any]:
     }
 
     return context
+

@@ -64,11 +64,16 @@ def _categorize_skills(partition: Dict[str, Any], triage_items: List[Dict[str, A
     
     critical_gaps = []
     if isinstance(triage_items, list):
-        for item in triage_items[:3]:
-            if isinstance(item, dict) and str(item.get("priority") or "").lower() == "role_critical":
-                skill = _clean_text(item.get("skill"))
-                if skill:
-                    critical_gaps.append(skill)
+        for item in triage_items:
+            if isinstance(item, dict):
+                priority = str(item.get("priority") or "").lower()
+                # Accept multiple terms for critical
+                if priority in {"role_critical", "critical", "high"}:
+                    skill = _clean_text(item.get("skill"))
+                    if skill and skill not in critical_gaps:
+                        critical_gaps.append(skill)
+                        if len(critical_gaps) >= 3:
+                            break
     
     return {
         "strong": strong_skills,
@@ -317,14 +322,22 @@ def build_candidate_decision_layer(
     emerging_skills = skills.get("emerging", [])
     critical_gaps = skills.get("critical_gaps", [])
     
-    # Extract important gaps from triage
+    # Extract important gaps from triage, avoiding duplicates with critical gaps
     important_gaps = []
     if isinstance(triage, list):
-        for item in triage[3:5]:
-            if isinstance(item, dict) and str(item.get("priority") or "").lower() == "important":
+        for item in triage:
+            if isinstance(item, dict):
+                priority = str(item.get("priority") or "").lower()
                 skill = _clean_text(item.get("skill"))
-                if skill:
+                if skill and skill not in critical_gaps and skill not in important_gaps:
                     important_gaps.append(skill)
+                    if len(important_gaps) >= 3:
+                        break
+    
+    # If we STILL have no critical gaps but we have important gaps, promote the top important gap to critical
+    # to ensure the gap closure roadmap always gives the candidate a high-priority focus area.
+    if not critical_gaps and important_gaps:
+        critical_gaps.append(important_gaps.pop(0))
     
     # === SECTION 1: ROLE-FIT ASSESSMENT ===
     

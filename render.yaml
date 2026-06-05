@@ -1,7 +1,7 @@
 services:
   - type: web
     name: resume-analyzer-api
-    runtime: python
+    runtime: python-3.11.11
     rootDir: backend
     plan: free
 
@@ -11,7 +11,7 @@ services:
 
     buildCommand: |
       pip install --upgrade pip
-      pip install -r requirements.txt
+      pip install --prefer-binary -r requirements.txt
       python -m spacy download en_core_web_sm
 
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT

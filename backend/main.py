@@ -13,20 +13,45 @@ app = FastAPI(title="Resume Analyzer API")
 
 # Configure CORS
 frontend_origin_raw = os.getenv("FRONTEND_ORIGIN", "http://localhost:5173")
-frontend_origins = [
-    origin.strip()
-    for origin in frontend_origin_raw.split(",")
-    if origin.strip()
-]
 
-for default_origin in ["http://localhost:5173", "http://127.0.0.1:5173"]:
-    if default_origin not in frontend_origins:
-        frontend_origins.append(default_origin)
+def _normalize_origins(raw):
+    origins = []
+    for origin in raw.split(","):
+        o = origin.strip()
+        if not o:
+            continue
+        # if user provided a wildcard, return it immediately
+        if o == "*":
+            return ["*"]
+        # remove trailing slash to avoid exact-match mismatches
+        o = o.rstrip("/")
+        origins.append(o)
+
+    # ensure common local dev origins are present
+    for default_origin in ("http://localhost:5173", "http://127.0.0.1:5173"):
+        if default_origin not in origins:
+            origins.append(default_origin)
+
+    # deduplicate while preserving order
+    seen = set()
+    deduped = []
+    for o in origins:
+        if o not in seen:
+            seen.add(o)
+            deduped.append(o)
+    return deduped
+
+frontend_origins = _normalize_origins(frontend_origin_raw)
+
+# If caller used wildcard allow_origins must be ['*'] and credentials must be False
+allow_credentials = True
+if frontend_origins == ["*"]:
+    allow_credentials = False
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=frontend_origins,
-    allow_credentials=True,
+    allow_credentials=allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )

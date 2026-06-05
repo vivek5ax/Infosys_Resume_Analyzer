@@ -1746,32 +1746,54 @@ function AppContent() {
                 </section>
 
                 {loading && (
-                    <div className="loading-instruction-card fade-in" style={{
-                        marginTop: '1.5rem',
-                        padding: '1.5rem',
-                        background: '#f8fafc',
-                        border: '1px solid #cbd5e1',
-                        borderRadius: '12px',
-                        textAlign: 'center',
-                        color: '#334155',
-                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
+                    <div style={{
+                        position: 'fixed', inset: 0, zIndex: 9999,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        background: 'rgba(15,23,42,0.68)',
+                        backdropFilter: 'blur(6px)',
+                        animation: 'fadeIn 0.3s ease',
                     }}>
-                        <h4 style={{ color: '#0f172a', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Processing Your Document...</h4>
-                        <p style={{ fontSize: '0.9rem', opacity: 0.85, maxWidth: '600px', margin: '0 auto' }}>
-                            We are currently extracting skills, running taxonomy comparisons, and doing deep contextual AI analysis to build your personalized dashboard. This normally takes 10-20 seconds.
-                        </p>
-                        
-                        {loadingTimeExceeded && (
-                            <div className="fade-in" style={{ marginTop: '1.2rem', padding: '1rem', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', color: '#b91c1c', maxWidth: '600px', margin: '1.2rem auto 0' }}>
-                                <strong style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-                                    <AlertCircle size={18} />
-                                    Taking longer than expected?
-                                </strong>
-                                <p style={{ fontSize: '0.85rem', marginTop: '0.4rem', opacity: 0.9 }}>
-                                    The AI servers might be experiencing high traffic or a temporary timeout. Please refresh the page and kindly try again.
-                                </p>
+                        <div style={{
+                            background: '#ffffff',
+                            borderRadius: '20px',
+                            padding: '40px 44px 36px',
+                            display: 'flex', flexDirection: 'column', alignItems: 'center',
+                            gap: '14px',
+                            boxShadow: '0 24px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.08)',
+                            minWidth: '320px',
+                            maxWidth: '440px',
+                            textAlign: 'center'
+                        }}>
+                            <div style={{
+                                width: '60px', height: '60px', borderRadius: '50%', background: '#eff6ff', 
+                                display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '4px'
+                            }}>
+                                <Loader2 size={32} color="#3b82f6" className="spin" />
                             </div>
-                        )}
+
+                            <div style={{ fontFamily: 'sans-serif', fontWeight: 800, fontSize: '18px', color: '#0f172a', letterSpacing: '-0.3px' }}>
+                                Processing Analysis
+                            </div>
+                            
+                            <div style={{
+                                fontFamily: 'sans-serif', fontSize: '13.5px', color: '#475569',
+                                textAlign: 'center', lineHeight: 1.5,
+                            }}>
+                                We are extracting skills, running taxonomy comparisons, and performing deep contextual AI evaluation...
+                            </div>
+                            
+                            {loadingTimeExceeded && (
+                                <div className="fade-in" style={{ marginTop: '0.8rem', padding: '1rem', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '12px', color: '#b91c1c' }}>
+                                    <strong style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.4rem', fontSize: '0.95rem' }}>
+                                        <AlertCircle size={18} />
+                                        Taking longer than expected?
+                                    </strong>
+                                    <p style={{ fontSize: '0.85rem', margin: 0, opacity: 0.9 }}>
+                                        The AI servers might be experiencing high traffic or a temporary timeout. Please refresh the page and kindly try again.
+                                    </p>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 )}
 

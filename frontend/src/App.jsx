@@ -42,6 +42,7 @@ function AppContent() {
     const [domain, setDomain] = useState("software");
     const [extractedData, setExtractedData] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [loadingTimeExceeded, setLoadingTimeExceeded] = useState(false);
     const [error, setError] = useState(null);
     const [isDomainOpen, setIsDomainOpen] = useState(false);
     const [activePage, setActivePage] = useState('landing');
@@ -151,6 +152,19 @@ function AppContent() {
             setStageStep(hasInputs ? 1 : 0);
         }
     }, [resume, jdFile, jdText, loading, extractedData]);
+
+    React.useEffect(() => {
+        let timer;
+        if (loading) {
+            setLoadingTimeExceeded(false);
+            timer = setTimeout(() => {
+                setLoadingTimeExceeded(true);
+            }, 40000);
+        } else {
+            setLoadingTimeExceeded(false);
+        }
+        return () => clearTimeout(timer);
+    }, [loading]);
 
     const handleExtract = async () => {
         setLoading(true);
@@ -1730,6 +1744,36 @@ function AppContent() {
                         <span>Executive Reporting</span>
                     </div>
                 </section>
+
+                {loading && (
+                    <div className="loading-instruction-card fade-in" style={{
+                        marginTop: '1.5rem',
+                        padding: '1.5rem',
+                        background: '#f8fafc',
+                        border: '1px solid #cbd5e1',
+                        borderRadius: '12px',
+                        textAlign: 'center',
+                        color: '#334155',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
+                    }}>
+                        <h4 style={{ color: '#0f172a', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Processing Your Document...</h4>
+                        <p style={{ fontSize: '0.9rem', opacity: 0.85, maxWidth: '600px', margin: '0 auto' }}>
+                            We are currently extracting skills, running taxonomy comparisons, and doing deep contextual AI analysis to build your personalized dashboard. This normally takes 10-20 seconds.
+                        </p>
+                        
+                        {loadingTimeExceeded && (
+                            <div className="fade-in" style={{ marginTop: '1.2rem', padding: '1rem', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', color: '#b91c1c', maxWidth: '600px', margin: '1.2rem auto 0' }}>
+                                <strong style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+                                    <AlertCircle size={18} />
+                                    Taking longer than expected?
+                                </strong>
+                                <p style={{ fontSize: '0.85rem', marginTop: '0.4rem', opacity: 0.9 }}>
+                                    The AI servers might be experiencing high traffic or a temporary timeout. Please refresh the page and kindly try again.
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                )}
 
                 {error && (
                     <div className="error-message fade-in">

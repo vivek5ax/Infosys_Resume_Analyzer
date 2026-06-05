@@ -23,13 +23,15 @@ const BertModal = ({ isOpen, onClose, isClosing, data, isEmbedded = false }) => 
     const validatedContextSkills = contextValidations.filter(v => v.analysis_type === 'Contextually Validated').map(v => ({ skill: v.skill_name, similar_to: 'NLU Validated', score: 0.95 }));
 
     const actualGaps = contextValidations.filter(v => v.analysis_type === 'Actual Gap').map(v => ({ skill: v.skill_name, categories: ['NLU Gap'], weight: 'Critical' }));
-    const missingSkills = [...(bertResults.missing_from_resume || []), ...actualGaps];
+    const rawMissingSkills = [...(bertResults.missing_from_resume || []), ...actualGaps];
+    const missingSkills = Array.from(new Map(rawMissingSkills.map(item => [item.skill, item])).values());
 
     // Join semantic arrays securely mapping the string outputs
-    const allSemanticMatches = [...(partition.strong_semantic || []), ...(partition.moderate_semantic || []), ...implicitContextSkills, ...validatedContextSkills];
+    const rawSemanticMatches = [...(partition.strong_semantic || []), ...(partition.moderate_semantic || []), ...implicitContextSkills, ...validatedContextSkills];
+    const allSemanticMatches = Array.from(new Map(rawSemanticMatches.map(item => [item.skill, item])).values());
 
     // Calculate Venn Diagram Arrays Dynamically treating semantics as matches
-    const exactMatchStrings = partition.exact_match || [];
+    const exactMatchStrings = [...new Set(partition.exact_match || [])];
     const semanticMatchStrings = allSemanticMatches.map(item => item.skill); // Resume's variants
     const matchedSkills = [...new Set([...exactMatchStrings, ...semanticMatchStrings])];
 
